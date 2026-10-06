@@ -152,12 +152,17 @@ function mkSummary(h, rooms) {
   return s;
 }
 
-// Ширина ~20 символов, чтобы не переносилось в телефоне
+function mkMoney(n) {
+  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+
+// Одна строка на отель, без выравнивания пробелами (в веб-версии MAX <pre> не моноширинный):
+// «В125 — своб. 3/66 · стандарт 3 730»
 function mkRow(s) {
-  if (s.error) return mkPad(s.name, 9) + 'нет данных';
-  var free = s.sold ? '0' : s.free + (s.capped ? '+' : '');
-  if (s.total) free += '/' + s.total;
-  return mkPad(s.name, 9) + mkPad(free, 6) + (s.sold ? 'SOLD' : (s.std || '—'));
+  if (s.error) return s.name + ' — нет данных';
+  if (s.sold) return s.name + ' — SOLD';
+  var free = s.free + (s.capped ? '+' : '') + (s.total ? '/' + s.total : '');
+  return s.name + ' — своб. ' + free + ' · стандарт ' + (s.std ? mkMoney(s.std) : '—');
 }
 
 /** Подсказки. Решение по цене принимает revenue-менеджер. */
@@ -200,7 +205,7 @@ function buildMarketReport() {
   };
   var out = [
     '<b>В125 и рынок</b>',
-    'Своб — свободно, Цена — сопоставимый стандарт'
+    'Своб. — свободно номеров, стандарт — цена сопоставимой категории'
   ];
 
   MARKET_OFFSETS.forEach(function (off) {
@@ -225,12 +230,9 @@ function buildMarketReport() {
       return s;
     });
 
-    var t = [mkPad('Отель', 9) + mkPad('Своб', 6) + 'Цена'];
-    rows.forEach(function (r) { t.push(mkRow(r)); });
-
     out.push('');
     out.push('<b>' + MK_DOW[d1.getDay()] + ' ' + mkFmt(d1, 'dd.MM') + '</b>');
-    out.push('<pre>' + esc(t.join('\n')) + '</pre>');
+    rows.forEach(function (r) { out.push(esc(mkRow(r))); });
     mkHints(rows).forEach(function (h) { out.push(esc(h)); });
   });
 

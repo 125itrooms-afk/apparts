@@ -358,7 +358,7 @@ function test_ShowAvailability() {
   Logger.log(buildReport(collectNight(1)));
 }
 
-/** Сводка остатков и цен: сегодня и завтра. Три раза в день (см. setupAvailabilityTriggers). */
+/** Сводка остатков и цен: сегодня и завтра. Четыре раза в день (см. setupAvailabilityTriggers). */
 function availabilityReport() {
   var today = buildReport(collectNight(0));
   Utilities.sleep(1500);
@@ -380,13 +380,14 @@ function setupAvailabilityTriggers() {
       if (t.getHandlerFunction() === fn) ScriptApp.deleteTrigger(t);
     });
   });
-  [10, 16, 20].forEach(function (h) {
+  // Apps Script не запускает точно в минуту: atHour(h).nearMinute(0) — это окно h:00–h:15 МСК.
+  [10, 16, 20, 22].forEach(function (h) {
     ScriptApp.newTrigger('availabilityReport').timeBased().everyDays(1)
-      .atHour(h).inTimezone(TZ).create();
+      .atHour(h).nearMinute(0).inTimezone(TZ).create();
   });
   ScriptApp.newTrigger('collectHorizon').timeBased().everyDays(1)
-    .atHour(3).inTimezone(TZ).create();
-  Logger.log('Триггеры: availabilityReport 10/16/20 МСК, collectHorizon 3:00 МСК');
+    .atHour(3).nearMinute(0).inTimezone(TZ).create();
+  Logger.log('Триггеры: availabilityReport 10/16/20/22 (окно 15 минут), collectHorizon 3:00 МСК');
 }
 
 /**

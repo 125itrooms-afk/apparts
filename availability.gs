@@ -358,7 +358,7 @@ function test_ShowAvailability() {
   Logger.log(buildReport(collectNight(1)));
 }
 
-/** Сводка остатков и цен: сегодня и завтра. Четыре раза в день (см. setupAvailabilityTriggers). */
+/** Сводка остатков и цен: сегодня и завтра. 10:00, 16:00, 20:00 (см. setupAvailabilityTriggers). */
 function availabilityReport() {
   var today = buildReport(collectNight(0));
   Utilities.sleep(1500);
@@ -366,9 +366,16 @@ function availabilityReport() {
   sendToMax(today + '\n\n' + tomorrow);
 }
 
-// Старые имена оставлены, чтобы не сломались прежние триггеры, если их не удалили.
+/** Ночная сводка (22:00): завтра и послезавтра. */
+function eveningReport() {
+  var d1 = buildReport(collectNight(1));
+  Utilities.sleep(1500);
+  var d2 = buildReport(collectNight(2));
+  sendToMax(d1 + '\n\n' + d2);
+}
+
+// Старое имя оставлено, чтобы не сломался прежний триггер, если его не удалили.
 function dailyReport() { availabilityReport(); }
-function eveningReport() { availabilityReport(); }
 
 /**
  * Расписание (запустить один раз): сводки в 10:00, 16:00, 20:00 МСК,
@@ -381,13 +388,15 @@ function setupAvailabilityTriggers() {
     });
   });
   // Apps Script не запускает точно в минуту: atHour(h).nearMinute(0) — это окно h:00–h:15 МСК.
-  [10, 16, 20, 22].forEach(function (h) {
+  [10, 16, 20].forEach(function (h) {
     ScriptApp.newTrigger('availabilityReport').timeBased().everyDays(1)
       .atHour(h).nearMinute(0).inTimezone(TZ).create();
   });
+  ScriptApp.newTrigger('eveningReport').timeBased().everyDays(1)
+    .atHour(22).nearMinute(0).inTimezone(TZ).create();
   ScriptApp.newTrigger('collectHorizon').timeBased().everyDays(1)
     .atHour(3).nearMinute(0).inTimezone(TZ).create();
-  Logger.log('Триггеры: availabilityReport 10/16/20/22 (окно 15 минут), collectHorizon 3:00 МСК');
+  Logger.log('Триггеры: availabilityReport 10/16/20, eveningReport 22 (окно 15 минут), collectHorizon 3:00 МСК');
 }
 
 /**

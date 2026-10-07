@@ -449,3 +449,40 @@ function listMaxChats() {
     {headers: {Authorization: token}, muteHttpExceptions: true});
   Logger.log(r.getResponseCode() + ' ' + r.getContentText().slice(0, 3000));
 }
+
+/* ---------- ПРОВЕРКА ФОНДА ---------- */
+
+// Сколько номеров в Bnovo. Результат в журнале (Вид → Журналы).
+// 1) уникальные номера из броней за 12 месяцев (нижняя граница: непроданный номер не виден);
+// 2) пробный запрос списка номеров /rooms — смотрим ответ в журнале.
+function countRooms() {
+  const t = bnovoToken(), H = {headers: {Authorization: 'Bearer ' + t}, muteHttpExceptions: true};
+  const all = {}, byMonth = {};
+  monthStarts_(12).forEach(function(m) {
+    const p = m.split('-').map(Number);
+    const end = m.slice(0, 8) + String(new Date(p[0], p[1], 0).getDate()).padStart(2, '0');
+    let offset = 0, portion;
+    do {
+      const r = UrlFetchApp.fetch('https://api.pms.bnovo.ru/api/v1/bookings?date_from=' + m +
+        '&date_to=' + end + '&limit=50&offset=' + offset, H);
+      if (r.getResponseCode() !== 200) throw new Error('Bnovo ' + r.getResponseCode() + ' (' + m + ')');
+      const body = JSON.parse(r.getContentText());
+      portion = (body.data && body.data.bookings) || body.bookings || [];
+      portion.forEach(function(bk) {
+        (bk.prices || []).forEach(function(pr) {
+          const n = pr.room_name || bk.room_name;
+          if (!n || /овербук/i.test(pr.room_type_name || '')) return;
+          all[n] = 1;
+          (byMonth[pr.date.slice(0, 7)] = byMonth[pr.date.slice(0, 7)] || {})[n] = 1;
+        });
+      });
+      offset += 50;
+      Utilities.sleep(300);
+    } while (portion.length === 50);
+  });
+  Object.keys(byMonth).sort().forEach(function(k) { Logger.log(k + ': ' + Object.keys(byMonth[k]).length + ' номеров'); });
+  Logger.log('Уникальных номеров в бронях за 12 мес.: ' + Object.keys(all).length);
+
+  const r = UrlFetchApp.fetch('https://api.pms.bnovo.ru/api/v1/rooms?limit=200', H);
+  Logger.log('/rooms: ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 1500));
+}

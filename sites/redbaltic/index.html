@@ -3,218 +3,251 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Red Baltic</title>
-<meta name="description" content="Апарт-отель Red Baltic у метро Войковская и МЦД Красный Балтиец. Студии с кухней от 2 750 ₽. Отель группы W125.">
+<title>Red Baltic - апарт-отель у метро Войковская</title>
+<meta name="description" content="Апарт-отель Red Baltic у метро «Войковская» и МЦД «Красный Балтиец»: студии с кухней от 2 750 ₽ за ночь. Скидка до 10% при бронировании на сайте.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Hotel","name":"Red Baltic","description":"Апарт-отель у метро «Войковская» и МЦД «Красный Балтиец»: студии с кухней.","telephone":"+7 (999) 542-25-15","email":"RedBaltic-hotel@yandex.ru","priceRange":"от 2 750 ₽","checkinTime":"15:00","checkoutTime":"12:00","petsAllowed":true,"address":{"@type":"PostalAddress","streetAddress":"ул. Клары Цеткин, 3","addressLocality":"Москва","addressCountry":"RU"}}
+</script>
 <style>
-/* Layout: широкий красный герой с формой брони, дальше чередование светлых и винных секций; карточки только у номеров */
+/* Layout: структура референса w125.ru (полоса «наши отели», тёмная шапка, герой с формой, «для кого», карточки номеров, расположение, FAQ), палитра - красный и винный */
 :root {
-  --bg: #f7f4f4;
-  --surface: #ffffff;
-  --fg: #1d1416;
-  --muted: #6b5b5e;
-  --line: #e6dcdd;
-  --red: #c8102e;
-  --red-ink: #a00d25;
-  --wine: #3b0b14;
-  --on-wine: #f6e9eb;
-  --on-red: #ffffff;
-  --ph: #efe3e5;
-  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
-  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --step-0: 1rem;
-  --step-1: 1.25rem;
-  --step-2: 1.75rem;
-  --step-3: clamp(2rem, 4vw, 2.75rem);
-  --step-4: clamp(2.6rem, 8vw, 5.5rem);
-  --wrap: 1180px;
-  --gutter: clamp(16px, 4vw, 40px);
+  --bg: #f8f4f4; --card: #ffffff; --ink: #1d1416; --muted: #66565a; --line: #e4d8da;
+  --red: #c8102e; --red-ink: #a00d25; --accent: #ff5a6e;
+  --wine-950: #1f060b; --wine-900: #2e0a12; --wine-800: #430f1b;
+  --on-dark: #f6e9eb; --on-dark-muted: #c9aeb3; --ph: #efe3e5;
+  --f-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --f-body: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --hair: linear-gradient(90deg, #a00d25, #ff5a6e 45%, #c8102e);
+  color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #140b0d; --surface: #1f1215; --fg: #f3e9ea; --muted: #b9a5a8; --line: #3a2529;
-    --red: #e3324c; --red-ink: #ff5d74; --wine: #2a080e; --on-wine: #f6e9eb; --on-red: #ffffff; --ph: #2c1a1e;
-    color-scheme: dark;
+    --bg: #150b0d; --card: #20131a; --ink: #f3e9ea; --muted: #b9a5a8; --line: #3a2529; --red-ink: #ff6b7e; --ph: #2c1a1e; color-scheme: dark;
   }
 }
-:root[data-theme="dark"] {
-  --bg: #140b0d; --surface: #1f1215; --fg: #f3e9ea; --muted: #b9a5a8; --line: #3a2529;
-  --red: #e3324c; --red-ink: #ff5d74; --wine: #2a080e; --on-wine: #f6e9eb; --on-red: #ffffff; --ph: #2c1a1e;
-  color-scheme: dark;
-}
+:root[data-theme="dark"] { --bg: #150b0d; --card: #20131a; --ink: #f3e9ea; --muted: #b9a5a8; --line: #3a2529; --red-ink: #ff6b7e; --ph: #2c1a1e; color-scheme: dark; }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 400 var(--step-0)/1.6 var(--font-body); }
+html { scroll-padding-top: 90px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
-.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
-h2 { font-size: var(--step-3); font-weight: 700; }
-h3 { font-size: var(--step-1); font-weight: 700; }
 p { margin: 0; }
-.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red-ink); }
-.lead { color: var(--muted); max-width: 62ch; }
-.todo { background: var(--ph); border-radius: 4px; padding: 0 .3em; color: var(--fg); font-style: normal; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 500; letter-spacing: -.015em; line-height: 1.12; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(1.75rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.15rem; }
+.wrap { width: min(1200px, 100% - 32px); margin-inline: auto; }
+.eyebrow { font: 500 12px/1.4 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red-ink); }
+.lead { color: var(--muted); max-width: 64ch; }
+.hair { height: 1px; border: 0; margin: 0; background: var(--hair); opacity: .85; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .5em; min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1px solid transparent;
+  font: 600 15px/1 var(--f-body); text-decoration: none; cursor: pointer; white-space: nowrap; background: var(--red); color: #fff; transition: background-color .15s; }
+.btn:hover { background: var(--red-ink); }
+.btn.line { background: transparent; border-color: currentColor; color: inherit; }
+.btn.line:hover { background: rgba(255,90,110,.12); }
+
+/* hotels strip */
+.hotels { background: var(--wine-950); color: var(--on-dark-muted); font-size: 13px; }
+.hotels .wrap { display: flex; align-items: center; gap: 14px; padding-block: 7px; flex-wrap: wrap; }
+.hotels label { font-family: var(--f-mono); letter-spacing: .06em; }
+.hotels select { background: transparent; color: var(--on-dark); border: 1px solid rgba(255,90,110,.4); border-radius: 999px; padding: 5px 12px; font: 500 13px var(--f-body); }
+.hotels option { color: #1d1416; }
 
 /* header */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
-.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
-.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 800; letter-spacing: .02em; }
-.logo-mark { width: 34px; height: 34px; border-radius: 50%; background: var(--red); display: grid; place-items: center; color: var(--on-red); font-size: .8rem; }
-.nav { display: flex; gap: 22px; font-weight: 500; }
-.nav a { text-decoration: none; }
-.nav a:hover { color: var(--red-ink); }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer; text-decoration: none;
-  font: 700 .95rem/1 var(--font-body); padding: 14px 22px; border-radius: 999px; background: var(--red); color: var(--on-red); transition: background .2s; }
-.btn:hover { background: var(--red-ink); }
-.btn.ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 2px var(--line); }
-@media (max-width: 860px) { .nav { display: none; } }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 40; background: rgba(31,6,11,.95); backdrop-filter: blur(10px); color: var(--on-dark); border-bottom: 1px solid rgba(255,90,110,.25); }
+.top .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo .mark { font: 500 12px/1 var(--f-mono); letter-spacing: .06em; color: var(--accent); border: 1px solid var(--accent); padding: 7px 7px 6px; border-radius: 4px; }
+.logo .word { font: 500 15px/1 var(--f-display); }
+.menu { display: flex; gap: 22px; margin-left: auto; font-size: 14px; }
+.menu a { text-decoration: none; color: var(--on-dark-muted); }
+.menu a:hover { color: var(--on-dark); }
+.tel { font: 500 14px var(--f-mono); text-decoration: none; }
+@media (max-width: 980px) { .menu { display: none; } .top .tel { margin-left: auto; } }
+@media (max-width: 560px) { .top .tel { display: none; } .top .btn { margin-left: auto; } }
 
 /* hero */
-.hero { background: var(--red); color: var(--on-red); position: relative; overflow: hidden; }
-.hero::after { content: ""; position: absolute; inset: auto -10% -40% auto; width: 60vw; max-width: 720px; aspect-ratio: 1; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,.14), transparent 65%); pointer-events: none; }
-.hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; padding-block: 72px 80px; position: relative; z-index: 1; }
-.hero h1 { font-size: var(--step-4); font-weight: 800; letter-spacing: -.02em; }
-.hero h1 span { display: block; }
-.hero .sub { font-size: var(--step-1); margin-top: 20px; max-width: 34ch; opacity: .92; }
-.hero .facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 32px; font-weight: 500; }
-.hero .facts b { font-family: var(--font-display); font-size: 1.4rem; display: block; }
-.book { background: var(--surface); color: var(--fg); border-radius: 18px; padding: 24px; display: grid; gap: 14px; align-self: end; box-shadow: 0 20px 50px rgba(40,0,8,.25); }
-.book h3 { font-size: 1.1rem; }
-.book .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.book label { display: grid; gap: 6px; font-size: .8rem; font-weight: 700; color: var(--muted); }
-.book input, .book select { font: 500 1rem var(--font-body); padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); min-width: 0; width: 100%; }
-.book .note { font-size: .85rem; color: var(--muted); min-height: 1.2em; }
-@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 48px 56px; } }
+.hero { background: var(--wine-900); color: var(--on-dark); position: relative; overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding-block: 64px 72px; }
+.hero h1 { font-size: clamp(2.2rem, 5.2vw, 4rem); margin-top: 16px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero .sub { margin-top: 20px; font-size: 1.1rem; color: var(--on-dark-muted); max-width: 46ch; }
+.facts { display: flex; flex-wrap: wrap; gap: 14px 36px; margin-top: 30px; }
+.facts b { display: block; font: 500 1.5rem/1.1 var(--f-display); color: #fff; }
+.facts span { font-size: .9rem; color: var(--on-dark-muted); }
+.hero-img { border-radius: 18px; aspect-ratio: 4/3.2; object-fit: cover; width: 100%; box-shadow: 0 30px 60px -28px rgba(0,0,0,.7); }
+.book { margin-top: 32px; background: var(--card); color: var(--ink); border-radius: 16px; padding: 18px; display: grid; grid-template-columns: 1.4fr 1.4fr .8fr auto; gap: 12px; align-items: end; max-width: 640px; }
+.book label { display: grid; gap: 5px; font-size: .75rem; font-weight: 600; color: var(--muted); }
+.book input, .book select { font: 500 .92rem var(--f-body); padding: 11px 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); width: 100%; min-width: 0; }
+.book-note { grid-column: 1 / -1; font-size: .85rem; color: var(--muted); }
+.hero .perk { margin-top: 16px; font-size: .9rem; color: var(--on-dark-muted); }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; padding-block: 40px 48px; } .hero-img { order: -1; aspect-ratio: 16/10; } }
+@media (max-width: 560px) { .book { grid-template-columns: 1fr 1fr; } .book .btn { grid-column: 1 / -1; } }
 
-section { padding-block: 88px; }
+section { padding-block: 84px; }
 .head { display: grid; gap: 14px; margin-bottom: 40px; }
 
-/* about */
-.about .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-.feat { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--red); padding-top: 18px; }
-.feat p { color: var(--muted); }
-@media (max-width: 960px) { .about .grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 520px) { .about .grid { grid-template-columns: 1fr; } }
+/* perks */
+.perks { padding-block: 0; background: var(--card); border-bottom: 1px solid var(--line); }
+.perks .grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.perk-i { padding: 28px 24px 28px 0; display: grid; gap: 6px; }
+.perk-i b { font: 500 1.6rem/1 var(--f-display); color: var(--red-ink); }
+.perk-i p { color: var(--muted); font-size: .95rem; }
+@media (max-width: 760px) { .perks .grid { grid-template-columns: 1fr; } .perk-i { padding: 18px 0; border-bottom: 1px solid var(--line); } }
+
+/* for whom */
+.aud { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.aud article { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--card); display: grid; gap: 12px; align-content: start; border-top: 3px solid var(--red); }
+.aud ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--muted); font-size: .92rem; }
+.aud li::before { content: "·"; color: var(--red); font-weight: 800; margin-right: 8px; }
+@media (max-width: 1060px) { .aud { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .aud { grid-template-columns: 1fr; } }
 
 /* rooms */
-.rooms { background: var(--surface); border-block: 1px solid var(--line); }
-.rooms .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.room { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; background: var(--bg); }
-.photo { aspect-ratio: 4/3; max-width: 100%; display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .85rem; padding: 16px;
-  background: repeating-linear-gradient(135deg, var(--ph) 0 14px, transparent 14px 28px), var(--bg); }
-.room .body { padding: 22px; display: grid; gap: 12px; align-content: start; }
+.rooms { background: var(--card); border-block: 1px solid var(--line); }
+.room-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.room { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: var(--bg); display: grid; grid-template-rows: auto 1fr; }
+.room img { aspect-ratio: 3/2; width: 100%; object-fit: cover; }
+.room .body { padding: 24px; display: grid; gap: 12px; align-content: start; }
 .specs { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.specs li { font-size: .82rem; font-weight: 500; padding: 5px 10px; border-radius: 999px; background: var(--ph); }
-.price { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); margin-top: 4px; }
-.price b { font-family: var(--font-display); font-size: 1.3rem; font-variant-numeric: tabular-nums; }
-.price a { color: var(--red-ink); font-weight: 700; text-decoration: none; }
-@media (max-width: 1080px) { .rooms .grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .rooms .grid { grid-template-columns: 1fr; } }
+.specs li { font-size: .82rem; font-weight: 500; padding: 5px 11px; border-radius: 999px; background: var(--ph); }
+.price { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; border-top: 1px solid var(--line); margin-top: 4px; }
+.price b { font: 500 1.4rem var(--f-display); font-variant-numeric: tabular-nums; }
+.price small { color: var(--muted); }
+.pets { margin-top: 24px; border: 1px dashed var(--red); border-radius: 16px; padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+@media (max-width: 760px) { .room-grid { grid-template-columns: 1fr; } }
 
-/* services */
-.services .list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
-.svc { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; align-items: baseline; min-width: 0; }
-.svc i { font-style: normal; color: var(--red); font-weight: 800; }
-.svc span { color: var(--muted); font-size: .9rem; display: block; }
-@media (max-width: 860px) { .services .list { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .services .list { grid-template-columns: 1fr; } }
+/* amenities */
+.am-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.am-grid img { border-radius: 18px; aspect-ratio: 1; object-fit: cover; width: 100%; }
+.am { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); margin-top: 28px; }
+.am div { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--line); font-weight: 500; }
+.am span { display: block; color: var(--muted); font-weight: 400; font-size: .88rem; }
+@media (max-width: 860px) { .am-grid { grid-template-columns: 1fr; gap: 28px; } }
 
-/* rules */
-.rules { background: var(--wine); color: var(--on-wine); }
-.rules .eyebrow { color: var(--on-wine); opacity: .75; }
-.rules .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-.rule b { font-family: var(--font-display); font-size: var(--step-2); display: block; font-variant-numeric: tabular-nums; }
-.rule span { opacity: .8; }
-.rules .todo { background: rgba(255,255,255,.12); color: var(--on-wine); }
-@media (max-width: 860px) { .rules .grid { grid-template-columns: 1fr 1fr; } }
+/* where */
+.where { background: var(--wine-900); color: var(--on-dark); }
+.where .eyebrow { color: var(--accent); }
+.where .lead { color: var(--on-dark-muted); }
+.where-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.near { display: grid; gap: 0; border-top: 1px solid rgba(255,255,255,.16); margin-top: 28px; }
+.near div { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.16); }
+.near span { color: var(--on-dark-muted); text-align: right; }
+.addr { background: var(--wine-800); border-radius: 18px; padding: 28px; display: grid; gap: 14px; align-content: start; }
+.addr dl { margin: 0; display: grid; gap: 14px; }
+.addr dt { font: 500 12px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--on-dark-muted); }
+.addr dd { margin: 4px 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.addr .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+@media (max-width: 860px) { .where-grid { grid-template-columns: 1fr; } }
 
-/* location + contacts */
-.loc .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.map { border-radius: 16px; min-height: 320px; display: grid; place-items: center; text-align: center; padding: 24px; gap: 12px;
-  background: radial-gradient(circle at 50% 45%, var(--red) 0 10px, transparent 11px), repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 40px), var(--surface); border: 1px solid var(--line); }
-.map div { margin-top: 90px; display: grid; gap: 12px; justify-items: center; }
-.contacts { display: grid; gap: 0; align-content: start; }
-.contacts dl { margin: 0; display: grid; }
-.c-row { display: grid; grid-template-columns: 140px 1fr auto; gap: 12px; align-items: center; padding-block: 16px; border-bottom: 1px solid var(--line); }
-.c-row dt { color: var(--muted); font-size: .9rem; }
-.c-row dd { margin: 0; font-weight: 700; min-width: 0; overflow-wrap: anywhere; user-select: all; }
-.copy { font: 600 .8rem var(--font-body); border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
-@media (max-width: 860px) { .loc .grid { grid-template-columns: 1fr; } .c-row { grid-template-columns: 1fr auto; } .c-row dt { grid-column: 1 / -1; } }
+/* faq */
+.faq { max-width: 860px; }
+.faq details { border-bottom: 1px solid var(--line); padding-block: 18px; }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.faq summary::after { content: "+"; color: var(--red); font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq p { margin-top: 12px; color: var(--muted); }
 
-/* group banner + footer */
-.group { padding-block: 56px; }
-.group .box { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; border: 2px solid var(--red); border-radius: 20px; padding: 32px; }
-.group .box p { max-width: 56ch; color: var(--muted); }
-footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: .88rem; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
+/* group */
+.group { padding-block: 0 84px; }
+.group .head { margin-bottom: 28px; }
+.hotel-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.hotel { border: 1px solid var(--line); border-radius: 16px; padding: 24px; background: var(--card); display: grid; gap: 8px; text-decoration: none; align-content: start; }
+.hotel.cur { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); }
+.hotel span { color: var(--muted); font-size: .92rem; }
+a.hotel:hover { border-color: var(--red); }
+@media (max-width: 760px) { .hotel-list { grid-template-columns: 1fr; } }
+
+/* cta + footer */
+.cta { background: var(--red); color: #fff; padding-block: 56px; }
+.cta .wrap { display: flex; flex-wrap: wrap; gap: 20px 40px; justify-content: space-between; align-items: center; }
+.cta h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.cta .btn { background: #fff; color: var(--red-ink); }
+.cta .btn:hover { background: #f6e9eb; }
+footer { background: var(--wine-950); color: var(--on-dark-muted); padding-block: 40px; font-size: .9rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 20px 48px; justify-content: space-between; }
+footer b { color: var(--on-dark); font-family: var(--f-display); font-weight: 500; }
+footer a { text-decoration-color: rgba(255,255,255,.3); }
 </style>
 </head>
 <body>
 
+<div class="hotels">
+  <div class="wrap">
+    <label for="hotel-pick">Наши апарт-отели в Москве</label>
+    <select id="hotel-pick" aria-label="Выбрать отель">
+      <option value="" selected>м. Войковская · Red Baltic</option>
+      <option value="https://w125.ru/">м. Южная · Варшавка 125</option>
+      <option value="https://arena33.su/">м. Динамо · Арена 33</option>
+      <option value="https://svoykvartal.tb.ru/">Свой квартал</option>
+    </select>
+  </div>
+</div>
+
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#top"><span class="logo-mark">RB</span>RED BALTIC</a>
-    <nav class="nav" aria-label="Разделы">
-      <a href="#about">Об отеле</a>
-      <a href="#rooms">Номера</a>
-      <a href="#services">Услуги</a>
-      <a href="#rules">Правила</a>
-      <a href="#contacts">Контакты</a>
+    <a class="logo" href="#top" aria-label="Red Baltic, наверх"><span class="mark">RB</span><span class="word">Red Baltic</span></a>
+    <nav class="menu" aria-label="Разделы">
+      <a href="#rooms">Номера</a><a href="#for-whom">Для кого</a><a href="#amenities">Удобства</a><a href="#where">Как добраться</a><a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn" href="#book">Забронировать</a>
+    <a class="tel" href="tel:+79995422515">+7 (999) 542-25-15</a>
+    <a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Забронировать</a>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero" style="padding-block:0">
-    <div class="wrap">
+  <section class="hero" style="padding:0">
+    <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow" style="color:var(--on-red);opacity:.8">Апарт-отель группы W125 · Москва</p>
-        <h1><span>Red</span><span>Baltic</span></h1>
-        <p class="sub">Студии с кухней у метро «Войковская» и МЦД «Красный Балтиец». Ресепшен работает круглосуточно.</p>
-        <div class="facts">
-          <div><b>от 2 750 ₽</b>за ночь</div>
-          <div><b>24/7</b>ресепшен</div>
-          <div><b>4</b>категории студий</div>
-        </div>
-      </div>
-      <form class="book" id="book" novalidate>
-        <h3>Проверить даты</h3>
-        <div class="row">
+        <p class="eyebrow" style="color:var(--accent)">Апарт-отель · Москва, ул. Клары Цеткин, 3</p>
+        <h1>Студии с кухней у метро <em>«Войковская»</em></h1>
+        <p class="sub">Стильный апарт-отель рядом с МЦД «Красный Балтиец». Для командировок, поездок по городу и долгого проживания.</p>
+        <form class="book" id="book" novalidate>
           <label for="in">Заезд<input id="in" type="date" required></label>
           <label for="out">Выезд<input id="out" type="date" required></label>
+          <label for="guests">Гостей
+            <select id="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+          </label>
+          <button class="btn" type="submit">Показать цены</button>
+          <p class="book-note" id="note" aria-live="polite">Скидка до 10% при бронировании на сайте.</p>
+        </form>
+        <div class="facts">
+          <div><b>от 2 750 ₽</b><span>за ночь</span></div>
+          <div><b>12 мин</b><span>до метро и МЦД</span></div>
+          <div><b>24/7</b><span>администратор</span></div>
         </div>
-        <label for="guests">Гости
-          <select id="guests">
-            <option>1 взрослый</option>
-            <option selected>2 взрослых</option>
-            <option>2 взрослых + ребёнок</option>
-            <option>3 взрослых</option>
-          </select>
-        </label>
-        <button class="btn" type="submit">Найти номер</button>
-        <p class="note" id="note" aria-live="polite">Здесь будет модуль бронирования Bnovo.</p>
-      </form>
+      </div>
+      <img class="hero-img" src="img/hero.webp" width="1600" height="1066" alt="Студия Red Baltic: антресоль, кухня и красный акцент" fetchpriority="high" decoding="async">
+    </div>
+  </section>
+  <hr class="hair">
+
+  <section class="perks">
+    <div class="wrap grid">
+      <div class="perk-i"><b>−10%</b><p>Скидка до 10% при бронировании через сайт.</p></div>
+      <div class="perk-i"><b>Кухня</b><p>В каждой студии: плита, холодильник, микроволновая печь и посуда.</p></div>
+      <div class="perk-i"><b>Wi-Fi</b><p>Бесплатный высокоскоростной интернет и рабочее место в номере.</p></div>
     </div>
   </section>
 
-  <section class="about" id="about">
+  <section id="for-whom">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Об отеле</p>
-        <h2>Своя студия рядом с метро</h2>
-        <p class="lead">Стильный апарт-отель на улице Клары Цеткин, 3, в шаговой доступности от метро «Войковская» и станции МЦД «Красный Балтиец», которая и дала отелю имя. Подходит для командировки, короткой поездки и долгого проживания.</p>
+        <p class="eyebrow">Сценарии поездки</p>
+        <h2>Для кого подойдёт отель</h2>
+        <p class="lead">Дизайнерские студии на севере Москвы с хорошей транспортной доступностью и честной ценой.</p>
       </div>
-      <div class="grid">
-        <div class="feat"><h3>Кухня в каждой студии</h3><p>Можно готовить самому и не зависеть от кафе.</p></div>
-        <div class="feat"><h3>Спальня на антресоли</h3><p>В большинстве студий спальное место на втором уровне, внизу остаётся жилая зона.</p></div>
-        <div class="feat"><h3>Чистота</h3><p>Чистота и вежливый персонал - то, за что гости чаще всего хвалят отель в отзывах.</p></div>
-        <div class="feat"><h3>Два вида транспорта</h3><p>Метро и МЦД рядом: удобно ехать в центр и в любую часть города.</p></div>
+      <div class="aud">
+        <article><h3>Командировки</h3><ul><li>Рабочее место и Wi-Fi</li><li>Кухня вместо кафе</li><li>Метро и МЦД рядом</li></ul></article>
+        <article><h3>Туристы</h3><ul><li>Быстро до центра и вокзалов</li><li>Удобно добраться до Шереметьево</li><li>Рядом Тимирязевский парк</li></ul></article>
+        <article><h3>Долгое проживание</h3><ul><li>Готовьте как дома</li><li>Своя ванная комната</li><li>Качественное постельное бельё</li></ul></article>
+        <article><h3>С питомцами</h3><ul><li>Проживание с животными по согласованию</li><li>Услуга платная, 3 000 ₽</li><li>Согласование по телефону</li></ul></article>
       </div>
     </div>
   </section>
@@ -222,156 +255,172 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
   <section class="rooms" id="rooms">
     <div class="wrap">
       <div class="head">
-        <p class="eyebrow">Номера</p>
-        <h2>Четыре студии на выбор</h2>
-        <p class="lead">Цены минимальные, за ночь. Итоговая стоимость зависит от дат и покажется при бронировании.</p>
+        <p class="eyebrow">4 категории студий</p>
+        <h2>Номера</h2>
+        <p class="lead">Цены указаны «от». Стоимость на ваши даты зависит от загрузки и показывается при бронировании. Внешний вид номеров может отличаться от фото.</p>
       </div>
-      <div class="grid">
+      <div class="room-grid">
         <article class="room">
-          <div class="photo">Фото студии Solo<br>1200 × 900</div>
+          <img src="img/room-solo.webp" width="1000" height="667" alt="Студия Solo: односпальная кровать у окна" loading="lazy" decoding="async">
           <div class="body">
             <h3>Solo</h3>
             <ul class="specs"><li>8 м²</li><li>1 гость</li><li>кухня</li></ul>
-            <p class="lead">Компактная студия для одного: всё нужное в шаге.</p>
-            <div class="price"><span>от <b>2 750 ₽</b></span><a href="#book">Забронировать</a></div>
+            <p class="lead">Небольшая студия для тех, кто ценит уединение.</p>
+            <div class="price"><span><small>от</small> <b>2 750 ₽</b> <small>/ ночь</small></span><a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Выбрать даты</a></div>
           </div>
         </article>
         <article class="room">
-          <div class="photo">Фото студии Duet<br>1200 × 900</div>
+          <img src="img/room-duo.webp" width="1000" height="667" alt="Студия Standart Duo: антресоль с лестницей и кухня" loading="lazy" decoding="async">
           <div class="body">
-            <h3>Duet</h3>
+            <h3>Standart Duo</h3>
+            <ul class="specs"><li>12 м²</li><li>до 3 гостей</li><li>1 этаж</li><li>кухня</li></ul>
+            <p class="lead">Стильная студия на первом этаже со всем необходимым для комфортного проживания.</p>
+            <div class="price"><span><small>от</small> <b>2 950 ₽</b> <small>/ ночь</small></span><a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Выбрать даты</a></div>
+          </div>
+        </article>
+        <article class="room">
+          <img src="img/room-onelevel.webp" width="1000" height="667" alt="Студия One level: двуспальная кровать и красный шкаф" loading="lazy" decoding="async">
+          <div class="body">
+            <h3>One level</h3>
             <ul class="specs"><li>10 м²</li><li>до 2 гостей</li><li>кухня</li></ul>
-            <p class="lead">Для пары или двух коллег в командировке.</p>
-            <div class="price"><span>от <b>2 950 ₽</b></span><a href="#book">Забронировать</a></div>
+            <p class="lead">Комфортабельная студия со всем необходимым для проживания.</p>
+            <div class="price"><span><small>от</small> <b>3 250 ₽</b> <small>/ ночь</small></span><a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Выбрать даты</a></div>
           </div>
         </article>
         <article class="room">
-          <div class="photo">Фото студии Trio<br>1200 × 900</div>
-          <div class="body">
-            <h3>Trio</h3>
-            <ul class="specs"><li>12 м²</li><li>до 3 гостей</li><li>кухня</li></ul>
-            <p class="lead">Больше места и дополнительное спальное место.</p>
-            <div class="price"><span>от <b>3 250 ₽</b></span><a href="#book">Забронировать</a></div>
-          </div>
-        </article>
-        <article class="room">
-          <div class="photo">Фото студии Family<br>1200 × 900</div>
+          <img src="img/room-family.webp" width="1000" height="667" alt="Студия Family: диван, кухня и антресоль" loading="lazy" decoding="async">
           <div class="body">
             <h3>Family</h3>
             <ul class="specs"><li>16 м²</li><li>до 4 гостей</li><li>кухня</li></ul>
-            <p class="lead">Самая просторная студия, для семьи с детьми.</p>
-            <div class="price"><span>от <b>3 450 ₽</b></span><a href="#book">Забронировать</a></div>
+            <p class="lead">Увеличенная семейная студия для проживания до 4 человек.</p>
+            <div class="price"><span><small>от</small> <b>3 450 ₽</b> <small>/ ночь</small></span><a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Выбрать даты</a></div>
           </div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Услуги</p>
-        <h2>Что есть в отеле</h2>
-      </div>
-      <div class="list">
-        <div class="svc"><i>+</i><div>Кухня в каждой студии<span><em class="todo">[состав: плита, посуда, холодильник?]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Круглосуточный ресепшен<span>заезд в любое время</span></div></div>
-        <div class="svc"><i>+</i><div>Wi-Fi<span><em class="todo">[скорость / зона покрытия]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Парковка во дворе<span><em class="todo">[бесплатно? уточнить]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Хранение багажа<span><em class="todo">[уточнить]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Документы для командировки<span>чеки и закрывающие документы</span></div></div>
+      <div class="pets">
+        <div><h3>Можно с домашними животными</h3><p class="lead">Услуга платная, 3 000 ₽, и требует согласования по телефону.</p></div>
+        <a class="btn line" href="tel:+79995422515">Согласовать</a>
       </div>
     </div>
   </section>
 
-  <section class="rules" id="rules">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Правила проживания</p>
-        <h2>Коротко о главном</h2>
-      </div>
-      <div class="grid">
-        <div class="rule"><b><em class="todo">14:00</em></b><span>заезд</span></div>
-        <div class="rule"><b><em class="todo">12:00</em></b><span>выезд</span></div>
-        <div class="rule"><b><em class="todo">[условия]</em></b><span>бесплатная отмена</span></div>
-        <div class="rule"><b><em class="todo">[да / нет]</em></b><span>с животными</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="loc" id="contacts">
-    <div class="wrap">
-      <div class="head">
-        <p class="eyebrow">Как добраться</p>
-        <h2>Контакты</h2>
-      </div>
-      <div class="grid">
-        <div class="map">
-          <div>
-            <p><b>Москва, ул. Клары Цеткин, 3</b><br>м. «Войковская» · МЦД «Красный Балтиец»</p>
-            <a class="btn ghost" href="https://yandex.ru/maps/org/red_baltic/171375159538/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
-          </div>
-        </div>
-        <div class="contacts">
-          <dl>
-            <div class="c-row"><dt>Телефон</dt><dd id="c-phone">[+7 000 000-00-00]</dd><button class="copy" type="button" data-copy="c-phone">Копировать</button></div>
-            <div class="c-row"><dt>E-mail</dt><dd id="c-mail">[mail@redbaltic.ru]</dd><button class="copy" type="button" data-copy="c-mail">Копировать</button></div>
-            <div class="c-row"><dt>Telegram / WhatsApp</dt><dd id="c-msg">[@redbaltic]</dd><button class="copy" type="button" data-copy="c-msg">Копировать</button></div>
-            <div class="c-row"><dt>Адрес</dt><dd id="c-addr">Москва, ул. Клары Цеткин, 3</dd><button class="copy" type="button" data-copy="c-addr">Копировать</button></div>
-          </dl>
-          <p class="lead" style="margin-top:20px">Отзывы гостей: <a href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Яндекс Карты</a> · <a href="https://2gis.ru/moscow/firm/70000001079192807/tab/reviews" target="_blank" rel="noopener">2ГИС</a>.</p>
+  <section id="amenities">
+    <div class="wrap am-grid">
+      <img src="img/about.webp" width="864" height="864" alt="Лестница на антресоль и кухня в студии" loading="lazy" decoding="async">
+      <div>
+        <p class="eyebrow">В каждой студии</p>
+        <h2 style="margin-top:14px">Живёте как дома</h2>
+        <p class="lead" style="margin-top:14px">Продуманные дизайнерские студии: у некоторых есть антресольный уровень, что делает пространство функциональнее.</p>
+        <div class="am">
+          <div>Мини-кухня<span>плита, холодильник, микроволновая печь, посуда</span></div>
+          <div>Wi-Fi<span>бесплатный, высокоскоростной</span></div>
+          <div>Телевизор<span>в каждом номере</span></div>
+          <div>Рабочее пространство<span>удобно для командировок</span></div>
+          <div>Своя ванная<span>в каждой студии</span></div>
+          <div>Постельное бельё<span>качественное</span></div>
+          <div>Питание<span>завтрак по тарифу, ужин через администратора</span></div>
+          <div>Администратор 24/7<span>заезд и вопросы в любое время</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="where" id="where">
+    <div class="wrap where-grid">
+      <div>
+        <p class="eyebrow">Расположение</p>
+        <h2 style="margin-top:14px">Север Москвы, всё рядом</h2>
+        <p class="lead" style="margin-top:14px">Улица Клары Цеткин в развитом районе: магазины, кафе, рестораны и парки в пешей доступности.</p>
+        <div class="near">
+          <div>Метро «Войковская»<span>12 минут</span></div>
+          <div>МЦД «Красный Балтиец»<span>рядом</span></div>
+          <div>Тимирязевский парк<span>рядом</span></div>
+          <div>Парк имени Воровского<span>рядом</span></div>
+          <div>Торговые центры, кафе, рестораны<span>в районе</span></div>
+        </div>
+      </div>
+      <div class="addr">
+        <dl>
+          <div><dt>Адрес</dt><dd>Москва, ул. Клары Цеткин, 3</dd></div>
+          <div><dt>Телефон</dt><dd><a href="tel:+79995422515">+7 (999) 542-25-15</a></dd></div>
+          <div><dt>Почта</dt><dd><a href="mailto:RedBaltic-hotel@yandex.ru">RedBaltic-hotel@yandex.ru</a></dd></div>
+          <div><dt>Режим работы</dt><dd>Круглосуточно, 24/7</dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn" href="https://yandex.ru/maps/org/red_baltic/171375159538/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          <a class="btn line" href="https://max.ru/u/f9LHodD0cOKeJ7f6UB9K1X1SeKcXUnh2mrwxHuQ6i-sWuKLmEOQX7wE4tbI" target="_blank" rel="noopener">Написать в MAX</a>
+        </div>
+        <p style="color:var(--on-dark-muted);font-size:.9rem">Отзывы гостей: <a href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Яндекс Карты</a> · <a href="https://2gis.ru/moscow/firm/70000001079192807/tab/reviews" target="_blank" rel="noopener">2ГИС</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap faq">
+      <div class="head">
+        <p class="eyebrow">Перед поездкой</p>
+        <h2>Частые вопросы</h2>
+      </div>
+      <details open><summary>Во сколько заезд и выезд?</summary><p>Гарантированное время заезда 15:00, выезда 12:00. Ранний заезд и поздний выезд возможны по обязательному согласованию по телефону +7 (999) 542-25-15 и оплачиваются почасово.</p></details>
+      <details><summary>Есть ли питание?</summary><p>При бронировании доступны два варианта: с завтраком и без. Ужин можно заказать у администратора.</p></details>
+      <details><summary>Почему цена на одни и те же даты меняется?</summary><p>Мы применяем динамическое ценообразование: на цену влияют загрузка, спрос, события в городе и цены в соседних отелях. Цена может меняться до нескольких раз в день, бронирование фиксирует её.</p></details>
+      <details><summary>Можно ли с животными?</summary><p>Да. Услуга платная, 3 000 ₽, и требует согласования по телефону.</p></details>
+      <details><summary>Выгоднее ли бронировать на сайте?</summary><p>Да, при бронировании с сайта действует скидка до 10%.</p></details>
     </div>
   </section>
 
   <section class="group">
     <div class="wrap">
-      <div class="box">
-        <div>
-          <p class="eyebrow">Группа компаний</p>
-          <h3 style="margin-block:8px">Red Baltic входит в группу W125</h3>
-          <p>Апарт-отели группы в Москве работают по единым стандартам сервиса. <em class="todo">[Список объектов группы]</em></p>
-        </div>
-        <a class="btn" href="https://w125.ru/" target="_blank" rel="noopener">Все объекты группы</a>
+      <div class="head">
+        <p class="eyebrow">Группа компаний</p>
+        <h2>Другие отели сети</h2>
+        <p class="lead">Апарт-отели в Москве, которые работают по единым стандартам сервиса.</p>
+      </div>
+      <div class="hotel-list">
+        <div class="hotel cur"><h3>Red Baltic</h3><span>м. Войковская · вы здесь</span></div>
+        <a class="hotel" href="https://w125.ru/" target="_blank" rel="noopener"><h3>Варшавка 125</h3><span>м. Южная · «лежачий небоскрёб»</span></a>
+        <a class="hotel" href="https://arena33.su/" target="_blank" rel="noopener"><h3>Арена 33</h3><span>м. Динамо</span></a>
       </div>
     </div>
   </section>
+
+  <div class="cta">
+    <div class="wrap">
+      <div><h2>Выберите даты, цены покажем сразу</h2><p style="margin-top:8px;opacity:.9">Скидка до 10% при бронировании на сайте.</p></div>
+      <a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Забронировать</a>
+    </div>
+  </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Red Baltic. <em class="todo">[Юрлицо, ИНН]</em></span>
-    <span><a href="#">Политика конфиденциальности</a> · <a href="https://w125.ru/" target="_blank" rel="noopener">w125.ru</a></span>
+    <div><b>Red Baltic</b><p style="margin-top:8px">Москва, ул. Клары Цеткин, 3</p><p>Круглосуточно, 24/7</p></div>
+    <div><p><a href="tel:+79995422515">+7 (999) 542-25-15</a></p><p><a href="mailto:RedBaltic-hotel@yandex.ru">RedBaltic-hotel@yandex.ru</a></p></div>
+    <div><p><a href="https://redbaltic.tb.ru/rules" target="_blank" rel="noopener">Правила проживания</a></p><p><a href="https://redbaltic.tb.ru/politics" target="_blank" rel="noopener">Персональные данные</a></p></div>
+    <div><p>ООО «Красный Балтиец»</p><p>ИНН 9726099660</p></div>
   </div>
 </footer>
 
 <script>
 (function () {
-  var d = new Date(), pad = function (n) { return String(n).padStart(2, "0"); };
+  var BOOK = "https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a";
+  var pad = function (n) { return String(n).padStart(2, "0"); };
   var iso = function (x) { return x.getFullYear() + "-" + pad(x.getMonth() + 1) + "-" + pad(x.getDate()); };
+  var d = new Date(), t = new Date(d); t.setDate(t.getDate() + 1);
   var inEl = document.getElementById("in"), outEl = document.getElementById("out"), note = document.getElementById("note");
-  inEl.value = iso(d); inEl.min = iso(d);
-  var t = new Date(d); t.setDate(t.getDate() + 1); outEl.value = iso(t); outEl.min = iso(t);
+  inEl.value = iso(d); inEl.min = iso(d); outEl.value = iso(t); outEl.min = iso(t);
   inEl.addEventListener("change", function () {
     var n = new Date(inEl.value); n.setDate(n.getDate() + 1);
     outEl.min = iso(n); if (outEl.value <= inEl.value) outEl.value = iso(n);
   });
   document.getElementById("book").addEventListener("submit", function (e) {
     e.preventDefault();
-    var nights = Math.round((new Date(outEl.value) - new Date(inEl.value)) / 864e5);
-    note.textContent = nights > 0
-      ? "Ночей: " + nights + ". Подключим виджет Bnovo - здесь появятся свободные номера и цены."
-      : "Дата выезда должна быть позже даты заезда.";
+    if (outEl.value <= inEl.value) { note.textContent = "Дата выезда должна быть позже даты заезда."; return; }
+    var g = document.getElementById("guests").value;
+    window.open(BOOK + "?dfrom=" + inEl.value + "&dto=" + outEl.value + "&adults=" + g, "_blank", "noopener");
   });
-  document.getElementById("yr").textContent = d.getFullYear();
-  document.querySelectorAll("[data-copy]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var el = document.getElementById(b.dataset.copy), txt = el.textContent.trim();
-      var done = function () { b.textContent = "Скопировано"; setTimeout(function () { b.textContent = "Копировать"; }, 1500); };
-      var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
-      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (err) { fallback(); }
-    });
+  document.getElementById("hotel-pick").addEventListener("change", function (e) {
+    if (e.target.value) window.location.href = e.target.value;
   });
 })();
 </script>

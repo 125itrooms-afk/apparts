@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Baltic</title>
+<meta name="description" content="Отель Red Baltic - тихие номера, приветливый персонал. Отель группы компаний W125.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Layout: широкий красный герой с формой брони, дальше чередование светлых и винных секций; карточки только у номеров */
+:root {
+  --bg: #f7f4f4;
+  --surface: #ffffff;
+  --fg: #1d1416;
+  --muted: #6b5b5e;
+  --line: #e6dcdd;
+  --red: #c8102e;
+  --red-ink: #a00d25;
+  --wine: #3b0b14;
+  --on-wine: #f6e9eb;
+  --on-red: #ffffff;
+  --ph: #efe3e5;
+  --font-display: "Unbounded", "Arial Black", system-ui, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2rem, 4vw, 2.75rem);
+  --step-4: clamp(2.6rem, 8vw, 5.5rem);
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #140b0d; --surface: #1f1215; --fg: #f3e9ea; --muted: #b9a5a8; --line: #3a2529;
+    --red: #e3324c; --red-ink: #ff5d74; --wine: #2a080e; --on-wine: #f6e9eb; --on-red: #ffffff; --ph: #2c1a1e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #140b0d; --surface: #1f1215; --fg: #f3e9ea; --muted: #b9a5a8; --line: #3a2529;
+  --red: #e3324c; --red-ink: #ff5d74; --wine: #2a080e; --on-wine: #f6e9eb; --on-red: #ffffff; --ph: #2c1a1e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 var(--step-0)/1.6 var(--font-body); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: var(--step-3); font-weight: 700; }
+h3 { font-size: var(--step-1); font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--red-ink); }
+.lead { color: var(--muted); max-width: 62ch; }
+.todo { background: var(--ph); border-radius: 4px; padding: 0 .3em; color: var(--fg); font-style: normal; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--font-display); font-weight: 800; letter-spacing: .02em; }
+.logo-mark { width: 34px; height: 34px; border-radius: 50%; background: var(--red); display: grid; place-items: center; color: var(--on-red); font-size: .8rem; }
+.nav { display: flex; gap: 22px; font-weight: 500; }
+.nav a { text-decoration: none; }
+.nav a:hover { color: var(--red-ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; cursor: pointer; text-decoration: none;
+  font: 700 .95rem/1 var(--font-body); padding: 14px 22px; border-radius: 999px; background: var(--red); color: var(--on-red); transition: background .2s; }
+.btn:hover { background: var(--red-ink); }
+.btn.ghost { background: transparent; color: var(--fg); box-shadow: inset 0 0 0 2px var(--line); }
+@media (max-width: 860px) { .nav { display: none; } }
+
+/* hero */
+.hero { background: var(--red); color: var(--on-red); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; inset: auto -10% -40% auto; width: 60vw; max-width: 720px; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.14), transparent 65%); pointer-events: none; }
+.hero .wrap { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; padding-block: 72px 80px; position: relative; z-index: 1; }
+.hero h1 { font-size: var(--step-4); font-weight: 800; letter-spacing: -.02em; }
+.hero h1 span { display: block; }
+.hero .sub { font-size: var(--step-1); margin-top: 20px; max-width: 34ch; opacity: .92; }
+.hero .facts { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 32px; font-weight: 500; }
+.hero .facts b { font-family: var(--font-display); font-size: 1.4rem; display: block; }
+.book { background: var(--surface); color: var(--fg); border-radius: 18px; padding: 24px; display: grid; gap: 14px; align-self: end; box-shadow: 0 20px 50px rgba(40,0,8,.25); }
+.book h3 { font-size: 1.1rem; }
+.book .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.book label { display: grid; gap: 6px; font-size: .8rem; font-weight: 700; color: var(--muted); }
+.book input, .book select { font: 500 1rem var(--font-body); padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); min-width: 0; width: 100%; }
+.book .note { font-size: .85rem; color: var(--muted); min-height: 1.2em; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 48px 56px; } }
+
+section { padding-block: 88px; }
+.head { display: grid; gap: 14px; margin-bottom: 40px; }
+
+/* about */
+.about .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.feat { display: grid; gap: 8px; align-content: start; border-top: 2px solid var(--red); padding-top: 18px; }
+.feat p { color: var(--muted); }
+@media (max-width: 960px) { .about .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .about .grid { grid-template-columns: 1fr; } }
+
+/* rooms */
+.rooms { background: var(--surface); border-block: 1px solid var(--line); }
+.rooms .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.room { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; background: var(--bg); }
+.photo { aspect-ratio: 4/3; max-width: 100%; display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .85rem; padding: 16px;
+  background: repeating-linear-gradient(135deg, var(--ph) 0 14px, transparent 14px 28px), var(--bg); }
+.room .body { padding: 22px; display: grid; gap: 12px; align-content: start; }
+.specs { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.specs li { font-size: .82rem; font-weight: 500; padding: 5px 10px; border-radius: 999px; background: var(--ph); }
+.price { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); margin-top: 4px; }
+.price b { font-family: var(--font-display); font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.price a { color: var(--red-ink); font-weight: 700; text-decoration: none; }
+@media (max-width: 960px) { .rooms .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .rooms .grid { grid-template-columns: 1fr; } }
+
+/* services */
+.services .list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+.svc { padding: 22px 20px 22px 0; border-bottom: 1px solid var(--line); display: flex; gap: 14px; align-items: baseline; min-width: 0; }
+.svc i { font-style: normal; color: var(--red); font-weight: 800; }
+.svc span { color: var(--muted); font-size: .9rem; display: block; }
+@media (max-width: 860px) { .services .list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .services .list { grid-template-columns: 1fr; } }
+
+/* rules */
+.rules { background: var(--wine); color: var(--on-wine); }
+.rules .eyebrow { color: var(--on-wine); opacity: .75; }
+.rules .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.rule b { font-family: var(--font-display); font-size: var(--step-2); display: block; font-variant-numeric: tabular-nums; }
+.rule span { opacity: .8; }
+.rules .todo { background: rgba(255,255,255,.12); color: var(--on-wine); }
+@media (max-width: 860px) { .rules .grid { grid-template-columns: 1fr 1fr; } }
+
+/* location + contacts */
+.loc .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.map { border-radius: 16px; min-height: 320px; display: grid; place-items: center; text-align: center; padding: 24px; gap: 12px;
+  background: radial-gradient(circle at 50% 45%, var(--red) 0 10px, transparent 11px), repeating-linear-gradient(0deg, var(--line) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 40px), var(--surface); border: 1px solid var(--line); }
+.map div { margin-top: 90px; display: grid; gap: 12px; justify-items: center; }
+.contacts { display: grid; gap: 0; align-content: start; }
+.contacts dl { margin: 0; display: grid; }
+.c-row { display: grid; grid-template-columns: 140px 1fr auto; gap: 12px; align-items: center; padding-block: 16px; border-bottom: 1px solid var(--line); }
+.c-row dt { color: var(--muted); font-size: .9rem; }
+.c-row dd { margin: 0; font-weight: 700; min-width: 0; overflow-wrap: anywhere; user-select: all; }
+.copy { font: 600 .8rem var(--font-body); border: 1px solid var(--line); background: transparent; color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+@media (max-width: 860px) { .loc .grid { grid-template-columns: 1fr; } .c-row { grid-template-columns: 1fr auto; } .c-row dt { grid-column: 1 / -1; } }
+
+/* group banner + footer */
+.group { padding-block: 56px; }
+.group .box { display: flex; flex-wrap: wrap; gap: 20px 40px; align-items: center; justify-content: space-between; border: 2px solid var(--red); border-radius: 20px; padding: 32px; }
+.group .box p { max-width: 56ch; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: .88rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="logo-mark">RB</span>RED BALTIC</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#about">Об отеле</a>
+      <a href="#rooms">Номера</a>
+      <a href="#services">Услуги</a>
+      <a href="#rules">Правила</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="btn" href="#book">Забронировать</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color:var(--on-red);opacity:.8">Отель группы W125</p>
+        <h1><span>Red</span><span>Baltic</span></h1>
+        <p class="sub">Тихие номера, удобные кровати и персонал, который помнит гостей по имени.</p>
+        <div class="facts">
+          <div><b><em class="todo" style="background:rgba(255,255,255,.2);color:var(--on-red)">[N]</em></b>номеров</div>
+          <div><b>24/7</b>ресепшен</div>
+          <div><b><em class="todo" style="background:rgba(255,255,255,.2);color:var(--on-red)">[N] мин</em></b>до центра</div>
+        </div>
+      </div>
+      <form class="book" id="book" novalidate>
+        <h3>Проверить даты</h3>
+        <div class="row">
+          <label for="in">Заезд<input id="in" type="date" required></label>
+          <label for="out">Выезд<input id="out" type="date" required></label>
+        </div>
+        <label for="guests">Гости
+          <select id="guests">
+            <option>1 взрослый</option>
+            <option selected>2 взрослых</option>
+            <option>2 взрослых + ребёнок</option>
+            <option>3 взрослых</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Найти номер</button>
+        <p class="note" id="note" aria-live="polite">Здесь будет модуль бронирования Bnovo.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Об отеле</p>
+        <h2>Отель, где высыпаются</h2>
+        <p class="lead"><em class="todo">[Описание отеля: где находится, для кого, чем отличается. 2-3 предложения.]</em></p>
+      </div>
+      <div class="grid">
+        <div class="feat"><h3>Тишина</h3><p>Хорошая шумоизоляция: не слышно ни улицы, ни соседей.</p></div>
+        <div class="feat"><h3>Чистота</h3><p>Ежедневная уборка и свежее бельё по стандарту группы.</p></div>
+        <div class="feat"><h3>Всё в номере</h3><p>Чайник, холодильник, удобные кровати и рабочее место.</p></div>
+        <div class="feat"><h3>Люди</h3><p>Приветливый персонал, поможет с такси, маршрутом и поздним заездом.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Номера</p>
+        <h2>Выберите номер</h2>
+        <p class="lead">Цены указаны за ночь и зависят от дат. Точную стоимость покажет форма бронирования.</p>
+      </div>
+      <div class="grid">
+        <article class="room">
+          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="body">
+            <h3>Стандарт</h3>
+            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 2 гостей</li><li>двуспальная / 2 раздельные</li></ul>
+            <p class="lead">Чайник, холодильник, ТВ, Wi-Fi, собственная ванная.</p>
+            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="room">
+          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="body">
+            <h3>Комфорт</h3>
+            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 2 гостей</li><li>большая кровать</li></ul>
+            <p class="lead">Больше места, рабочий стол, улучшенный набор в ванной.</p>
+            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="room">
+          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="body">
+            <h3>Семейный</h3>
+            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 4 гостей</li><li>доп. место</li></ul>
+            <p class="lead">Для поездок с детьми: две зоны и место для багажа.</p>
+            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Услуги</p>
+        <h2>Что есть в отеле</h2>
+      </div>
+      <div class="list">
+        <div class="svc"><i>+</i><div>Бесплатный Wi-Fi<span>во всех номерах и в лобби</span></div></div>
+        <div class="svc"><i>+</i><div>Круглосуточный ресепшен<span>заезд в любое время</span></div></div>
+        <div class="svc"><i>+</i><div>Завтрак<span><em class="todo">[включён / за доплату, время]</em></span></div></div>
+        <div class="svc"><i>+</i><div>Парковка<span><em class="todo">[есть / нет, стоимость]</em></span></div></div>
+        <div class="svc"><i>+</i><div>Хранение багажа<span>до заезда и после выезда</span></div></div>
+        <div class="svc"><i>+</i><div>Документы для командировки<span>чеки и закрывающие документы</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rules" id="rules">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Правила проживания</p>
+        <h2>Коротко о главном</h2>
+      </div>
+      <div class="grid">
+        <div class="rule"><b><em class="todo">14:00</em></b><span>заезд</span></div>
+        <div class="rule"><b><em class="todo">12:00</em></b><span>выезд</span></div>
+        <div class="rule"><b><em class="todo">[условия]</em></b><span>бесплатная отмена</span></div>
+        <div class="rule"><b><em class="todo">[да / нет]</em></b><span>с животными</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="loc" id="contacts">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Как добраться</p>
+        <h2>Контакты</h2>
+      </div>
+      <div class="grid">
+        <div class="map">
+          <div>
+            <p><em class="todo">[Адрес отеля]</em></p>
+            <a class="btn ghost" href="https://yandex.ru/maps/org/red_baltic/171375159538/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          </div>
+        </div>
+        <div class="contacts">
+          <dl>
+            <div class="c-row"><dt>Телефон</dt><dd id="c-phone">[+7 000 000-00-00]</dd><button class="copy" type="button" data-copy="c-phone">Копировать</button></div>
+            <div class="c-row"><dt>E-mail</dt><dd id="c-mail">[mail@redbaltic.ru]</dd><button class="copy" type="button" data-copy="c-mail">Копировать</button></div>
+            <div class="c-row"><dt>Telegram / WhatsApp</dt><dd id="c-msg">[@redbaltic]</dd><button class="copy" type="button" data-copy="c-msg">Копировать</button></div>
+            <div class="c-row"><dt>Адрес</dt><dd id="c-addr">[Город, улица, дом]</dd><button class="copy" type="button" data-copy="c-addr">Копировать</button></div>
+          </dl>
+          <p class="lead" style="margin-top:20px">Отзывы гостей читайте на <a href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Яндекс Картах</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <p class="eyebrow">Группа компаний</p>
+          <h3 style="margin-block:8px">Red Baltic входит в группу W125</h3>
+          <p>Отели и апартаменты группы работают по единым стандартам сервиса.</p>
+        </div>
+        <a class="btn" href="https://w125.ru/" target="_blank" rel="noopener">Все объекты группы</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Red Baltic. <em class="todo">[Юрлицо, ИНН]</em></span>
+    <span><a href="#">Политика конфиденциальности</a> · <a href="https://w125.ru/" target="_blank" rel="noopener">w125.ru</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var d = new Date(), pad = function (n) { return String(n).padStart(2, "0"); };
+  var iso = function (x) { return x.getFullYear() + "-" + pad(x.getMonth() + 1) + "-" + pad(x.getDate()); };
+  var inEl = document.getElementById("in"), outEl = document.getElementById("out"), note = document.getElementById("note");
+  inEl.value = iso(d); inEl.min = iso(d);
+  var t = new Date(d); t.setDate(t.getDate() + 1); outEl.value = iso(t); outEl.min = iso(t);
+  inEl.addEventListener("change", function () {
+    var n = new Date(inEl.value); n.setDate(n.getDate() + 1);
+    outEl.min = iso(n); if (outEl.value <= inEl.value) outEl.value = iso(n);
+  });
+  document.getElementById("book").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var nights = Math.round((new Date(outEl.value) - new Date(inEl.value)) / 864e5);
+    note.textContent = nights > 0
+      ? "Ночей: " + nights + ". Подключим виджет Bnovo - здесь появятся свободные номера и цены."
+      : "Дата выезда должна быть позже даты заезда.";
+  });
+  document.getElementById("yr").textContent = d.getFullYear();
+  document.querySelectorAll("[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.dataset.copy), txt = el.textContent.trim();
+      var done = function () { b.textContent = "Скопировано"; setTimeout(function () { b.textContent = "Копировать"; }, 1500); };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (err) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -154,6 +154,16 @@ section { padding-block: 84px; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq p { margin-top: 12px; color: var(--muted); }
 
+
+/* reviews */
+.rev { background: var(--card); border-block: 1px solid var(--line); }
+.rev-box { display: grid; grid-template-columns: auto 1fr auto; gap: 24px 48px; align-items: center; }
+.rev-score { font: 500 clamp(3.5rem, 8vw, 5.5rem)/1 var(--f-display); color: var(--red-ink); font-variant-numeric: tabular-nums; }
+.rev-stars { color: var(--red); letter-spacing: .15em; font-size: 1.1rem; }
+.rev-meta { display: grid; gap: 6px; }
+.rev-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 860px) { .rev-box { grid-template-columns: 1fr; } }
+
 /* group */
 .group { padding-block: 0 84px; }
 .group .head { margin-bottom: 28px; }
@@ -194,7 +204,7 @@ footer a { text-decoration-color: rgba(255,255,255,.3); }
   <div class="wrap">
     <a class="logo" href="#top" aria-label="Red Baltic, наверх"><span class="mark">RB</span><span class="word">Red Baltic</span></a>
     <nav class="menu" aria-label="Разделы">
-      <a href="#rooms">Номера</a><a href="#for-whom">Для кого</a><a href="#amenities">Удобства</a><a href="#where">Как добраться</a><a href="#faq">Вопросы</a>
+      <a href="#rooms">Номера</a><a href="#for-whom">Для кого</a><a href="#amenities">Удобства</a><a href="#reviews">Отзывы</a><a href="#where">Как добраться</a><a href="#faq">Вопросы</a>
     </nav>
     <a class="tel" href="tel:+79995422515">+7 (999) 542-25-15</a>
     <a class="btn" href="https://reservationsteps.ru/rooms/index/db961777-34dc-4ed6-89a4-a01b2bd6f00a" target="_blank" rel="noopener">Забронировать</a>
@@ -219,6 +229,7 @@ footer a { text-decoration-color: rgba(255,255,255,.3); }
         </form>
         <div class="facts">
           <div><b>от 2 750 ₽</b><span>за ночь</span></div>
+          <div><b>★ 4,9</b><span>468 оценок на Яндекс Картах</span></div>
           <div><b>12 мин</b><span>до метро и МЦД</span></div>
           <div><b>24/7</b><span>администратор</span></div>
         </div>
@@ -320,6 +331,26 @@ footer a { text-decoration-color: rgba(255,255,255,.3); }
           <div>Постельное бельё<span>качественное</span></div>
           <div>Питание<span>завтрак по тарифу, ужин через администратора</span></div>
           <div>Администратор 24/7<span>заезд и вопросы в любое время</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev" id="reviews">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Отзывы гостей</p>
+        <h2>Гости ставят 4,9 из 5</h2>
+      </div>
+      <div class="rev-box">
+        <div class="rev-score">4,9</div>
+        <div class="rev-meta">
+          <div class="rev-stars" aria-hidden="true">★★★★★</div>
+          <p><b>468 оценок</b> и 327 отзывов на Яндекс Картах</p>
+          <p class="lead">Рейтинг по данным карточки Red Baltic на Яндекс Картах. Читайте отзывы без правок на карточке отеля.</p>
+        </div>
+        <div class="rev-actions">
+          <a class="btn" href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Читать отзывы</a>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Red Baltic</title>
-<meta name="description" content="Отель Red Baltic - тихие номера, приветливый персонал. Отель группы компаний W125.">
+<meta name="description" content="Апарт-отель Red Baltic у метро Войковская и МЦД Красный Балтиец. Студии с кухней от 2 750 ₽. Отель группы W125.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;700&display=swap">
@@ -103,7 +103,7 @@ section { padding-block: 88px; }
 
 /* rooms */
 .rooms { background: var(--surface); border-block: 1px solid var(--line); }
-.rooms .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.rooms .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .room { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; grid-template-rows: auto 1fr; background: var(--bg); }
 .photo { aspect-ratio: 4/3; max-width: 100%; display: grid; place-items: center; text-align: center; color: var(--muted); font-size: .85rem; padding: 16px;
   background: repeating-linear-gradient(135deg, var(--ph) 0 14px, transparent 14px 28px), var(--bg); }
@@ -113,7 +113,7 @@ section { padding-block: 88px; }
 .price { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); margin-top: 4px; }
 .price b { font-family: var(--font-display); font-size: 1.3rem; font-variant-numeric: tabular-nums; }
 .price a { color: var(--red-ink); font-weight: 700; text-decoration: none; }
-@media (max-width: 960px) { .rooms .grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 1080px) { .rooms .grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .rooms .grid { grid-template-columns: 1fr; } }
 
 /* services */
@@ -174,13 +174,13 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
   <section class="hero" style="padding-block:0">
     <div class="wrap">
       <div>
-        <p class="eyebrow" style="color:var(--on-red);opacity:.8">Отель группы W125</p>
+        <p class="eyebrow" style="color:var(--on-red);opacity:.8">Апарт-отель группы W125 · Москва</p>
         <h1><span>Red</span><span>Baltic</span></h1>
-        <p class="sub">Тихие номера, удобные кровати и персонал, который помнит гостей по имени.</p>
+        <p class="sub">Студии с кухней у метро «Войковская» и МЦД «Красный Балтиец». Ресепшен работает круглосуточно.</p>
         <div class="facts">
-          <div><b><em class="todo" style="background:rgba(255,255,255,.2);color:var(--on-red)">[N]</em></b>номеров</div>
+          <div><b>от 2 750 ₽</b>за ночь</div>
           <div><b>24/7</b>ресепшен</div>
-          <div><b><em class="todo" style="background:rgba(255,255,255,.2);color:var(--on-red)">[N] мин</em></b>до центра</div>
+          <div><b>4</b>категории студий</div>
         </div>
       </div>
       <form class="book" id="book" novalidate>
@@ -207,14 +207,14 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Об отеле</p>
-        <h2>Отель, где высыпаются</h2>
-        <p class="lead"><em class="todo">[Описание отеля: где находится, для кого, чем отличается. 2-3 предложения.]</em></p>
+        <h2>Своя студия рядом с метро</h2>
+        <p class="lead">Стильный апарт-отель на улице Клары Цеткин, 3, в шаговой доступности от метро «Войковская» и станции МЦД «Красный Балтиец», которая и дала отелю имя. Подходит для командировки, короткой поездки и долгого проживания.</p>
       </div>
       <div class="grid">
-        <div class="feat"><h3>Тишина</h3><p>Хорошая шумоизоляция: не слышно ни улицы, ни соседей.</p></div>
-        <div class="feat"><h3>Чистота</h3><p>Ежедневная уборка и свежее бельё по стандарту группы.</p></div>
-        <div class="feat"><h3>Всё в номере</h3><p>Чайник, холодильник, удобные кровати и рабочее место.</p></div>
-        <div class="feat"><h3>Люди</h3><p>Приветливый персонал, поможет с такси, маршрутом и поздним заездом.</p></div>
+        <div class="feat"><h3>Кухня в каждой студии</h3><p>Можно готовить самому и не зависеть от кафе.</p></div>
+        <div class="feat"><h3>Спальня на антресоли</h3><p>В большинстве студий спальное место на втором уровне, внизу остаётся жилая зона.</p></div>
+        <div class="feat"><h3>Чистота</h3><p>Чистота и вежливый персонал - то, за что гости чаще всего хвалят отель в отзывах.</p></div>
+        <div class="feat"><h3>Два вида транспорта</h3><p>Метро и МЦД рядом: удобно ехать в центр и в любую часть города.</p></div>
       </div>
     </div>
   </section>
@@ -223,35 +223,44 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
     <div class="wrap">
       <div class="head">
         <p class="eyebrow">Номера</p>
-        <h2>Выберите номер</h2>
-        <p class="lead">Цены указаны за ночь и зависят от дат. Точную стоимость покажет форма бронирования.</p>
+        <h2>Четыре студии на выбор</h2>
+        <p class="lead">Цены минимальные, за ночь. Итоговая стоимость зависит от дат и покажется при бронировании.</p>
       </div>
       <div class="grid">
         <article class="room">
-          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="photo">Фото студии Solo<br>1200 × 900</div>
           <div class="body">
-            <h3>Стандарт</h3>
-            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 2 гостей</li><li>двуспальная / 2 раздельные</li></ul>
-            <p class="lead">Чайник, холодильник, ТВ, Wi-Fi, собственная ванная.</p>
-            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+            <h3>Solo</h3>
+            <ul class="specs"><li>8 м²</li><li>1 гость</li><li>кухня</li></ul>
+            <p class="lead">Компактная студия для одного: всё нужное в шаге.</p>
+            <div class="price"><span>от <b>2 750 ₽</b></span><a href="#book">Забронировать</a></div>
           </div>
         </article>
         <article class="room">
-          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="photo">Фото студии Duet<br>1200 × 900</div>
           <div class="body">
-            <h3>Комфорт</h3>
-            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 2 гостей</li><li>большая кровать</li></ul>
-            <p class="lead">Больше места, рабочий стол, улучшенный набор в ванной.</p>
-            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+            <h3>Duet</h3>
+            <ul class="specs"><li>10 м²</li><li>до 2 гостей</li><li>кухня</li></ul>
+            <p class="lead">Для пары или двух коллег в командировке.</p>
+            <div class="price"><span>от <b>2 950 ₽</b></span><a href="#book">Забронировать</a></div>
           </div>
         </article>
         <article class="room">
-          <div class="photo">Фото номера<br>1200 × 900</div>
+          <div class="photo">Фото студии Trio<br>1200 × 900</div>
           <div class="body">
-            <h3>Семейный</h3>
-            <ul class="specs"><li><em class="todo">[N] м²</em></li><li>до 4 гостей</li><li>доп. место</li></ul>
-            <p class="lead">Для поездок с детьми: две зоны и место для багажа.</p>
-            <div class="price"><span>от <b><em class="todo">[0 000]</em> ₽</b></span><a href="#book">Забронировать</a></div>
+            <h3>Trio</h3>
+            <ul class="specs"><li>12 м²</li><li>до 3 гостей</li><li>кухня</li></ul>
+            <p class="lead">Больше места и дополнительное спальное место.</p>
+            <div class="price"><span>от <b>3 250 ₽</b></span><a href="#book">Забронировать</a></div>
+          </div>
+        </article>
+        <article class="room">
+          <div class="photo">Фото студии Family<br>1200 × 900</div>
+          <div class="body">
+            <h3>Family</h3>
+            <ul class="specs"><li>16 м²</li><li>до 4 гостей</li><li>кухня</li></ul>
+            <p class="lead">Самая просторная студия, для семьи с детьми.</p>
+            <div class="price"><span>от <b>3 450 ₽</b></span><a href="#book">Забронировать</a></div>
           </div>
         </article>
       </div>
@@ -265,11 +274,11 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
         <h2>Что есть в отеле</h2>
       </div>
       <div class="list">
-        <div class="svc"><i>+</i><div>Бесплатный Wi-Fi<span>во всех номерах и в лобби</span></div></div>
+        <div class="svc"><i>+</i><div>Кухня в каждой студии<span><em class="todo">[состав: плита, посуда, холодильник?]</em></span></div></div>
         <div class="svc"><i>+</i><div>Круглосуточный ресепшен<span>заезд в любое время</span></div></div>
-        <div class="svc"><i>+</i><div>Завтрак<span><em class="todo">[включён / за доплату, время]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Парковка<span><em class="todo">[есть / нет, стоимость]</em></span></div></div>
-        <div class="svc"><i>+</i><div>Хранение багажа<span>до заезда и после выезда</span></div></div>
+        <div class="svc"><i>+</i><div>Wi-Fi<span><em class="todo">[скорость / зона покрытия]</em></span></div></div>
+        <div class="svc"><i>+</i><div>Парковка во дворе<span><em class="todo">[бесплатно? уточнить]</em></span></div></div>
+        <div class="svc"><i>+</i><div>Хранение багажа<span><em class="todo">[уточнить]</em></span></div></div>
         <div class="svc"><i>+</i><div>Документы для командировки<span>чеки и закрывающие документы</span></div></div>
       </div>
     </div>
@@ -299,7 +308,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
       <div class="grid">
         <div class="map">
           <div>
-            <p><em class="todo">[Адрес отеля]</em></p>
+            <p><b>Москва, ул. Клары Цеткин, 3</b><br>м. «Войковская» · МЦД «Красный Балтиец»</p>
             <a class="btn ghost" href="https://yandex.ru/maps/org/red_baltic/171375159538/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
           </div>
         </div>
@@ -308,9 +317,9 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
             <div class="c-row"><dt>Телефон</dt><dd id="c-phone">[+7 000 000-00-00]</dd><button class="copy" type="button" data-copy="c-phone">Копировать</button></div>
             <div class="c-row"><dt>E-mail</dt><dd id="c-mail">[mail@redbaltic.ru]</dd><button class="copy" type="button" data-copy="c-mail">Копировать</button></div>
             <div class="c-row"><dt>Telegram / WhatsApp</dt><dd id="c-msg">[@redbaltic]</dd><button class="copy" type="button" data-copy="c-msg">Копировать</button></div>
-            <div class="c-row"><dt>Адрес</dt><dd id="c-addr">[Город, улица, дом]</dd><button class="copy" type="button" data-copy="c-addr">Копировать</button></div>
+            <div class="c-row"><dt>Адрес</dt><dd id="c-addr">Москва, ул. Клары Цеткин, 3</dd><button class="copy" type="button" data-copy="c-addr">Копировать</button></div>
           </dl>
-          <p class="lead" style="margin-top:20px">Отзывы гостей читайте на <a href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Яндекс Картах</a>.</p>
+          <p class="lead" style="margin-top:20px">Отзывы гостей: <a href="https://yandex.ru/maps/org/red_baltic/171375159538/reviews/" target="_blank" rel="noopener">Яндекс Карты</a> · <a href="https://2gis.ru/moscow/firm/70000001079192807/tab/reviews" target="_blank" rel="noopener">2ГИС</a>.</p>
         </div>
       </div>
     </div>
@@ -322,7 +331,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: 
         <div>
           <p class="eyebrow">Группа компаний</p>
           <h3 style="margin-block:8px">Red Baltic входит в группу W125</h3>
-          <p>Отели и апартаменты группы работают по единым стандартам сервиса.</p>
+          <p>Апарт-отели группы в Москве работают по единым стандартам сервиса. <em class="todo">[Список объектов группы]</em></p>
         </div>
         <a class="btn" href="https://w125.ru/" target="_blank" rel="noopener">Все объекты группы</a>
       </div>

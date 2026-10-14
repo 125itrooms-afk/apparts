@@ -5,16 +5,28 @@ const all = { include: '*', exclude: '' };
 /** UID модуля бронирования Bnovo (из availability.gs этого репозитория) */
 export const BNOVO_MODULE_UID = '8fd19a00-9a3e-4978-8ce7-fcb02758f5aa';
 
-/** Категории номерного фонда (названия и количество из availability.gs). */
+/**
+ * Категории номерного фонда.
+ * name, area, maxGuests, levels, fromPrice, note - опубликованы на сайте w125.ru (раздел «Номера»).
+ * total - количество номеров из availability.gs (сумма 63, по сайту 66 - сверить с Bnovo).
+ * fromPrice - минимальная цена «от» с сайта, а не цена на даты: точная стоимость только из модуля бронирования.
+ */
 export const CATEGORIES = [
-  { key: 'mini', name: 'Мини', total: 5 },
-  { key: 'std', name: 'Уют Стандарт', total: 12 },
-  { key: 'comfort', name: 'Уют Комфорт', total: 15 },
-  { key: 'prestige', name: 'Престиж', total: 20 },
-  { key: 'prostor', name: 'Простор', total: 6 },
-  { key: 'family', name: 'Семейный', total: 2 },
-  { key: 'lux', name: 'Люкс', total: 3 },
+  { key: 'std', name: 'Уют стандарт', total: 12, area: 20, maxGuests: 2, levels: 1, fromPrice: 3050, note: 'Студия с кухней и рабочим столом у окна' },
+  { key: 'comfort', name: 'Уют комфорт', total: 15, area: 20, maxGuests: 2, levels: 1, fromPrice: 3350, note: 'Улучшенная студия с барной стойкой, свежий ремонт' },
+  { key: 'mini', name: 'Мини', total: 5, area: 18, maxGuests: 2, levels: 2, fromPrice: 3450, note: 'Компактная двухуровневая студия' },
+  { key: 'prestige', name: 'Престиж', total: 20, area: 30, maxGuests: 4, levels: 2, fromPrice: 3550, note: 'Спальня на антресоли, внизу гостиная с кухней' },
+  { key: 'prostor', name: 'Простор', total: 6, area: 37, maxGuests: 4, levels: 2, fromPrice: 3750, note: 'Самые большие двухуровневые, высокое окно' },
+  { key: 'lux', name: 'Люкс', total: 3, area: 30, maxGuests: 3, levels: 2, fromPrice: 3950, note: 'Стиральная и посудомоечная машины, кондиционер' },
+  { key: 'family', name: 'Большой семейный', total: 2, area: 45, maxGuests: 6, levels: 2, fromPrice: 5950, note: 'Две студии: 2 кухни и 2 санузла' },
 ] as const;
+
+export type Category = (typeof CATEGORIES)[number];
+
+/** Категории, подходящие по вместимости (по данным сайта), от дешёвых к дорогим */
+export function categoriesFor(guests: number): Category[] {
+  return CATEGORIES.filter((c) => c.maxGuests >= guests).sort((a, b) => a.fromPrice - b.fromPrice);
+}
 
 export const defaultConfig: Config = {
   widgets: {
@@ -53,17 +65,18 @@ export const defaultConfig: Config = {
       pages: all,
       mobile: 'show',
       position: 'right',
-      color: '#2f3a36',
+      color: '#0B2D2A',
       animation: 'fan',
       pulse: true,
       items: [
         { id: 'call', label: 'Позвонить', enabled: true },
         { id: 'callback', label: 'Заказать обратный звонок', enabled: true },
         { id: 'chat', label: 'Написать в чат', enabled: true },
-        { id: 'telegram', label: 'Написать в Telegram', enabled: true },
+        { id: 'quiz', label: 'Подобрать номер за 1 минуту', enabled: true },
+        { id: 'telegram', label: 'Написать в Telegram', enabled: false },
         { id: 'max', label: 'Написать в MAX', enabled: true },
         { id: 'booking', label: 'Забронировать апартаменты', enabled: true },
-        { id: 'offers', label: 'Специальные предложения', enabled: true },
+        { id: 'offers', label: 'Скидка до 10% на сайте', enabled: true },
       ],
     },
     socialProof: {
@@ -99,13 +112,10 @@ export const defaultConfig: Config = {
         },
         {
           id: 'sc-prices',
-          name: 'Долго изучает цены',
+          name: 'Долго изучает номера и цены',
           enabled: true,
           priority: 20,
-          triggers: [
-            { type: 'url', value: '/prices' },
-            { type: 'section', value: '25' },
-          ],
+          triggers: [{ type: 'inview', value: '#rooms:25' }],
           title: 'Нужна помощь с выбором?',
           text: 'Наш специалист подскажет подходящий вариант проживания.',
           button: 'Получить консультацию',
@@ -150,9 +160,10 @@ export const defaultConfig: Config = {
       enabled: true,
       pages: all,
       mobile: 'show',
-      defaultHeadline: 'Апартаменты на Варшавском шоссе',
-      defaultSubline: 'Кухня, рабочее место и всё для проживания от одной ночи до нескольких месяцев.',
+      defaultHeadline: 'Апартаменты с кухней на Варшавском шоссе',
+      defaultSubline: 'Студии и двухуровневые номера: кухня и свой санузел в каждом, бесплатная парковка, 15 минут до м. «Южная».',
       defaultCta: 'Подобрать апартаменты',
+      targets: { headline: '', subline: '' },
       segments: [
         {
           id: 'seg-return',
@@ -171,7 +182,7 @@ export const defaultConfig: Config = {
           enabled: true,
           conditions: [{ type: 'utm_campaign', value: 'corp' }],
           headline: 'Размещение сотрудников и командированных',
-          subline: 'Закрывающие документы, безналичная оплата, долгосрочные условия.',
+          subline: 'Подтверждение проживания и чеки для бухгалтерии к дню выезда, рабочий стол и бесплатная парковка.',
           cta: 'Запросить предложение',
           abTestId: 'ab-corp',
         },
@@ -182,7 +193,7 @@ export const defaultConfig: Config = {
           enabled: true,
           conditions: [{ type: 'utm_campaign', value: 'family' }],
           headline: 'Подберём комфортное размещение для семьи',
-          subline: 'Апартаменты с кухней и местом для детей.',
+          subline: 'Двухуровневые номера: дети спят наверху, взрослые внизу. «Большой семейный» - до 6 гостей.',
           cta: 'Подобрать для семьи',
         },
         {
@@ -203,7 +214,8 @@ export const defaultConfig: Config = {
       mobile: 'compact',
       size: 'm',
       position: 'left',
-      title: 'Видеоэкскурсия по апартаментам',
+      title: 'Апартаменты Варшавки 125',
+      ctaPrimaryHref: '/apartments',
       ctaPrimary: 'Посмотреть апартаменты',
       ctaSecondary: 'Забронировать',
       src: '',
@@ -266,77 +278,124 @@ export const defaultConfig: Config = {
   ],
   kb: [
     {
+      id: 'kb-checkin',
+      topic: 'Заезд, выезд, ранний заезд',
+      keywords: 'ранний,поздний,во сколько,время заезда,время выезда,заселение,checkin,чекин,раньше,позже',
+      answer:
+        'Заезд с 15:00, выезд до 12:00. Ранний заезд и поздний выезд возможны по согласованию, с почасовой оплатой. Лучше предупредить хотя бы за сутки.',
+      confirmed: true,
+    },
+    {
       id: 'kb-address',
       topic: 'Адрес и как добраться',
-      keywords: 'адрес,добраться,доехать,метро,где,находитесь,как добраться,проехать',
+      keywords: 'адрес,добраться,доехать,метро,где,находитесь,как добраться,проехать,южная,вход,секция',
       answer:
-        'Мы находимся по адресу: Москва, Варшавское шоссе, 125. Схему проезда и ближайший общественный транспорт уточнит администратор.',
-      confirmed: false,
-    },
-    {
-      id: 'kb-checkin',
-      topic: 'Ранний заезд и поздний выезд',
-      keywords: 'ранний,поздний,заезд,выезд,checkin,чекин,раньше,позже',
-      answer:
-        'Ранний заезд и поздний выезд возможны при наличии свободных апартаментов. Условия и стоимость подтверждает администратор на ваши даты.',
-      confirmed: false,
-    },
-    {
-      id: 'kb-business',
-      topic: 'Командировки и документы',
-      keywords: 'командировка,документы,закрывающие,счёт,счет,юрлицо,безнал,компания,отчетные,отчётные',
-      answer:
-        'Для командированных готовим отчётные документы. Список документов и условия оплаты от юрлица уточнит специалист по бронированию.',
-      confirmed: false,
-    },
-    {
-      id: 'kb-kids',
-      topic: 'Проживание с детьми',
-      keywords: 'дети,ребенок,ребёнок,детская,кроватка,семья,с детьми',
-      answer:
-        'Принимаем гостей с детьми. Наличие детской кроватки и подходящие категории подберём под состав вашей семьи.',
-      confirmed: false,
-    },
-    {
-      id: 'kb-long',
-      topic: 'Длительное проживание',
-      keywords: 'долго,длительное,месяц,месяцев,долгосрочно,надолго',
-      answer:
-        'Для длительного проживания действуют отдельные условия. Специалист рассчитает стоимость на ваш срок.',
-      confirmed: false,
+        'Москва, Варшавское шоссе, 125, стр. 1, секция 9. От метро «Южная» около 15 минут пешком по Варшавскому шоссе. Вход через секцию 9, перед заездом пришлём схему, как пройти от метро, остановки и парковки.',
+      confirmed: true,
     },
     {
       id: 'kb-parking',
       topic: 'Парковка',
-      keywords: 'парковка,машина,авто,припарковаться',
-      answer: '',
-      confirmed: false,
+      keywords: 'парковка,машина,авто,припарковаться,стоянка',
+      answer: 'Да, бесплатная парковка у входа.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-breakfast',
+      topic: 'Завтрак',
+      keywords: 'завтрак,питание,еда,поесть,кафе',
+      answer:
+        'Есть готовые завтраки шоковой заморозки: разогреваете на своей кухне за несколько минут. Заказать можно при бронировании или на ресепшене. Через дорогу «Перекрёсток», в соседнем подъезде кафе с бизнес-ланчами.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-business',
+      topic: 'Командировки и документы',
+      keywords: 'командировка,документы,закрывающие,счёт,счет,юрлицо,бухгалтерии,чеки,отчетные,отчётные',
+      answer:
+        'Готовим подтверждение проживания и чеки для бухгалтерии к дню выезда. Напишите при бронировании, что нужны документы. В номерах кухня и стол для работы, парковка бесплатная.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-kids',
+      topic: 'Проживание с детьми',
+      keywords: 'дети,ребенок,ребёнок,детская,семья,с детьми,семьей,семьёй',
+      answer:
+        'Да, подходит для семей. Двухуровневые «Престиж» и «Простор» вмещают до 4 гостей, «Большой семейный» до 6: в нём две студии с отдельными кухнями и санузлами.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-long',
+      topic: 'Длительное проживание',
+      keywords: 'долго,длительное,месяц,месяцев,долгосрочно,надолго,неделю',
+      answer:
+        'Да, можно от суток до нескольких месяцев. Для проживания от недели специалист подберёт номер и тариф: оставьте телефон или напишите нам в MAX.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-pets',
+      topic: 'Животные',
+      keywords: 'животн,собак,кошк,питом,кот',
+      answer: 'Можно с животными по согласованию с администратором. Стоимость - 3 000 ₽ за проживание.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-pay',
+      topic: 'Оплата и отмена',
+      keywords: 'оплат,отмен,вернуть,предоплат,платить',
+      answer:
+        'Оплата онлайн в модуле бронирования. На основных тарифах отмена бесплатная, условия показаны рядом с ценой.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-reception',
+      topic: 'Ресепшн и связь',
+      keywords: 'ресепшн,ресепшен,администратор работает,контакт-центр,круглосуточно,телефон',
+      answer: 'Ресепшн открыт с 10:00 до 22:00, контакт-центр отвечает круглосуточно: +7 (999) 576-25-10 и MAX.',
+      confirmed: true,
+    },
+    {
+      id: 'kb-prices',
+      topic: 'Цены',
+      keywords: 'цен,стоим,сколько стоит,прайс,тариф,почем,скидк',
+      answer:
+        'Цены от 3 050 ₽ за ночь («Уют стандарт»), при бронировании на сайте скидка до 10%. Цена зависит от дат и загрузки, точную стоимость показывает модуль бронирования.',
+      confirmed: true,
     },
   ],
   contacts: {
-    phone: '+7 (000) 000-00-00',
-    telegram: 'https://t.me/',
-    max: 'https://max.ru/',
+    phone: '+7 (999) 576-25-10',
+    telegram: '',
+    max: 'https://max.ru/u/f9LHodD0cOJ9r1f82batp-Yp6mEIoYRwJwVjSEF5AGbhWv2-_-ErxtNsaDQ',
     bookingUrl: `https://reservationsteps.ru/rooms/index/${BNOVO_MODULE_UID}`,
-    offersUrl: '/offers',
-    privacyUrl: '/privacy',
-    address: 'Москва, Варшавское шоссе, 125',
+    offersUrl: `https://reservationsteps.ru/rooms/index/${BNOVO_MODULE_UID}`,
+    privacyUrl: 'https://varshavka125.tb.ru/politics',
+    address: 'Москва, Варшавское шоссе, 125, стр. 1, секция 9',
   },
-  hours: { from: '09:00', to: '21:00', days: [1, 2, 3, 4, 5, 6, 7] },
-  branding: { brand: '#2f3a36', brandInk: '#ffffff', radius: 'soft' },
+  // Контакт-центр работает 24/7 (сайт). Слоты «удобного времени» предлагаются с 09:00 до 21:00.
+  hours: { from: '00:00', to: '24:00', days: [1, 2, 3, 4, 5, 6, 7] },
+  branding: {
+    brand: '#0B2D2A',
+    brandInk: '#ffffff',
+    radius: 'soft',
+    font: '"Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
+    fontDisplay: '"Unbounded", "Arial Black", system-ui, sans-serif',
+    accent: '#C6A465',
+  },
+  layout: { mobileBreakpoint: 760, bottomOffset: 20, avoidSelectors: [] },
   integrations: [
     { id: 'bnovo', connected: false, params: { hotelId: '123048', moduleUid: BNOVO_MODULE_UID } },
-    { id: 'bitrix24', connected: false, params: { portal: '', pipeline: 'Бронирования' } },
-    { id: 'metrika', connected: false, params: { counterId: '' } },
-    { id: 'telephony', connected: false, params: { provider: '' } },
+    { id: 'bitrix24', connected: false, params: { portal: '', pipeline: 'Отдельная воронка бронирований' } },
+    { id: 'metrika', connected: false, params: { counterId: '104105573' } },
+    { id: 'telephony', connected: false, params: { provider: 'Виртуальная АТС МегаФон' } },
   ],
   reminders: { firstAfterMin: 10, repeatEveryMin: 10 },
 };
 
 export const DEMO_STAFF: Staff[] = [
-  { id: 'm1', name: 'Ольга (DEMO)', role: 'manager', active: true },
-  { id: 'm2', name: 'Игорь (DEMO)', role: 'manager', active: true },
-  { id: 'm3', name: 'Дарья (DEMO)', role: 'manager', active: true },
+  { id: 'm1', name: 'Менеджер на линии', role: 'manager', active: true },
+  { id: 'm2', name: 'Резервный менеджер (DEMO)', role: 'manager', active: false },
+  { id: 'm3', name: 'Ресепшн (DEMO)', role: 'manager', active: false },
   { id: 'mk', name: 'Анастасия (DEMO)', role: 'marketer', active: true },
   { id: 'ow', name: 'Руководитель (DEMO)', role: 'owner', active: true },
   { id: 'ad', name: 'Сисадмин (DEMO)', role: 'admin', active: true },

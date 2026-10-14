@@ -2,6 +2,7 @@ import { track } from './analytics';
 import { bnovoSource, bookingUrl, getOffers } from './integrations';
 import { submitLead } from './leads';
 import { addChatMessage, get, patchChat, pushNotice, setDelivery } from './store';
+import { categoriesFor } from './defaults';
 import type { Chat, ChatMessage, ChatSlots, KBEntry } from './types';
 import { isoDate, isValidEmail, isValidPhone, maskPhone, money, nightsBetween, ruDate } from './util';
 
@@ -197,11 +198,14 @@ async function showOffers(chatId: string): Promise<void> {
   const link = bookingUrl(checkIn, checkOut, guests);
   const kind = bnovoSource();
   if (kind === 'none') {
+    const fit = categoriesFor(guests).slice(0, 3);
     return botSay(chatId, {
       text:
-        `Записал: ${ruDate(checkIn)}-${ruDate(checkOut)} (${nights} ноч.), гостей: ${guests}. ` +
-        'Актуальные цены и свободные апартаменты на эти даты покажет модуль бронирования - я передам туда ваши даты. ' +
-        'Или оставьте телефон: специалист подберёт вариант и перезвонит.',
+        `Записал: ${ruDate(checkIn)}-${ruDate(checkOut)} (${nights} ноч.), гостей: ${guests}.\n` +
+        (fit.length
+          ? `По вместимости подойдут:\n${fit.map((c) => `• ${c.name} - ${c.area} м², до ${c.maxGuests} гостей, от ${money(c.fromPrice)} за ночь`).join('\n')}\n`
+          : 'Для такой группы подберём несколько номеров рядом - это лучше обсудить со специалистом.\n') +
+        'Свободные номера и точную цену на ваши даты покажет модуль бронирования (на сайте скидка до 10%). Или оставьте телефон - специалист подберёт вариант.',
       actions: [
         { label: 'Открыть бронирование с датами', action: 'booking', href: link },
         { label: 'Оставить телефон', action: 'ask_phone' },
@@ -315,6 +319,11 @@ export async function handleGuestMessage(chatId: string, text: string) {
     return;
   }
 
+  if (askedPrice && !chat.slots.checkIn && !dates.checkIn) {
+    const p = get().config.kb.find((e) => e.id === 'kb-prices');
+    if (p?.answer) await botSay(chatId, { text: p.answer, unverified: !p.confirmed });
+    return proposeNext(chatId);
+  }
   if (askedPrice || wantsPick || dates.checkIn || g.guests || purpose) return proposeNext(chatId);
 
   return botSay(chatId, {

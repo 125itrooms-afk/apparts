@@ -43,7 +43,7 @@ export interface ChatConfig extends WidgetBase {
   showLauncher: boolean;
 }
 
-export type MultiItemId = 'call' | 'callback' | 'chat' | 'telegram' | 'max' | 'booking' | 'offers';
+export type MultiItemId = 'call' | 'callback' | 'chat' | 'quiz' | 'telegram' | 'max' | 'booking' | 'offers';
 
 export interface MultiItem {
   id: MultiItemId;
@@ -68,11 +68,12 @@ export interface SocialProofConfig extends WidgetBase {
   position: Corner;
 }
 
-export type TriggerType = 'exit' | 'time' | 'scroll' | 'section' | 'url' | 'utm' | 'action';
+export type TriggerType = 'exit' | 'time' | 'scroll' | 'section' | 'inview' | 'url' | 'utm' | 'action';
 
 export interface Trigger {
   type: TriggerType;
-  /** секунды для time/section, % для scroll, подстрока для url/utm, имя действия для action */
+  /** секунды для time/section, % для scroll, подстрока для url/utm, имя действия для action,
+   *  для inview - «селектор:секунды», например «#rooms:25» (блок страницы на экране N секунд) */
   value: string;
 }
 
@@ -93,7 +94,7 @@ export interface Scenario {
 }
 
 export interface LeadPopupConfig extends WidgetBase {
-  /** dataURL изображения; пусто - демо-иллюстрация */
+  /** Ссылка или dataURL изображения; пусто - фото ресепшна из прототипа */
   image: string;
   minSecondsOnSite: number;
   maxPerSession: number;
@@ -122,6 +123,8 @@ export interface Segment {
 
 export interface PersonalizationConfig extends WidgetBase {
   segments: Segment[];
+  /** CSS-селекторы элементов сайта, в которые подставляются тексты сегмента (embed) */
+  targets: { headline: string; subline: string };
   defaultHeadline: string;
   defaultSubline: string;
   defaultCta: string;
@@ -133,8 +136,12 @@ export interface VideoConfig extends WidgetBase {
   title: string;
   ctaPrimary: string;
   ctaSecondary: string;
-  /** dataURL/objectURL загруженного видео; пусто - демо-ролик */
+  /** Ссылка на видео (mp4) или objectURL загруженного; пусто - слайд-шоу из прототипа */
   src: string;
+  /** Необязательная WebM-версия того же ролика (лучше сжатие, поддержка Chromium без H.264) */
+  srcWebm?: string;
+  /** Куда ведёт первая кнопка: путь страницы или якорь (#rooms) */
+  ctaPrimaryHref: string;
   delaySec: number;
 }
 
@@ -186,6 +193,21 @@ export interface Branding {
   brand: string; // hex
   brandInk: string; // hex текста на бренде
   radius: 'soft' | 'round';
+  /** Шрифт текста и заголовков виджетов (берётся с сайта) */
+  font: string;
+  fontDisplay: string;
+  /** Акцент (обводка плавающей кнопки, чтобы она читалась на тёмных блоках сайта) */
+  accent: string;
+}
+
+/** Как виджеты уживаются с элементами сайта */
+export interface Layout {
+  /** Ширина экрана, с которой включается мобильная версия, px */
+  mobileBreakpoint: number;
+  /** Базовый отступ кнопок от нижнего края, px */
+  bottomOffset: number;
+  /** Плавающие элементы сайта, которые нельзя перекрывать (селекторы). Виджеты поднимаются над ними. */
+  avoidSelectors: string[];
 }
 
 export type IntegrationId = 'bnovo' | 'bitrix24' | 'metrika' | 'telephony';
@@ -213,6 +235,7 @@ export interface Config {
   contacts: Contacts;
   hours: WorkHours;
   branding: Branding;
+  layout: Layout;
   integrations: IntegrationState[];
   reminders: { firstAfterMin: number; repeatEveryMin: number };
 }

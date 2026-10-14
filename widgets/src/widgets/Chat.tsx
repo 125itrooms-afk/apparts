@@ -35,6 +35,7 @@ function DeliveryIcon({ d }: { d?: ChatMessage['delivery'] }) {
 
 export function ChatPanel({ preview }: { preview?: boolean }) {
   const cfg = useApp((s) => s.config.widgets.chat);
+  const env = useApp((s) => s.env);
   const mobile = useIsMobile();
   const chatId = useApp((s) => s.activeChatId);
   const chat = useApp((s) => s.chats.find((c) => c.id === s.activeChatId));
@@ -76,7 +77,7 @@ export function ChatPanel({ preview }: { preview?: boolean }) {
           {status}
         </span>
       }
-      badge={<Demo className="border-white/50 bg-white/10 text-white">DEMO</Demo>}
+      badge={env !== 'live' && <Demo className="border-white/50 bg-white/10 text-white">{env === 'preview' ? 'предпросмотр' : 'DEMO'}</Demo>}
       onClose={() => openPanel(null)}
       className={cx(mobile && !preview ? 'h-full w-full' : 'h-[560px] max-h-full w-[380px] max-w-full rounded-2xl')}
     >

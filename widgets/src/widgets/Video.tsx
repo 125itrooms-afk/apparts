@@ -59,7 +59,10 @@ export function VideoBubble({ compact, preview }: { compact?: boolean; preview?:
     >
       <video ref={ref} key={cfg.src || 'demo'} autoPlay muted loop playsInline className="absolute inset-0 h-full w-full cursor-pointer object-cover" onClick={() => (expanded ? setMuted(!muted) : expand())} aria-label={cfg.title}>
         {cfg.src ? (
-          <source src={cfg.src} />
+          <>
+            {cfg.srcWebm && <source src={cfg.srcWebm} type="video/webm" />}
+            <source src={cfg.src} />
+          </>
         ) : (
           <>
             {demoTourWebm && <source src={demoTourWebm} type="video/webm" />}
@@ -70,7 +73,6 @@ export function VideoBubble({ compact, preview }: { compact?: boolean; preview?:
       <button onClick={close} className="absolute right-1.5 top-1.5 z-10 grid h-6 w-6 place-items-center rounded-full bg-black/45 text-white hover:bg-black/70" aria-label="Закрыть видео">
         <X className="h-3.5 w-3.5" />
       </button>
-      {!cfg.src && <span className="absolute left-1.5 top-1.5 rounded bg-black/50 px-1 text-[8px] font-bold uppercase tracking-wider text-white">demo</span>}
       {!expanded ? (
         <button onClick={expand} className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1 bg-gradient-to-t from-black/70 to-transparent pb-2 pt-6 text-[10px] font-semibold text-white" aria-label="Открыть видео со звуком">
           <Maximize2 className="h-3 w-3" /> Смотреть
@@ -86,7 +88,7 @@ export function VideoBubble({ compact, preview }: { compact?: boolean; preview?:
           <button
             onClick={() => {
               if (preview) return;
-              navigate('/apartments');
+              navigate(cfg.ctaPrimaryHref || '/apartments');
               setExpanded(false);
             }}
             className="h-10 rounded-xl bg-white text-sm font-bold text-ink"

@@ -1,7 +1,7 @@
-import { useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { track } from '../core/analytics';
-import { abVariant, pickScenario, type BehaviorCtx } from '../core/rules';
-import { get, markShown, set, useApp } from '../core/store';
+import { abVariant, parseInview, pickScenario, type BehaviorCtx } from '../core/rules';
+import { get, markShown, markVisitorAction, openPanel, set, useApp, type OpenPanel } from '../core/store';
 import { cx, hexToRgbTriplet, pageMatches } from '../core/util';
 import { CallbackPanel } from './Callback';
 import { ChatPanel } from './Chat';
@@ -17,7 +17,25 @@ export const EXIT_EVENT = 'v125:exit';
 /** CSS-переменные бренда для всех виджетов */
 export function useBrandVars(): CSSProperties {
   const b = useApp((s) => s.config.branding);
-  return { ['--v125-brand' as string]: hexToRgbTriplet(b.brand), ['--v125-brand-ink' as string]: hexToRgbTriplet(b.brandInk) };
+  return {
+    ['--v125-brand' as string]: hexToRgbTriplet(b.brand),
+    ['--v125-brand-ink' as string]: hexToRgbTriplet(b.brandInk),
+    ['--v125-font' as string]: b.font,
+    ['--v125-display' as string]: b.fontDisplay,
+  };
+}
+
+/** Селекторы блоков страницы из триггеров «inview» всех сценариев */
+function inviewSelectors(): string[] {
+  return [
+    ...new Set(
+      get()
+        .config.widgets.leadPopup.scenarios.flatMap((sc) => sc.triggers)
+        .filter((t) => t.type === 'inview')
+        .map((t) => parseInview(t.value)[0])
+        .filter(Boolean),
+    ),
+  ];
 }
 
 /** Поведенческий движок: время, прокрутка, уход с сайта → сценарии генератора заявок. */
@@ -29,6 +47,35 @@ function useBehaviorEngine() {
   const scrollPct = useRef(0);
   const exitAt = useRef(0);
   const sessionShown = useRef(0);
+  const visible = useRef(new Set<string>());
+  const inview = useRef<Record<string, number>>({});
+  const scenarios = useApp((s) => s.config.widgets.leadPopup.scenarios);
+
+  // Какие блоки страницы сейчас на экране (для триггера «inview»)
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const sels = inviewSelectors();
+    const els: [Element, string][] = [];
+    sels.forEach((sel) => {
+      try {
+        document.querySelectorAll(sel).forEach((el) => els.push([el, sel]));
+      } catch {
+        /* неверный селектор в настройках - пропускаем */
+      }
+    });
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          const sel = els.find(([el]) => el === e.target)?.[1];
+          if (!sel) return;
+          if (e.isIntersecting && e.intersectionRatio >= 0.3) visible.current.add(sel);
+          else visible.current.delete(sel);
+        }),
+      { threshold: [0, 0.3, 0.6] },
+    );
+    els.forEach(([el]) => io.observe(el));
+    return () => io.disconnect();
+  }, [scenarios, path]);
 
   useEffect(() => {
     pageStart.current = Date.now();
@@ -72,6 +119,7 @@ function useBehaviorEngine() {
 
   useEffect(() => {
     const t = window.setInterval(() => {
+      visible.current.forEach((sel) => (inview.current[sel] = (inview.current[sel] ?? 0) + 1));
       const s = get();
       if (s.popup || s.open) return;
       const cfg = s.config.widgets.leadPopup;
@@ -83,6 +131,7 @@ function useBehaviorEngine() {
         scrollPct: scrollPct.current,
         exitIntent: Date.now() - exitAt.current < 3000,
         path: s.sim.path,
+        inview: inview.current,
       };
       const sc = pickScenario(ctx, sessionShown.current);
       if (!sc) return;
@@ -105,12 +154,55 @@ function useBehaviorEngine() {
   }, []);
 }
 
-function Corner({ side, children }: { side: 'left' | 'right'; children: ReactNode }) {
+/**
+ * Подъём виджетов над плавающими элементами сайта (нижняя панель бронирования, cookie-плашка и т.п.).
+ * Элемент учитывается, если он видим, находится у нижнего края экрана и заходит в зону угла (380 px от края).
+ */
+function useAvoidOffsets() {
+  const sels = useApp((s) => s.config.layout.avoidSelectors);
+  const base = useApp((s) => s.config.layout.bottomOffset);
+  const [off, setOff] = useState({ left: base, right: base });
+  useEffect(() => {
+    const calc = () => {
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      const next = { left: base, right: base };
+      sels.forEach((sel) => {
+        let list: NodeListOf<Element>;
+        try {
+          list = document.querySelectorAll(sel);
+        } catch {
+          return;
+        }
+        list.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          if (!r.width || !r.height || (el as HTMLElement).hidden) return;
+          // прижат к низу экрана (с учётом собственного отступа элемента) и не выше середины
+          if (r.bottom < H - 120 || r.top < H * 0.4) return;
+          const lift = Math.ceil(H - r.top + 12);
+          if (r.left < 380) next.left = Math.max(next.left, lift);
+          if (r.right > W - 380) next.right = Math.max(next.right, lift);
+        });
+      });
+      setOff((o) => (o.left === next.left && o.right === next.right ? o : next));
+    };
+    calc();
+    const t = window.setInterval(calc, 700);
+    window.addEventListener('resize', calc);
+    return () => {
+      clearInterval(t);
+      window.removeEventListener('resize', calc);
+    };
+  }, [sels, base]);
+  return off;
+}
+
+function Corner({ side, children, lift }: { side: 'left' | 'right'; children: ReactNode; lift: number }) {
   return (
     <div
-      className={cx('pointer-events-none absolute flex flex-col-reverse gap-3', side === 'left' ? 'items-start' : 'items-end')}
+      className={cx('pointer-events-none absolute flex flex-col-reverse gap-3 transition-[bottom] duration-300', side === 'left' ? 'items-start' : 'items-end')}
       style={{
-        bottom: 'calc(20px + env(safe-area-inset-bottom, 0px))',
+        bottom: `calc(${lift}px + env(safe-area-inset-bottom, 0px))`,
         [side]: `calc(20px + env(safe-area-inset-${side}, 0px))`,
       }}
     >
@@ -121,6 +213,24 @@ function Corner({ side, children }: { side: 'left' | 'right'; children: ReactNod
 
 export function WidgetHost() {
   useBehaviorEngine();
+  const off = useAvoidOffsets();
+
+  // Кнопки сайта: data-v125-open="quiz|callback|chat" открывает виджет, data-v125-action="..." отмечает действие
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as Element | null;
+      const opener = t?.closest?.('[data-v125-open]');
+      if (opener) {
+        e.preventDefault();
+        openPanel(opener.getAttribute('data-v125-open') as OpenPanel);
+        return;
+      }
+      const act = t?.closest?.('[data-v125-action]');
+      if (act) markVisitorAction(act.getAttribute('data-v125-action') || '');
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, []);
   const vars = useBrandVars();
   const mobile = useIsMobile();
   const open = useApp((s) => s.open);
@@ -162,8 +272,8 @@ export function WidgetHost() {
 
   return (
     <div className="v125-root pointer-events-none fixed inset-0 z-[2147483000] font-sans text-ink antialiased" style={vars}>
-      <Corner side="left">{sideItems('left')}</Corner>
-      <Corner side="right">{sideItems('right')}</Corner>
+      <Corner side="left" lift={off.left}>{sideItems('left')}</Corner>
+      <Corner side="right" lift={off.right}>{sideItems('right')}</Corner>
 
       {panel &&
         (mobile ? (
@@ -172,7 +282,7 @@ export function WidgetHost() {
           <div
             className="pointer-events-auto absolute flex animate-rise"
             style={{
-              bottom: 'calc(100px + env(safe-area-inset-bottom, 0px))',
+              bottom: `calc(${off[launcherSide] + 80}px + env(safe-area-inset-bottom, 0px))`,
               top: 16,
               [launcherSide]: 20,
               alignItems: 'flex-end',

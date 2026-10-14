@@ -1,5 +1,6 @@
-// DEMO-иллюстрации и ролик для прототипа. В embed-сборке подменяются пустым модулем (demoAssets.embed.ts),
-// чтобы скрипт на сайте не тащил медиафайлы: реальные фото и видео приходят из конфигурации.
-export { default as demoInterior } from './living.webp';
-export { default as demoTour } from './demo-tour.mp4';
-export { default as demoTourWebm } from './demo-tour.webm';
+// Медиа для прототипа: фотографии с сайта w125.ru и слайд-шоу из них.
+// В embed-сборке подменяются пустым модулем (demoAssets.embed.ts): на сайте фото и видео берутся
+// из настроек (window.V125_WIDGETS_CONFIG / сервер), чтобы скрипт оставался лёгким.
+export { default as demoInterior } from './site-reception-s.webp';
+export { default as demoTour } from './tour.mp4';
+export { default as demoTourWebm } from './tour.webm';

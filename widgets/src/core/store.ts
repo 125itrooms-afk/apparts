@@ -14,7 +14,7 @@ import type {
 } from './types';
 import { safeStorage, uid } from './util';
 
-const KEY = 'v125-demo-v1';
+const KEY = 'v125-demo-v2';
 
 export type OpenPanel = null | 'callback' | 'chat' | 'quiz' | 'leadPopup';
 
@@ -43,6 +43,8 @@ export interface Sim {
 }
 
 export interface State {
+  /** demo - прототип с панелью; preview - виджеты на сайте без сервера; live - боевой режим с API */
+  env: 'demo' | 'preview' | 'live';
   mode: 'site' | 'admin';
   config: Config;
   leads: Lead[];
@@ -88,6 +90,7 @@ function narrowScreen() {
 const persisted = safeStorage.get<Partial<State> | null>(KEY, null);
 
 const initial: State = {
+  env: 'demo',
   mode: 'site',
   config: defaultConfig,
   leads: [],

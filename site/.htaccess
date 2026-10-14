@@ -1,0 +1,35 @@
+# Варшавка 125 — настройки сервера (Apache)
+AddDefaultCharset UTF-8
+AddType image/webp .webp
+AddType application/manifest+json .webmanifest
+AddType video/mp4 .mp4
+AddType video/webm .webm
+
+# ── HTTPS и адрес без www ───────────────────────────────────────────
+# Сертификат выпущен, переадресация включена.
+# Сайт работает через nginx → Apache, поэтому протокол проверяется и по
+# заголовку X-Forwarded-Proto. Если после загрузки браузер пишет
+# «слишком много переадресаций» — удалите 6 строк ниже (от RewriteEngine) и включите
+# «Перенаправлять на HTTPS» в панели хостинга.
+RewriteEngine On
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://w125.ru%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://w125.ru%{REQUEST_URI} [L,R=301]
+
+# ── Кэш: фото и значки браузер хранит месяц, страницу проверяет всегда ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+  # виджеты: скрипт кэшируется сутки (после обновления меняется в течение дня), ролик - месяц
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType video/webm "access plus 30 days"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json application/manifest+json
+</IfModule>

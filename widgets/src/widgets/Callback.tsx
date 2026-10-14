@@ -4,12 +4,11 @@ import { track, trackFormStart } from '../core/analytics';
 import { submitLead } from '../core/leads';
 import { openPanel, useApp } from '../core/store';
 import { callSlots, cx, isValidPhone, isWorkingTime, responsePromise } from '../core/util';
-import { Consent, DemoNote, Honeypot, PanelShell, PhoneInput, useIsMobile } from './shared';
+import { Consent, Honeypot, PanelShell, PhoneInput, SubmittedNote, useIsMobile } from './shared';
 
 export function CallbackPanel({ preview }: { preview?: boolean }) {
   const cfg = useApp((s) => s.config.widgets.callback);
   const hours = useApp((s) => s.config.hours);
-  const telephony = useApp((s) => s.config.integrations.find((i) => i.id === 'telephony')?.connected);
   const mobile = useIsMobile();
   const [phone, setPhone] = useState('');
   const [when, setWhen] = useState<'now' | 'later'>('now');
@@ -60,7 +59,7 @@ export function CallbackPanel({ preview }: { preview?: boolean }) {
               : `Специалист по бронированию перезвонит ${responsePromise(hours, cfg.promiseMinutes)}.`}
             {done.repeat && ' Мы видим ваше прошлое обращение - менеджер будет в курсе.'}
           </p>
-          {!telephony && <DemoNote>Телефония не подключена: звонок не совершается. Заявка сохранена и видна в панели управления.</DemoNote>}
+          <SubmittedNote />
         </div>
       ) : (
         <form onSubmit={submit} className="relative flex flex-col gap-3 p-5" onChange={() => trackFormStart('callback')}>

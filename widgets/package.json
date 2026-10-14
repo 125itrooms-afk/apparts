@@ -9,7 +9,8 @@
     "build:embed": "vite build --config vite.embed.config.ts",
     "build:demo": "vite build --mode singlefile",
     "typecheck": "tsc --noEmit",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:site": "vite build --config vite.embed.config.ts && mkdir -p ../site/widgets && cp dist-embed/v125-widgets.js ../site/widgets/ && cp src/assets/tour.mp4 ../site/widgets/v125-tour.mp4 && cp src/assets/tour.webm ../site/widgets/v125-tour.webm"
   },
   "dependencies": {
     "lucide-react": "^0.453.0",

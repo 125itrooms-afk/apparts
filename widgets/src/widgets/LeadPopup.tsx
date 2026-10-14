@@ -4,7 +4,7 @@ import { track, trackFormStart } from '../core/analytics';
 import { submitLead } from '../core/leads';
 import { set, useApp, type PopupState } from '../core/store';
 import { cx, isValidPhone } from '../core/util';
-import { Consent, Honeypot, PhoneInput, useIsMobile } from './shared';
+import { Consent, Honeypot, PhoneInput, SubmittedNote, useIsMobile } from './shared';
 import { demoInterior as interior } from '@demo-assets';
 
 export function LeadPopup({ popup, preview }: { popup: PopupState; preview?: boolean }) {
@@ -51,8 +51,7 @@ export function LeadPopup({ popup, preview }: { popup: PopupState; preview?: boo
     >
       {!mobile && (image || interior) && (
         <div className="relative w-[40%] shrink-0">
-          <img src={image || interior} alt={image ? '' : 'Иллюстрация интерьера (DEMO)'} className="absolute inset-0 h-full w-full object-cover" />
-          {!image && <span className="absolute bottom-2 left-2 rounded bg-black/50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">иллюстрация · demo</span>}
+          <img src={image || interior} alt="" className="absolute inset-0 h-full w-full object-cover" />
         </div>
       )}
       <div className="flex min-w-0 flex-1 flex-col gap-3 p-6">
@@ -64,6 +63,7 @@ export function LeadPopup({ popup, preview }: { popup: PopupState; preview?: boo
             <CheckCircle2 className="h-10 w-10 text-ok" />
             <p className="text-lg font-bold">Спасибо! Заявка №{done} принята</p>
             <p className="text-sm text-ink-soft">Специалист по бронированию свяжется с вами и поможет с выбором.</p>
+            <SubmittedNote />
           </div>
         ) : (
           <>

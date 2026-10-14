@@ -10,10 +10,10 @@ import { useBrandVars } from './widgets/WidgetHost';
 /** Первичное наполнение панели DEMO-заявками (один раз на браузер) */
 function useSeed() {
   useEffect(() => {
-    if (safeStorage.get('v125-seeded', false) || get().leads.length) return;
+    if (safeStorage.get('v125-seeded-v2', false) || get().leads.length) return;
     const seeded = seedLeads(24);
     set((s) => ({ leads: [...s.leads, ...seeded], leadSeq: Math.max(s.leadSeq, ...seeded.map((l) => l.num)) + 1000 }));
-    safeStorage.set('v125-seeded', true);
+    safeStorage.set('v125-seeded-v2', true);
   }, []);
 }
 

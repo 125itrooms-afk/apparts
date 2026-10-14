@@ -7,10 +7,15 @@ import { resolvePersonalization } from '../core/rules';
 import { markVisitorAction, navigate, openPanel, useApp } from '../core/store';
 import { cx, isoDate } from '../core/util';
 import { loadQuizProgress } from '../widgets/Quiz';
-import living from '../assets/living.webp';
-import bedroom from '../assets/bedroom.webp';
-import studio from '../assets/studio.webp';
-import family from '../assets/family.webp';
+import hero from '../assets/site-hero-s.webp';
+import imgStd from '../assets/site-uyut-st-1-s.webp';
+import imgComfort from '../assets/site-uyut-cf-1-s.webp';
+import imgMini from '../assets/site-mini-1-s.webp';
+import imgPrestige from '../assets/site-prestige-1-s.webp';
+import imgProstor from '../assets/site-prostor-1-s.webp';
+import imgLux from '../assets/site-lux-1-s.webp';
+import imgFamily from '../assets/site-family-1-s.webp';
+import reception from '../assets/site-reception-s.webp';
 
 const PAGES = [
   { path: '/', label: 'Главная' },
@@ -21,13 +26,12 @@ const PAGES = [
   { path: '/contacts', label: 'Контакты' },
 ];
 
-const IMG: Record<string, string> = { mini: studio, std: bedroom, comfort: living, prestige: living, prostor: family, family, lux: bedroom };
+const IMG: Record<string, string> = { std: imgStd, comfort: imgComfort, mini: imgMini, prestige: imgPrestige, prostor: imgProstor, lux: imgLux, family: imgFamily };
 
 function Photo({ src, className, alt }: { src: string; className?: string; alt: string }) {
   return (
     <div className={cx('relative overflow-hidden bg-paper-sunk', className)}>
       <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-      <span className="absolute bottom-2 right-2 rounded bg-black/45 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white">иллюстрация · demo</span>
     </div>
   );
 }
@@ -89,7 +93,7 @@ export function DemoSite() {
       <footer className="mt-16 border-t border-paper-line bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-6 text-xs text-ink-mute">
           <span>Апарт-отель «Варшавка 125» · демонстрационная страница для показа виджетов</span>
-          <span>Фото - иллюстрации, не фотографии объекта</span>
+          <span>Фото - с сайта w125.ru</span>
         </div>
       </footer>
     </div>
@@ -135,9 +139,9 @@ function Home({ pers, mobile }: { pers: ReturnType<typeof resolvePersonalization
           </ul>
         </div>
         <div className={cx('grid grid-cols-3 grid-rows-2 gap-3', mobile && 'order-first')}>
-          <Photo src={living} alt="Гостиная (иллюстрация)" className={cx('col-span-2 row-span-2 rounded-3xl', mobile ? 'aspect-[4/3.2]' : 'min-h-[300px]')} />
-          <Photo src={bedroom} alt="Спальня (иллюстрация)" className="rounded-3xl" />
-          <Photo src={studio} alt="Студия (иллюстрация)" className="rounded-3xl" />
+          <Photo src={hero} alt="Престиж: спальня на антресоли" className={cx('col-span-2 row-span-2 rounded-3xl', mobile ? 'aspect-[4/3.2]' : 'min-h-[300px]')} />
+          <Photo src={imgFamily} alt="Номер с кухней" className="rounded-3xl" />
+          <Photo src={imgLux} alt="Люкс" className="rounded-3xl" />
         </div>
       </section>
 
@@ -201,7 +205,7 @@ function BookingBar({ mobile }: { mobile: boolean }) {
 
 function Apartments({ compact, mobile }: { compact?: boolean; mobile?: boolean }) {
   return (
-    <section className="mx-auto mt-12 max-w-6xl px-4 sm:px-6">
+    <section id="rooms" className="mx-auto mt-12 max-w-6xl px-4 sm:px-6">
       <div className="mb-5 flex items-end justify-between gap-3">
         <h2 className="font-display text-3xl">Категории апартаментов</h2>
         {compact && (
@@ -213,11 +217,11 @@ function Apartments({ compact, mobile }: { compact?: boolean; mobile?: boolean }
       <div className={cx('grid gap-4', mobile ? 'grid-cols-1' : 'grid-cols-3')}>
         {(compact ? CATEGORIES.slice(1, 4) : CATEGORIES).map((c) => (
           <article key={c.key} className="overflow-hidden rounded-3xl border border-paper-line bg-white">
-            <Photo src={IMG[c.key]} alt={`${c.name} (иллюстрация)`} className="aspect-[3/2]" />
+            <Photo src={IMG[c.key]} alt={c.name} className="aspect-[3/2]" />
             <div className="flex items-center justify-between gap-3 p-4">
               <div>
                 <h3 className="text-lg font-bold">{c.name}</h3>
-                <p className="text-xs text-ink-mute">{c.total} апартаментов в категории</p>
+                <p className="text-xs text-ink-mute">{c.area} м² · до {c.maxGuests} гостей · от {c.fromPrice.toLocaleString('ru-RU')} ₽ / ночь</p>
               </div>
               <a
                 href={bookingUrl()}
@@ -238,7 +242,7 @@ function Apartments({ compact, mobile }: { compact?: boolean; mobile?: boolean }
 
 function Prices() {
   return (
-    <section className="mx-auto mt-10 max-w-3xl px-4 sm:px-6">
+    <section id="rooms" className="mx-auto mt-10 max-w-3xl px-4 sm:px-6">
       <h1 className="font-display text-4xl">Цены</h1>
       <p className="mt-3 text-ink-soft">
         Стоимость зависит от дат, категории и срока проживания. Актуальные цены всегда в модуле бронирования - мы не публикуем статичный прайс, чтобы не вводить в заблуждение.
@@ -253,7 +257,7 @@ function Prices() {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-xs text-ink-mute">Сценарий «Долго изучает цены» в генераторе заявок срабатывает на этой странице.</p>
+      <p className="mt-4 text-xs text-ink-mute">Сценарий «Долго изучает номера и цены» срабатывает, когда этот блок 25 секунд на экране.</p>
     </section>
   );
 }
@@ -275,7 +279,7 @@ function LongStay({ mobile }: { mobile: boolean }) {
         </button>
         <p className="text-xs text-ink-mute">Кнопка отмечает действие «long_stay_interest» - на него настроен сценарий генератора заявок.</p>
       </div>
-      <Photo src={studio} alt="Студия (иллюстрация)" className="aspect-[4/3] rounded-3xl" />
+      <Photo src={imgStd} alt="Уют стандарт: стол у окна" className="aspect-[4/3] rounded-3xl" />
     </section>
   );
 }
@@ -294,7 +298,7 @@ function Corporate({ mobile }: { mobile: boolean }) {
           Запросить предложение
         </button>
       </div>
-      <Photo src={living} alt="Гостиная (иллюстрация)" className="aspect-[4/3] rounded-3xl" />
+      <Photo src={reception} alt="Ресепшн" className="aspect-[4/3] rounded-3xl" />
     </section>
   );
 }

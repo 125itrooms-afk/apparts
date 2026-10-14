@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :host { all: initial; }
-.v125-root { font-family: inherit; line-height: 1.5; }
+.v125-root { line-height: 1.5; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

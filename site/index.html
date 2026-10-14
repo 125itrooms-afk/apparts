@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Апарт-отель «Варшавка 125» — гостиница на Варшавском шоссе в Чертанове (ЮАО), 15 минут от метро «Южная». Апартаменты с кухней посуточно и надолго от 3 050 ₽, бесплатная парковка, номера для семьи и командировки. Скидка до 10% на сайте.">
+<meta property="og:title" content="Апарт-отель «Варшавка 125» у метро «Южная» — апартаменты с кухней на Варшавском шоссе">
+<meta property="og:description" content="Студии и двухуровневые номера в «лежачем небоскрёбе». От 3 050 ₽ за ночь, скидка до 10% на сайте.">
+<link rel="canonical" href="https://w125.ru/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:url" content="https://w125.ru/">
+<meta property="og:image" content="https://w125.ru/img/hero.webp">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#071F1D">
+<title>Апарт-отель «Варшавка 125» у метро «Южная» — гостиница на Варшавском шоссе</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Onest:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: «длинный дом» — горизонтальные полосы, как фасад длиной 736 м; тёмно-зелёные полосы чередуются с минеральным светлым фоном, золото только в тонких линиях и цифрах */
+:root{
+  --green-950:#071F1D; --green-900:#0B2D2A; --green-800:#12403B; --teal:#1C6A61; --teal-soft:#DDE9E5;
+  --gold:#C6A465; --gold-hi:#E6CF9C; --gold-line:linear-gradient(90deg,#9C7A3C,#E6CF9C 45%,#B8934F);
+  --paper:#F1F4F1; --card:#FFFFFF; --ink:#132422; --muted:#56655F; --line:#D3DCD8; --on-dark:#E9EFEC; --on-dark-muted:#A9BDB7;
+  --f-display:"Unbounded","Arial Black",system-ui,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:14px; --shadow:0 18px 50px -24px rgba(7,31,29,.45);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:84px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.015em;line-height:1.12;text-wrap:balance;margin:0}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-feature-settings:"tnum";letter-spacing:.02em}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.hair{height:1px;background:var(--gold-line);border:0;margin:0;opacity:.8}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:48px;padding:0 22px;border-radius:999px;font:600 15px/1 var(--f-body);text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s ease,background-color .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn-gold{background:var(--gold);color:var(--green-950);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}
+.btn-gold:hover{background:var(--gold-hi)}
+.btn-line{border-color:currentColor;background:transparent}
+.btn-line:hover{background:rgba(198,164,101,.12)}
+@media (prefers-reduced-motion:no-preference){.btn:active{transform:translateY(1px)}}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:rgba(7,31,29,.94);backdrop-filter:blur(10px);color:var(--on-dark);border-bottom:1px solid rgba(198,164,101,.25)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .mark{font:500 12px/1 var(--f-mono);letter-spacing:.06em;color:var(--gold);border:1px solid var(--gold);padding:7px 7px 6px;border-radius:4px}
+.logo .word{font:400 15px/1 var(--f-display);letter-spacing:.01em}
+.menu{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.menu a{text-decoration:none;color:var(--on-dark-muted)}
+.menu a:hover{color:var(--on-dark)}
+.top .tel{font:500 14px var(--f-mono);text-decoration:none;color:var(--on-dark)}
+.lang{display:flex;gap:2px;border:1px solid rgba(198,164,101,.4);border-radius:999px;padding:2px;flex:0 0 auto}
+.lang button{background:none;border:0;color:var(--on-dark-muted);font:500 12px/1 var(--f-mono);padding:7px 9px;border-radius:999px;cursor:pointer;min-width:34px}
+.lang button:hover{color:var(--on-dark)}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--green-950)}
+html[lang="zh"] .hero h1{font-weight:400;letter-spacing:0}
+html[lang="zh"] h2,html[lang="zh"] h3{letter-spacing:0}
+.top .btn{min-height:40px;padding:0 18px;font-size:14px}
+@media (max-width:980px){.menu{display:none}.top .tel{margin-left:auto}}
+@media (max-width:560px){.top .tel{display:none}.top .wrap{gap:10px}.lang{margin-left:auto}.top .btn{padding:0 12px}}
+@media (max-width:430px){.logo .word{display:none}}
+
+/* hero */
+.hero{background:radial-gradient(120% 90% at 0% 0%,var(--green-800),var(--green-950) 70%);color:var(--on-dark);padding-block:48px 84px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:48px;align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero h1{font-weight:300;font-size:clamp(30px,3.3vw,44px)}
+.hero h1 em{font-style:normal;color:var(--gold-hi)}
+.hero .sub{font-size:18px;color:var(--on-dark-muted);max-width:34em}
+.trust{list-style:none;margin:6px 0 0;padding:18px 0 0;display:grid;grid-template-columns:repeat(3,auto);gap:12px 28px;justify-content:start;border-top:1px solid rgba(198,164,101,.28)}
+.trust li{display:grid;gap:4px;min-width:0}
+.trust b,.trust .rate{font:400 22px/1 var(--f-display);color:var(--on-dark);text-decoration:none}
+.trust .rate .st{color:var(--gold);font-size:inherit}
+.trust span{font-size:13px;color:var(--on-dark-muted)}
+.hero-media{margin:0;position:relative;border-radius:var(--r);overflow:hidden;align-self:center;aspect-ratio:4/3;box-shadow:0 30px 70px -35px rgba(0,0,0,.7)}
+.hero-media img{width:100%;height:100%;object-fit:cover}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(7,31,29,.35))}
+.hero-media figcaption{position:absolute;left:16px;bottom:14px;z-index:1;font:12px var(--f-mono);letter-spacing:.06em;color:#fff;opacity:.85}
+@media (max-width:860px){
+  .hero{padding-block:28px 56px}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .hero-copy{padding-bottom:0}
+  .hero-media{order:-1;border-radius:var(--r);aspect-ratio:3/2}
+  .trust{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .trust b,.trust .rate{font-size:18px}
+}
+
+/* booking bar */
+.book-wrap{position:relative;z-index:2;margin-top:-1px;padding-block:0 0}
+.book{background:var(--card);color:var(--ink);border-radius:var(--r);box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:0;align-items:stretch;overflow:hidden;transform:translateY(-36px)}
+.book label{display:grid;gap:4px;padding:14px 20px;border-right:1px solid var(--line);min-width:0;cursor:pointer}
+.book label span{font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.book input,.book select{font:500 17px var(--f-body);color:var(--ink);border:0;background:transparent;padding:2px 0;width:100%;min-width:0;appearance:none;-webkit-appearance:none}
+.book select{background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 10px) 55%,calc(100% - 5px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+.book .go{display:grid;align-content:center;gap:6px;padding:12px 16px 12px 20px}
+.book .go .btn{min-height:52px;padding:0 28px}
+.book .nights{font:500 12px var(--f-mono);color:var(--muted);text-align:center}
+.direct-note{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin-top:-20px;padding-bottom:26px;font-size:14px;color:var(--muted)}
+.direct-note b{color:var(--teal);font-weight:600}
+@media (max-width:760px){
+  .book{grid-template-columns:1fr 1fr}
+  .book label:nth-child(2){border-right:0}
+  .book label:nth-child(3){grid-column:1/-1;border-right:0;border-top:1px solid var(--line)}
+  .book label:nth-child(1),.book label:nth-child(2){border-bottom:0}
+  .book .go{grid-column:1/-1;border-top:1px solid var(--line);padding:12px}
+  .book .go .btn{width:100%}
+}
+
+/* direct booking perks */
+.perks{padding-block:28px 64px}
+.perks h2{font-size:clamp(22px,2.4vw,28px);margin-bottom:22px}
+.perk-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.perk{background:var(--card);padding:22px 22px 24px;display:grid;gap:8px;align-content:start;min-width:0}
+.perk .k{font:400 26px/1 var(--f-display);color:var(--teal)}
+.perk h3{font:600 16px/1.3 var(--f-body);letter-spacing:0}
+.perk p{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.perk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.perk-grid{grid-template-columns:1fr}}
+
+/* section heads */
+.sec{padding-block:72px}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 32px;margin-bottom:32px}
+.head h2{font-size:clamp(28px,3.4vw,42px)}
+.head p{max-width:36em;color:var(--muted);font-size:15px}
+.head .eyebrow{margin-bottom:12px}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.room{background:var(--card);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);min-width:0}
+.gal{position:relative;aspect-ratio:3/2;background:var(--teal-soft)}
+.track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;border:0;padding:0;margin:0;background:none;cursor:zoom-in;height:100%}
+.slide img{width:100%;height:100%;object-fit:cover}
+.count{position:absolute;right:12px;bottom:12px;background:rgba(7,31,29,.72);color:#fff;font-size:12px;padding:5px 9px;border-radius:999px;pointer-events:none}
+.gal .nav{position:absolute;top:50%;translate:0 -50%;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--green-950);font:400 24px/1 var(--f-body);cursor:pointer;opacity:0;transition:opacity .2s;display:grid;place-items:center;padding-bottom:3px}
+.gal .prev{left:10px}.gal .next{right:10px}
+.gal:hover .nav,.gal:focus-within .nav{opacity:1}
+@media (hover:none){.gal .nav{display:none}}
+.room-body{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:12px;padding:20px 22px 22px;min-width:0}
+.facts{display:flex;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--teal)}
+.facts span{border:1px solid var(--teal-soft);background:#F4F8F6;padding:4px 8px;border-radius:6px}
+.room h3{font-size:22px}
+.room .lead{font-size:15px;color:var(--muted)}
+.feats{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px;align-content:start}
+.feats li{display:flex;gap:10px;align-items:baseline}
+.feats li::before{content:"";flex:0 0 12px;height:1px;background:var(--gold);translate:0 -4px}
+.room-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line)}
+.price{font:500 22px/1 var(--f-display);white-space:nowrap}
+.price .mono{font-size:12px;color:var(--muted);font-weight:400}
+.price .per{font:400 13px var(--f-body);color:var(--muted)}
+.room-foot .btn{min-height:44px;padding:0 18px}
+/* Мини — последняя, компактная строка во всю ширину */
+.room.wide{grid-column:1/-1;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:none}
+.room.wide .gal{aspect-ratio:auto;min-height:340px}
+.room.wide .track{position:absolute;inset:0}
+.room.wide .room-body{align-content:center}
+@media (max-width:1060px){.rooms{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:680px){.rooms{grid-template-columns:1fr}.room.wide{grid-template-columns:1fr}.room.wide .gal{aspect-ratio:3/2;min-height:0}}
+
+/* audience block */
+.aud{background:var(--green-900);color:var(--on-dark)}
+.aud .head p{color:var(--on-dark-muted)}
+.aud-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.aud-card{border:1px solid rgba(198,164,101,.28);border-radius:var(--r);overflow:hidden;display:grid;grid-template-rows:auto 1fr;background:rgba(255,255,255,.02);min-width:0;scroll-margin-top:84px}
+.aud-card .ph{aspect-ratio:4/3;overflow:hidden}
+.fill{width:100%;height:100%;object-fit:cover}
+.aud-card .in{padding:20px 20px 22px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto 1fr auto;gap:12px;min-width:0}
+.aud-card .fact{font-size:12px;color:var(--gold);letter-spacing:.06em}
+.aud-card h3{font-size:21px}
+.aud-card .in>p:not(.fact){color:var(--on-dark-muted);font-size:14px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px;align-content:start}
+.ticks li{display:flex;gap:12px;align-items:baseline}
+.ticks li::before{content:"";flex:0 0 14px;height:1px;background:var(--gold);translate:0 -5px}
+.aud .btn-line{color:var(--gold-hi);width:100%;margin-top:4px;white-space:normal;text-align:center;line-height:1.2;padding:10px 16px}
+@media (max-width:1100px){.aud-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.aud-grid{grid-template-columns:1fr}}
+
+/* reviews */
+.score{display:flex;align-items:center;gap:18px}
+.score .big{font:300 64px/1 var(--f-display);color:var(--teal)}
+.score .st{color:var(--gold);letter-spacing:2px;font-size:18px}
+.score small{display:block;color:var(--muted);font-size:14px}
+.aspects{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.aspects span{font:500 12px var(--f-mono);letter-spacing:.04em;background:var(--card);border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+.aspects b{color:var(--teal)}
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rev{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:grid;grid-template-rows:1fr auto;gap:16px;min-width:0}
+.rev blockquote{margin:0;font-size:15px;line-height:1.6}
+.rev blockquote::before{content:"“";display:block;font:300 40px/.6 var(--f-display);color:var(--gold);margin-bottom:8px}
+.rev figcaption{display:grid;gap:2px;padding-top:14px;border-top:1px solid var(--line)}
+.rev figcaption b{font-weight:600;font-size:14px}
+.rev figcaption .mono{font-size:12px;color:var(--muted)}
+.more{margin-top:24px;display:flex;justify-content:center}
+.more a{font:500 14px var(--f-body);color:var(--teal)}
+@media (max-width:980px){.revs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.revs{grid-template-columns:1fr}}
+
+/* building + location */
+.bld{background:var(--green-950);color:var(--on-dark)}
+.bld-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.bld h2{font-size:clamp(28px,3.4vw,42px)}
+.bld .txt{display:grid;gap:18px;min-width:0}
+.bld .txt>p{color:var(--on-dark-muted);max-width:36em}
+.bld-row2{margin-top:48px;align-items:start}
+.bfacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin:6px 0 0;background:rgba(198,164,101,.25);border:1px solid rgba(198,164,101,.25);border-radius:10px;overflow:hidden}
+.bfacts div{background:var(--green-950);padding:12px 14px;display:grid;gap:4px;min-width:0}
+.bfacts dt{font-size:12px;color:var(--on-dark-muted)}
+.bfacts dd{margin:0;font-size:16px;color:var(--gold-hi);white-space:nowrap}
+@media (max-width:520px){.bfacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.poster{margin:0;display:grid;gap:10px;align-self:center}
+.zoom{border:0;padding:0;background:none;cursor:zoom-in;display:block;width:100%;border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px -30px rgba(0,0,0,.8)}
+.zoom img{width:100%;height:auto}
+.poster figcaption{font:12px var(--f-mono);letter-spacing:.04em;color:var(--on-dark-muted)}
+
+.facade{color:var(--gold);margin-top:6px}
+.facade svg{width:100%;height:42px;display:block}
+.ruler{display:flex;justify-content:space-between;font:500 11px var(--f-mono);letter-spacing:.08em;color:var(--gold);opacity:.85;margin-top:6px}
+.dist{list-style:none;margin:8px 0 0;padding:0;display:grid;border-top:1px solid rgba(198,164,101,.25)}
+.dist li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid rgba(198,164,101,.18);font-size:15px}
+.dist li span:last-child{font:500 14px var(--f-mono);color:var(--gold-hi);text-align:right}
+.addr{display:grid;gap:14px}
+.addr .ph{border-radius:var(--r);overflow:hidden;aspect-ratio:3/2}
+.addr .card{border:1px solid rgba(198,164,101,.28);border-radius:var(--r);padding:20px;display:grid;gap:10px}
+.addr .card b{font:400 18px/1.3 var(--f-display)}
+.addr .card p{color:var(--on-dark-muted);font-size:14px}
+.addr .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.bld .btn-line{color:var(--gold-hi)}
+@media (max-width:860px){.bld-grid{grid-template-columns:1fr;gap:32px}}
+
+/* faq */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:48px}
+.faq h2{font-size:clamp(28px,3.4vw,42px)}
+.qs{border-top:1px solid var(--line)}
+.qs details{border-bottom:1px solid var(--line)}
+.qs summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-weight:600;font-size:16px}
+.qs summary::-webkit-details-marker{display:none}
+.qs summary::after{content:"+";font:300 22px/1 var(--f-display);color:var(--gold);transition:transform .2s}
+.qs details[open] summary::after{transform:rotate(45deg)}
+.qs details p{padding:0 0 18px;color:var(--muted);max-width:40em;font-size:15px}
+@media (max-width:860px){.faq{grid-template-columns:1fr;gap:20px}}
+
+/* final CTA + footer */
+.final{background:var(--teal);color:#fff;padding-block:56px}
+.final .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.final h2{font-size:clamp(24px,3vw,36px);font-weight:300}
+.final p{opacity:.85;margin-top:8px}
+.foot{background:var(--green-950);color:var(--on-dark-muted);padding-block:40px;font-size:14px}
+.foot .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px}
+.foot b{color:var(--on-dark);font-weight:600;display:block;margin-bottom:8px}
+.foot a{color:var(--on-dark-muted)}
+.foot .mono{color:var(--on-dark)}
+.foot .legal{grid-column:1/-1;padding-top:20px;border-top:1px solid rgba(198,164,101,.2);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 24px}
+@media (max-width:760px){.foot .wrap{grid-template-columns:1fr}}
+
+/* mobile sticky booking */
+.mbar{display:none}
+@media (max-width:760px){
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:45;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:var(--green-950);color:var(--on-dark);border-top:1px solid rgba(198,164,101,.35)}
+  .mbar .p{font:500 17px/1.1 var(--f-display)}
+  .mbar small{display:block;font:400 12px var(--f-body);color:var(--on-dark-muted)}
+  .mbar .btn{min-height:44px}
+  .foot{padding-bottom:110px}
+}
+
+/* cookie notice */
+.ck{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;max-width:360px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px;display:flex;gap:12px;align-items:center;font-size:13px;line-height:1.4}
+.ck[hidden]{display:none!important}
+.ck a{color:var(--teal)}
+.ck button{flex:0 0 auto;border:0;background:var(--green-900);color:var(--on-dark);border-radius:999px;padding:8px 14px;font:600 13px var(--f-body);cursor:pointer}
+@media (max-width:760px){.ck{left:12px;right:12px;max-width:none;bottom:calc(76px + env(safe-area-inset-bottom,0px))}}
+/* lightbox */
+dialog.lb{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%}
+dialog.lb::backdrop{background:rgba(4,18,17,.92)}
+.lb-in{position:fixed;inset:0;display:grid;place-items:center;padding:56px 16px}
+.lb-in img{max-width:min(1600px,100%);max-height:100%;object-fit:contain;border-radius:8px}
+.lb button{position:fixed;border:0;background:rgba(255,255,255,.12);color:#fff;width:48px;height:48px;border-radius:50%;font:300 26px/1 var(--f-body);cursor:pointer;display:grid;place-items:center}
+.lb button:hover{background:rgba(255,255,255,.22)}
+.lb .x{top:calc(12px + env(safe-area-inset-top,0px));right:12px}
+.lb .l{left:12px;top:50%;translate:0 -50%}.lb .r{right:12px;top:50%;translate:0 -50%}
+.lb .cap{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));text-align:center;color:#fff;font:13px var(--f-mono);opacity:.8}
+
+/* выбор отеля */
+.hotels{background:var(--green-950);color:var(--on-dark-muted);font-size:13px;border-bottom:1px solid rgba(198,164,101,.16)}
+.hotels .wrap{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-height:36px}
+.hotels select{appearance:none;-webkit-appearance:none;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23C6A465' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 10px center;color:var(--on-dark);border:1px solid rgba(198,164,101,.45);border-radius:999px;padding:5px 30px 5px 12px;font:500 13px var(--f-body);cursor:pointer}
+.hotels select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hotels option{color:#10201E;background:#fff}
+@media (max-width:560px){.hotels label{display:none}.hotels .wrap{justify-content:center}}
+
+/* блок «Об отеле» */
+.seo{border-top:1px solid var(--line)}
+.seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.seo-grid article{display:grid;gap:10px;align-content:start;padding-top:18px;border-top:2px solid var(--line)}
+.seo-grid h3{font-size:19px;line-height:1.25}
+.seo-grid p{color:var(--muted);font-size:15px;line-height:1.6}
+@media (max-width:900px){.seo-grid{grid-template-columns:1fr;gap:18px}}
+</style>
+<script>window.dataLayer=window.dataLayer||[];(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");ym(104105573,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,ecommerce:"dataLayer"});</script><noscript><div><img src="https://mc.yandex.ru/watch/104105573" style="position:absolute;left:-9999px" alt=""></div></noscript>
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Hotel", "name": "Варшавка 125", "alternateName": ["Апарт-отель Варшавка 125", "Отель Варшавка", "Гостиница Варшавка"], "url": "https://w125.ru/", "image": "https://w125.ru/img/hero.webp", "description": "Апарт-отель на Варшавском шоссе в Чертанове (ЮАО), 15 минут пешком от метро «Южная»: 66 студий и двухуровневых апартаментов с кухней, посуточно и надолго, бесплатная парковка.", "telephone": "+7 (999) 576-25-10", "email": "admin@apart-invest.club", "priceRange": "от 3 050 ₽", "checkinTime": "15:00", "checkoutTime": "12:00", "petsAllowed": true, "numberOfRooms": 66, "address": {"@type": "PostalAddress", "streetAddress": "Варшавское шоссе, 125, стр. 1, секция 9", "addressLocality": "Москва", "addressRegion": "Москва", "addressCountry": "RU"}, "hasMap": "https://yandex.ru/maps/org/varshavka_125/3300836286/", "sameAs": ["https://yandex.ru/maps/org/varshavka_125/3300836286/"], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "4.7", "ratingCount": "1236", "bestRating": "5"}, "amenityFeature": [{"@type": "LocationFeatureSpecification", "name": "Кухня в каждом номере", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Собственный санузел", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Бесплатная парковка", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Ресепшн 10:00–22:00", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Контакт-центр 24/7", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Завтрак (готовые блюда шоковой заморозки)", "value": true}, {"@type": "LocationFeatureSpecification", "name": "Проживание с животными", "value": true}], "makesOffer": [{"@type": "Offer", "name": "Престиж", "priceCurrency": "RUB", "price": "3550", "description": "30 м², до 4 гостей"}, {"@type": "Offer", "name": "Простор", "priceCurrency": "RUB", "price": "3750", "description": "37 м², до 4 гостей"}, {"@type": "Offer", "name": "Люкс", "priceCurrency": "RUB", "price": "3950", "description": "30 м², до 3 гостей"}, {"@type": "Offer", "name": "Большой семейный", "priceCurrency": "RUB", "price": "5950", "description": "45 м², до 6 гостей"}, {"@type": "Offer", "name": "Уют стандарт", "priceCurrency": "RUB", "price": "3050", "description": "20 м², до 2 гостей"}, {"@type": "Offer", "name": "Уют комфорт", "priceCurrency": "RUB", "price": "3350", "description": "20 м², до 2 гостей"}, {"@type": "Offer", "name": "Мини", "priceCurrency": "RUB", "price": "3450", "description": "18 м², до 2 гостей"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Во сколько заезд и выезд?", "acceptedAnswer": {"@type": "Answer", "text": "Заезд с 15:00, выезд до 12:00. Ранний заезд и поздний выезд возможны по согласованию, с почасовой оплатой. Лучше предупредить хотя бы за сутки."}}, {"@type": "Question", "name": "Что такое апарт-отель?", "acceptedAnswer": {"@type": "Answer", "text": "Это гостиница, где вместо обычных номеров — апартаменты с кухней и своим санузлом. Сервис как в отеле: ресепшн с 10:00 до 22:00, контакт-центр 24/7, уборка, онлайн-бронирование и документы."}}, {"@type": "Question", "name": "Чем апарт-отель отличается от гостиницы и квартиры посуточно?", "acceptedAnswer": {"@type": "Answer", "text": "От гостиницы — кухней и площадью: можно готовить и жить дольше без лишних трат. От квартиры посуточно — официальным бронированием, чеками, контакт-центром 24/7 и одинаковым уровнем номеров."}}, {"@type": "Question", "name": "Почему апарт-отель удобен для командировки?", "acceptedAnswer": {"@type": "Answer", "text": "Своя кухня экономит на питании, а документы для бухгалтерии готовим к дню выезда. Для бригад и групп есть номера на 4–6 гостей и бесплатная парковка."}}, {"@type": "Question", "name": "Как добраться от метро «Южная»?", "acceptedAnswer": {"@type": "Answer", "text": "Около 15 минут пешком по Варшавскому шоссе. Вход — через секцию 9, перед заездом пришлём схему, как пройти от метро, остановки и парковки."}}, {"@type": "Question", "name": "Есть ли парковка?", "acceptedAnswer": {"@type": "Answer", "text": "Да, бесплатная парковка у входа."}}, {"@type": "Question", "name": "Есть ли завтрак?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Готовые завтраки шоковой заморозки: разогреваете на своей кухне за несколько минут, вкус и качество блюд сохраняются. Закажите при бронировании или на ресепшене."}}, {"@type": "Question", "name": "Как работает ресепшн?", "acceptedAnswer": {"@type": "Answer", "text": "Ресепшн открыт с 10:00 до 22:00, контакт-центр отвечает круглосуточно по телефону и в MAX."}}, {"@type": "Question", "name": "Можно снять апартаменты надолго?", "acceptedAnswer": {"@type": "Answer", "text": "Да, от суток до нескольких месяцев. Для проживания от недели напишите нам в MAX — подберём номер и тариф."}}, {"@type": "Question", "name": "Подойдёт ли отель для семьи?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Двухуровневые Престиж и Простор вмещают до 4 гостей, а «Большой семейный» — до 6: в нём две студии с отдельными кухнями и санузлами."}}, {"@type": "Question", "name": "Какие документы вы даёте для бухгалтерии?", "acceptedAnswer": {"@type": "Answer", "text": "Подтверждение проживания и чеки. Напишите при бронировании, что нужны документы, — подготовим к дню выезда."}}, {"@type": "Question", "name": "Как оплатить и можно ли отменить?", "acceptedAnswer": {"@type": "Answer", "text": "Оплата онлайн в модуле бронирования. На основных тарифах отмена бесплатная — условия показаны рядом с ценой."}}, {"@type": "Question", "name": "Можно с животными?", "acceptedAnswer": {"@type": "Answer", "text": "Да, по согласованию с администратором. Стоимость — 3 000 ₽ за проживание."}}, {"@type": "Question", "name": "Почему цена на одни и те же даты меняется?", "acceptedAnswer": {"@type": "Answer", "text": "Цены зависят от загрузки и спроса на конкретные даты и могут меняться в течение дня. Бронирование фиксирует цену."}}]}]</script>
+</head>
+<body>
+<div class="hotels"><div class="wrap"><label for="hotel-pick">Наши апарт-отели в Москве</label><select id="hotel-pick" aria-label="Выбрать отель"><option value="" selected>м. Южная · Варшавка 125</option><option value="https://hotelarena33.ru/">м. Динамо · Арена 33</option><option value="https://hotelredbaltic.ru/">МЦД Красный Балтиец · Red Baltic</option><option value="https://hotelnewizm.ru/">м. Партизанская · Новое Измайлово</option><option value="https://hoteltetaizm.ru/">м. Партизанская · Тета Измайлово ★★★★</option></select></div></div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Варшавка 125 — наверх"><span class="mark">В125</span><span class="word">Варшавка 125</span></a>
+    <nav class="menu" aria-label="Разделы">
+      <a href="#rooms">Номера</a><a href="#for-whom">Для кого</a><a href="#reviews">Отзывы</a><a href="#where">Как добраться</a>
+    </nav>
+    <a class="tel" href="tel:+79995762510">+7 (999) 576-25-10</a>
+    <div class="lang" role="group" aria-label="Язык"><button type="button" data-l="ru" aria-pressed="true">RU</button><button type="button" data-l="en" aria-pressed="false">EN</button><button type="button" data-l="zh" aria-pressed="false">中文</button></div>
+    <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Забронировать</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Апарт-отель · Москва, Варшавское шоссе, 125</p>
+      <h1>Апарт-отель на Варшавке: студии и двухуровневые апартаменты с кухней в <em>«лежачем небоскрёбе»</em></h1>
+      <p class="sub">Для групп, командировок, семей и путешественников. В каждом номере кухня и свой санузел, парковка у входа бесплатная, к завтраку — готовые блюда шоковой заморозки.</p>
+      <ul class="trust">
+        <li><a class="rate" href="https://yandex.ru/maps/org/varshavka_125/3300836286/reviews/" target="_blank" rel="noopener"><span class="st">★</span> 4,7</a><span>1 236 оценок на Яндекс Картах</span></li>
+        <li><b>15 мин</b><span>пешком до м.&nbsp;«Южная»</span></li>
+        <li><b>24/7</b><span>контакт-центр на связи</span></li>
+      </ul>
+    </div>
+    <figure class="hero-media"><img src="img/hero-s.webp" srcset="img/hero-s.webp 900w, img/hero.webp 1200w" sizes="(max-width: 760px) 100vw, 60vw" width="1200" height="844" alt="Апартаменты на Варшавском шоссе: спальня на антресоли в двухуровневом номере" decoding="async" class="hero-img"><figcaption>Престиж · 30 м² · спальня на антресоли</figcaption></figure>
+  </div>
+</section>
+
+<div class="book-wrap wrap">
+  <form class="book" id="book" aria-label="Проверить цены на даты">
+    <label for="ci"><span>Заезд</span><input type="date" id="ci" name="ci" required></label>
+    <label for="co"><span>Выезд</span><input type="date" id="co" name="co" required></label>
+    <label for="gs"><span>Гостей</span>
+      <select id="gs" name="gs">
+        <option value="1">1 гость</option><option value="2" selected>2 гостя</option><option value="3">3 гостя</option>
+        <option value="4">4 гостя</option><option value="5">5 гостей</option><option value="6">6 гостей</option>
+      </select></label>
+    <div class="go">
+      <a class="btn btn-gold js-book" id="go" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Показать цены</a>
+      <span class="nights" id="nights">1 ночь</span>
+    </div>
+  </form>
+  <p class="direct-note"><span><b>Скидка до 10%</b> при бронировании на сайте</span><span>Бесплатная отмена на основных тарифах</span><span><a href="#rooms" data-v125-open="quiz">Подобрать номер за 1 минуту</a></span></p>
+</div>
+
+<section class="perks wrap" aria-labelledby="perks-h">
+  <h2 id="perks-h">Почему выгоднее бронировать здесь, а не на агрегаторе</h2>
+  <div class="perk-grid">
+    <div class="perk"><span class="k mono">−10%</span><h3>Скидка до 10%</h3><p>На тарифы при бронировании через сайт. Цена видна сразу после выбора дат.</p></div>
+    <div class="perk"><span class="k mono">1-й</span><h3>Приоритет пожеланий</h3><p>Этаж, планировка, одноуровневый или двухуровневый номер — учитываем в первую очередь.</p></div>
+    <div class="perk"><span class="k mono">к выезду</span><h3>Документы заранее</h3><p>Подтверждение проживания и чеки для бухгалтерии готовим к дню выезда.</p></div>
+    <div class="perk"><span class="k mono">0 ₽</span><h3>Бесплатная отмена</h3><p>На основных тарифах. Условия показаны при выборе тарифа.</p></div>
+  </div>
+</section>
+
+<section class="sec aud" id="for-whom" aria-labelledby="aud-h">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Сценарии поездки</p><h2 id="aud-h">Для кого подойдёт отель</h2></div>
+      <p>66 апартаментов разных форматов в одном здании: от студии на двоих до номера на шесть гостей.</p>
+    </div>
+    <div class="aud-grid">
+      <article class="aud-card" id="groups">
+        <div class="ph"><img src="img/aud-groups-s.webp" srcset="img/aud-groups-s.webp 900w, img/aud-groups.webp 1024w" sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 25vw" width="1024" height="1024" alt="Номер с двумя раздельными кроватями" loading="lazy" decoding="async" class="fill"></div>
+        <div class="in">
+          <p class="fact mono">Много номеров · одно здание</p>
+          <h3>Групповые заезды</h3>
+          <p>Команды на соревнования и сборы, корпоративные поездки. Рядом спортивный центр.</p>
+          <ul class="ticks">
+            <li>Разместим всю группу в одном здании</li>
+            <li>Отчётные документы на организацию</li>
+            <li>Выделенный менеджер по работе с группами</li>
+            <li>Завтраки для всей группы</li>
+          </ul>
+          <a class="btn btn-line" href="https://max.ru/u/f9LHodD0cOJ9r1f82batp-Yp6mEIoYRwJwVjSEF5AGbhWv2-_-ErxtNsaDQ" target="_blank" rel="noopener">Рассчитать группу</a>
+        </div>
+      </article>
+      <article class="aud-card" id="business">
+        <div class="ph"><img src="img/aud-biz-s.webp" srcset="img/aud-biz-s.webp 900w, img/aud-biz.webp 1600w" sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 25vw" width="1600" height="1067" alt="Студия с рабочим столом у окна" loading="lazy" decoding="async" class="fill"></div>
+        <div class="in">
+          <p class="fact mono">Документы — к дню выезда</p>
+          <h3>Командировки</h3>
+          <p>Живёте как дома, а не в гостиничном номере: своя кухня, стол для работы, машина у входа.</p>
+          <ul class="ticks">
+            <li>Отчётные документы для бухгалтерии</li>
+            <li>Завтрак можно включить в тариф</li>
+            <li>Кухня в каждом номере</li>
+            <li>Бесплатная парковка у входа</li>
+          </ul>
+          <a class="btn btn-line js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+        </div>
+      </article>
+      <article class="aud-card" id="families">
+        <div class="ph"><img src="img/aud-family-s.webp" srcset="img/aud-family-s.webp 900w, img/aud-family.webp 1600w" sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 25vw" width="1600" height="1067" alt="Двухуровневый номер: гостиная внизу, спальня наверху" loading="lazy" decoding="async" class="fill"></div>
+        <div class="in">
+          <p class="fact mono">2 уровня · до 6 гостей</p>
+          <h3>Семьи с детьми</h3>
+          <p>Двухуровневые апартаменты делят номер на две зоны: спальня наверху, гостиная с кухней внизу.</p>
+          <ul class="ticks">
+            <li>Дети спят, взрослые не мешают</li>
+            <li>Большой семейный: две студии, две кухни, два санузла</li>
+            <li>Своя кухня для детского режима питания</li>
+            <li>Супермаркет через дорогу</li>
+          </ul>
+          <a class="btn btn-line" href="#room-prestige">Двухуровневые номера</a>
+        </div>
+      </article>
+      <article class="aud-card" id="tourists">
+        <div class="ph"><img src="img/aud-tour-s.webp" srcset="img/aud-tour.webp 981w" sizes="(max-width: 620px) 100vw, (max-width: 1100px) 50vw, 25vw" width="981" height="736" alt="Лежачий небоскрёб на Варшавском шоссе с высоты" loading="lazy" decoding="async" class="fill"></div>
+        <div class="in">
+          <p class="fact mono">1964–1974 · 736 метров</p>
+          <h3>Туристы</h3>
+          <p>Остановитесь в «лежачем небоскрёбе» — одном из самых длинных зданий Москвы и заметном образце советского модернизма.</p>
+          <ul class="ticks">
+            <li>Историческое здание научного института</li>
+            <li>Рядом музеи-заповедники Царицыно и Коломенское</li>
+            <li>Метро «Южная» — около 15 минут пешком</li>
+          </ul>
+          <a class="btn btn-line" href="#where">История здания</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rooms">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">66 апартаментов · 7 категорий</p><h2>Номера</h2></div>
+      <p>Кухня и собственный санузел в каждом номере. Цены указаны «от» — точная стоимость на ваши даты открывается в модуле бронирования.</p>
+    </div>
+    <div class="rooms">
+<article class="room" id="room-prestige" data-guests="4">
+  <div class="gal" data-count="6">
+    <div class="track"><button class="slide" type="button" data-full="img/prestige-0.webp" aria-label="Открыть фото: Спальня на антресоли в номере Престиж"><img src="img/prestige-0-s.webp" srcset="img/prestige-0-s.webp 900w, img/prestige-0.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="844" alt="Спальня на антресоли в номере Престиж" decoding="async"></button><button class="slide" type="button" data-full="img/prestige-1.webp" aria-label="Открыть фото: Спальня на антресоли"><img src="img/prestige-1-s.webp" srcset="img/prestige-1-s.webp 900w, img/prestige-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Спальня на антресоли" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prestige-2.webp" aria-label="Открыть фото: Гостиная с кухней"><img src="img/prestige-2-s.webp" srcset="img/prestige-2-s.webp 900w, img/prestige-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Гостиная с кухней" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prestige-3.webp" aria-label="Открыть фото: Гостиная и лестница наверх"><img src="img/prestige-3-s.webp" srcset="img/prestige-3-s.webp 900w, img/prestige-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Гостиная и лестница наверх" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prestige-4.webp" aria-label="Открыть фото: Вид с антресоли"><img src="img/prestige-4-s.webp" srcset="img/prestige-4-s.webp 900w, img/prestige-4.webp 1248w" sizes="(max-width: 760px) 100vw, 33vw" width="1248" height="832" alt="Вид с антресоли" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prestige-5.webp" aria-label="Открыть фото: Санузел"><img src="img/prestige-5-s.webp" srcset="img/prestige-5-s.webp 600w, img/prestige-5.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="1800" alt="Санузел" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 6</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>30 м²</span><span>до 4 гостей</span><span>2 уровня</span></p>
+    <h3>Престиж</h3>
+    <p class="lead">Двухуровневые апартаменты: спальня на антресоли, внизу гостиная с кухней.</p>
+    <ul class="feats"><li>Спальня на втором уровне</li><li>Гостиная с диваном и ТВ</li><li>Отдельная кухня</li><li>Доп. место от 700 ₽</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 550 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room" id="room-prostor" data-guests="4">
+  <div class="gal" data-count="5">
+    <div class="track"><button class="slide" type="button" data-full="img/prostor-1.webp" aria-label="Открыть фото: Гостиная с диваном"><img src="img/prostor-1-s.webp" srcset="img/prostor-1-s.webp 900w, img/prostor-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Гостиная с диваном" decoding="async"></button><button class="slide" type="button" data-full="img/prostor-2.webp" aria-label="Открыть фото: Окно и лестница"><img src="img/prostor-2-s.webp" srcset="img/prostor-2-s.webp 900w, img/prostor-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Окно и лестница" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prostor-3.webp" aria-label="Открыть фото: Кухня под лестницей"><img src="img/prostor-3-s.webp" srcset="img/prostor-3-s.webp 900w, img/prostor-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кухня под лестницей" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prostor-4.webp" aria-label="Открыть фото: Спальня наверху"><img src="img/prostor-4-s.webp" srcset="img/prostor-4-s.webp 900w, img/prostor-4.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="896" alt="Спальня наверху" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/prostor-5.webp" aria-label="Открыть фото: Санузел"><img src="img/prostor-5-s.webp" srcset="img/prostor-5-s.webp 600w, img/prostor-5.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="1800" alt="Санузел" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 5</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>37 м²</span><span>до 4 гостей</span><span>2 уровня</span></p>
+    <h3>Простор</h3>
+    <p class="lead">Самые большие двухуровневые апартаменты: высокое окно, гостиная и спальня наверху.</p>
+    <ul class="feats"><li>37 м² на двух уровнях</li><li>Большое окно</li><li>Диван и обеденная зона</li><li>Доп. место от 700 ₽</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 750 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room" id="room-lux" data-guests="3">
+  <div class="gal" data-count="6">
+    <div class="track"><button class="slide" type="button" data-full="img/lux-1.webp" aria-label="Открыть фото: Гостиная и лестница в номере Люкс"><img src="img/lux-1-s.webp" srcset="img/lux-1-s.webp 900w, img/lux-1.webp 1600w" sizes="(max-width: 760px) 100vw, 33vw" width="1600" height="1200" alt="Гостиная и лестница в номере Люкс" decoding="async"></button><button class="slide" type="button" data-full="img/lux-2.webp" aria-label="Открыть фото: Спальня Люкс"><img src="img/lux-2-s.webp" srcset="img/lux-2-s.webp 900w, img/lux-2.webp 1600w" sizes="(max-width: 760px) 100vw, 33vw" width="1600" height="1200" alt="Спальня Люкс" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/lux-3.webp" aria-label="Открыть фото: Антресоль"><img src="img/lux-3-s.webp" srcset="img/lux-3-s.webp 900w, img/lux-3.webp 1600w" sizes="(max-width: 760px) 100vw, 33vw" width="1600" height="1200" alt="Антресоль" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/lux-4.webp" aria-label="Открыть фото: Кухня и окно"><img src="img/lux-4-s.webp" srcset="img/lux-4-s.webp 900w, img/lux-4.webp 1600w" sizes="(max-width: 760px) 100vw, 33vw" width="1600" height="1200" alt="Кухня и окно" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/lux-5.webp" aria-label="Открыть фото: Кухня"><img src="img/lux-5-s.webp" srcset="img/lux-5-s.webp 900w, img/lux-5.webp 1600w" sizes="(max-width: 760px) 100vw, 33vw" width="1600" height="1200" alt="Кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/lux-6.webp" aria-label="Открыть фото: Санузел со стиральной машиной"><img src="img/lux-6-s.webp" srcset="img/lux-6-s.webp 675w, img/lux-6.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="1600" alt="Санузел со стиральной машиной" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 6</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>30 м²</span><span>до 3 гостей</span><span>2 уровня</span></p>
+    <h3>Люкс</h3>
+    <p class="lead">Двухуровневый номер с отделкой выше классом, стиральной машиной и кондиционером.</p>
+    <ul class="feats"><li>Стиральная машина</li><li>Кондиционер</li><li>Кухня с посудомоечной машиной</li><li>Доп. место от 700 ₽</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 950 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room" id="room-family" data-guests="6">
+  <div class="gal" data-count="3">
+    <div class="track"><button class="slide" type="button" data-full="img/family-1.webp" aria-label="Открыть фото: Студия с двумя кроватями"><img src="img/family-1-s.webp" srcset="img/family-1-s.webp 900w, img/family-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Студия с двумя кроватями" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/family-2.webp" aria-label="Открыть фото: Студия с кухней"><img src="img/family-2-s.webp" srcset="img/family-2-s.webp 900w, img/family-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Студия с кухней" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/family-3.webp" aria-label="Открыть фото: Спальная зона"><img src="img/family-3-s.webp" srcset="img/family-3-s.webp 900w, img/family-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1800" alt="Спальная зона" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 3</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>45 м²</span><span>до 6 гостей</span><span>2 уровня</span></p>
+    <h3>Большой семейный</h3>
+    <p class="lead">Две изолированные студии в одном номере: у каждой своя кухня и санузел.</p>
+    <ul class="feats"><li>До 6 гостей</li><li>2 кухни и 2 санузла</li><li>Цена за 1–4 гостей</li><li>Доп. гость от 1 000 ₽</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 5 950 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room" id="room-uyut-st" data-guests="2">
+  <div class="gal" data-count="5">
+    <div class="track"><button class="slide" type="button" data-full="img/uyut-st-1.webp" aria-label="Открыть фото: Кровать и окно в номере Уют стандарт"><img src="img/uyut-st-1-s.webp" srcset="img/uyut-st-1-s.webp 900w, img/uyut-st-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кровать и окно в номере Уют стандарт" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-st-2.webp" aria-label="Открыть фото: Номер Уют стандарт с кухней"><img src="img/uyut-st-2-s.webp" srcset="img/uyut-st-2-s.webp 900w, img/uyut-st-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Номер Уют стандарт с кухней" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-st-3.webp" aria-label="Открыть фото: Стол и кухня"><img src="img/uyut-st-3-s.webp" srcset="img/uyut-st-3-s.webp 900w, img/uyut-st-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Стол и кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-st-4.webp" aria-label="Открыть фото: Прихожая и кухня"><img src="img/uyut-st-4-s.webp" srcset="img/uyut-st-4-s.webp 900w, img/uyut-st-4.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Прихожая и кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-st-5.webp" aria-label="Открыть фото: Санузел с душем"><img src="img/uyut-st-5-s.webp" srcset="img/uyut-st-5-s.webp 900w, img/uyut-st-5.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Санузел с душем" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 5</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>20 м²</span><span>до 2 гостей</span><span>1 уровень</span></p>
+    <h3>Уют стандарт</h3>
+    <p class="lead">Студия с окном, кухней и рабочим столом — для поездки на несколько дней.</p>
+    <ul class="feats"><li>Двуспальная кровать</li><li>Кухня с плитой и холодильником</li><li>Стол у окна для работы</li><li>Душ и фен</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 050 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room" id="room-uyut-cf" data-guests="2">
+  <div class="gal" data-count="5">
+    <div class="track"><button class="slide" type="button" data-full="img/uyut-cf-1.webp" aria-label="Открыть фото: Номер Уют комфорт"><img src="img/uyut-cf-1-s.webp" srcset="img/uyut-cf-1-s.webp 900w, img/uyut-cf-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Номер Уют комфорт" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-cf-2.webp" aria-label="Открыть фото: Кровать с бирюзовой стеной"><img src="img/uyut-cf-2-s.webp" srcset="img/uyut-cf-2-s.webp 900w, img/uyut-cf-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кровать с бирюзовой стеной" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-cf-3.webp" aria-label="Открыть фото: Барная стойка и кухня"><img src="img/uyut-cf-3-s.webp" srcset="img/uyut-cf-3-s.webp 900w, img/uyut-cf-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Барная стойка и кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-cf-4.webp" aria-label="Открыть фото: Кухня"><img src="img/uyut-cf-4-s.webp" srcset="img/uyut-cf-4-s.webp 900w, img/uyut-cf-4.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/uyut-cf-5.webp" aria-label="Открыть фото: Санузел"><img src="img/uyut-cf-5-s.webp" srcset="img/uyut-cf-5-s.webp 600w, img/uyut-cf-5.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="1800" alt="Санузел" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 5</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>20 м²</span><span>до 2 гостей</span><span>1 уровень</span></p>
+    <h3>Уют комфорт</h3>
+    <p class="lead">Улучшенная студия: барная стойка вместо стола, свежий ремонт.</p>
+    <ul class="feats"><li>Двуспальная кровать</li><li>Кухня-гостиная с барной стойкой</li><li>Посуда и чайник</li><li>Душ и фен</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 350 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article>
+<article class="room wide" id="room-mini" data-guests="2">
+  <div class="gal" data-count="4">
+    <div class="track"><button class="slide" type="button" data-full="img/mini-1.webp" aria-label="Открыть фото: Кухня и лестница"><img src="img/mini-1-s.webp" srcset="img/mini-1-s.webp 900w, img/mini-1.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кухня и лестница" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/mini-2.webp" aria-label="Открыть фото: Спальное место наверху"><img src="img/mini-2-s.webp" srcset="img/mini-2-s.webp 900w, img/mini-2.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Спальное место наверху" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/mini-3.webp" aria-label="Открыть фото: Кухня"><img src="img/mini-3-s.webp" srcset="img/mini-3-s.webp 900w, img/mini-3.webp 1800w" sizes="(max-width: 760px) 100vw, 33vw" width="1800" height="1200" alt="Кухня" loading="lazy" decoding="async"></button><button class="slide" type="button" data-full="img/mini-4.webp" aria-label="Открыть фото: Санузел"><img src="img/mini-4-s.webp" srcset="img/mini-4-s.webp 600w, img/mini-4.webp 1200w" sizes="(max-width: 760px) 100vw, 33vw" width="1200" height="1800" alt="Санузел" loading="lazy" decoding="async"></button></div>
+    <span class="count mono">1 / 4</span>
+    <button class="nav prev" type="button" aria-label="Предыдущее фото">‹</button>
+    <button class="nav next" type="button" aria-label="Следующее фото">›</button>
+  </div>
+  <div class="room-body">
+    <p class="facts mono"><span>18 м²</span><span>до 2 гостей</span><span>2 уровня</span></p>
+    <h3>Мини</h3>
+    <p class="lead">Компактная двухуровневая студия. Окно выходит в коридор, работает приточная вентиляция.</p>
+    <ul class="feats"><li>Кровать на втором уровне</li><li>Кухня с барной стойкой</li><li>Душ и фен</li><li>Приточная вентиляция</li></ul>
+    <div class="room-foot">
+      <p class="price"><span class="mono">от</span> 3 450 ₽ <span class="per">/ ночь</span></p>
+      <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a>
+    </div>
+  </div>
+</article></div>
+  </div>
+</section>
+
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Отзывы гостей · Яндекс Карты</p>
+        <div class="score"><span class="big">4,7</span><div><span class="st" aria-hidden="true">★★★★★</span><small>1 236 оценок · 809 отзывов</small></div></div>
+        <div class="aspects"><span>Парковка <b>93%</b></span><span>Расположение <b>84%</b></span><span>Персонал <b>73%</b></span></div>
+      </div>
+      <p>Доля положительных упоминаний по темам — данные Яндекс Карт. Ниже — отзывы гостей без правок, с сокращениями.</p>
+    </div>
+    <div class="revs"><figure class="rev">
+  <blockquote>Хорошие, чистые, уютные номера со свежем ремонтом и наличием всего необходимого. … Останавливаюсь здесь раз в неделю.</blockquote>
+  <figcaption><b>Евгений Светлов</b><span class="mono">17 мая 2025 · Командировки</span></figcaption>
+</figure><figure class="rev">
+  <blockquote>Однозначно рекомендую всем, кто приехал в Москву по делам/ проездом/погулять … Всё чистое, в рабочем состоянии и не старьё (!!)</blockquote>
+  <figcaption><b>Екатерина Л.</b><span class="mono">16 августа 2026 · По делам</span></figcaption>
+</figure><figure class="rev">
+  <blockquote>Меня приятно удивила кухня в каждом номере, при путешествиях большой компанией, особенно с детьми -спортсменами это было актуально и полезно.</blockquote>
+  <figcaption><b>Боровикова Ольга</b><span class="mono">24 февраля 2026 · Спортивная поездка</span></figcaption>
+</figure><figure class="rev">
+  <blockquote>Отличный номер, в два этажа, мини кухня, гостиная. Кондиционер, телевизор и Wi-Fi все работает отлично. В номере очень чисто.</blockquote>
+  <figcaption><b>Виктория Н.</b><span class="mono">18 марта 2026 · Двухуровневый номер</span></figcaption>
+</figure><figure class="rev">
+  <blockquote>Хорошее недорогое место. Останавливались несколько раз. … Администраторы очень хорошо идут на контакт. … Парковка рядом бесплатная.</blockquote>
+  <figcaption><b>Ирина</b><span class="mono">28 декабря 2025 · Постоянный гость</span></figcaption>
+</figure><figure class="rev">
+  <blockquote>Очень чистые и эстетичные номера в стиле лофт. Очень приятно и необычно было находиться в самом здании…</blockquote>
+  <figcaption><b>Ян</b><span class="mono">6 апреля 2025 · Компания из трёх человек</span></figcaption>
+</figure></div>
+    <p class="more"><a href="https://yandex.ru/maps/org/varshavka_125/3300836286/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах →</a></p>
+  </div>
+</section>
+
+<section class="sec bld" id="where">
+  <div class="wrap bld-grid">
+    <div class="txt">
+      <p class="eyebrow">Здание и расположение</p>
+      <h2>Живёте в «лежачем небоскрёбе»</h2>
+      <p>Дом на Варшавском шоссе, 125 построен в 1964–1974 годах по проекту архитекторов А. М. Меерсона и Н. П. Штеллера при участии инженера В. Г. Давыдова. Комплекс задумывали для научных институтов и производств: максимум полезной площади при минимуме занятой земли.</p>
+      <p>Строили в три очереди. Для своего времени решения были смелыми: единый коридор коммуникаций, грузовые лифты, мощная вентиляция и энергоснабжение. Здесь работали научные институты, в том числе НИИ электронно-вычислительной техники.</p>
+      <p>Здание и сегодня используется по назначению, а в одной из его секций — наши апартаменты.</p>
+      <dl class="bfacts">
+        <div><dt>Длина</dt><dd class="mono">736 м</dd></div>
+        <div><dt>Этажей</dt><dd class="mono">7</dd></div>
+        <div><dt>Площадь</dt><dd class="mono">400 000+ м²</dd></div>
+        <div><dt>Годы стройки</dt><dd class="mono">1964–1974</dd></div>
+      </dl>
+    </div>
+    <figure class="poster">
+      <button class="zoom" type="button" data-full="img/poster.webp" aria-label="Открыть плакат с историей здания"><img src="img/poster-s.webp" srcset="img/poster-s.webp 900w, img/poster.webp 1008w" sizes="(max-width: 860px) 100vw, 50vw" width="1008" height="672" alt="Плакат «История лежачего небоскрёба»" loading="lazy" decoding="async"></button>
+      <figcaption>Плакат «История лежачего небоскрёба»</figcaption>
+    </figure>
+  </div>
+  <div class="wrap bld-grid bld-row2">
+    <div class="txt">
+      <div class="facade" aria-hidden="true">
+        <svg viewBox="0 0 736 42" preserveAspectRatio="none">
+          <defs>
+            <pattern id="win" width="8" height="6" patternUnits="userSpaceOnUse"><rect x="1" y="1" width="6" height="4" fill="currentColor" opacity=".32"/></pattern>
+            <pattern id="lit" width="56" height="18" patternUnits="userSpaceOnUse"><rect x="33" y="1" width="6" height="4" fill="#E6CF9C"/><rect x="9" y="13" width="6" height="4" fill="#E6CF9C" opacity=".8"/></pattern>
+          </defs>
+          <rect x="0" y="0" width="736" height="42" fill="url(#win)"/>
+          <rect x="0" y="0" width="736" height="42" fill="url(#lit)"/>
+        </svg>
+        <div class="ruler"><span>0 м</span><span>7 этажей</span><span>736 м</span></div>
+      </div>
+      <ul class="dist">
+        <li><span>Метро «Южная»</span><span>≈ 15 мин пешком</span></li>
+        <li><span>Супермаркет «Перекрёсток»</span><span>через дорогу</span></li>
+        <li><span>Кафе с бизнес-ланчами</span><span>в соседнем подъезде</span></li>
+        <li><span>Царицыно и Коломенское</span><span>рядом</span></li>
+        <li><span>Парковка</span><span>у входа, бесплатно</span></li>
+      </ul>
+    </div>
+    <div class="addr">
+      <div class="ph"><img src="img/reception-s.webp" srcset="img/reception-s.webp 900w, img/reception.webp 1800w" sizes="(max-width: 760px) 100vw, 45vw" width="1800" height="1200" alt="Ресепшн апарт-отеля Варшавка 125" loading="lazy" decoding="async" class="fill"></div>
+      <div class="card">
+        <b>Москва, Варшавское шоссе, 125, стр. 1, секция 9</b>
+        <p>Вход — через секцию 9. Перед заездом пришлём, как пройти от парковки и остановки.</p>
+        <div class="acts">
+          <a class="btn btn-gold" href="https://yandex.ru/maps/org/varshavka_125/3300836286/" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+          <a class="btn btn-line" href="https://max.ru/u/f9LHodD0cOJ9r1f82batp-Yp6mEIoYRwJwVjSEF5AGbhWv2-_-ErxtNsaDQ" target="_blank" rel="noopener">Написать в MAX</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec seo" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Об отеле</p><h2 id="about-h">Апарт-отель у метро «Южная» на Варшавском шоссе</h2></div>
+      <p>«Варшавка 125» — апарт-отель на юге Москвы, в Чертанове (ЮАО). Здесь можно снять апартаменты посуточно или надолго: 66 студий и двухуровневых номеров с кухней и своим санузлом, бесплатная парковка у входа, до метро «Южная» — 15 минут пешком.</p>
+    </div>
+    <div class="seo-grid">
+      <article><h3>Апарт-отель или гостиница?</h3><p>Апарт-отель — это гостиница, где вместо обычного номера вы живёте в апартаментах с кухней. Сервис как в отеле: ресепшн с 10:00 до 22:00, контакт-центр 24/7, уборка, документы. А быт как дома: можно приготовить ужин, а утром разогреть готовый завтрак и не тратиться на кафе. Поэтому апарт-отель часто выгоднее мини-отеля или квартиры от частника.</p></article>
+      <article><h3>Отель для командировки</h3><p>Командированным важны рабочий стол, Wi-Fi и документы для бухгалтерии. Подтверждение проживания и чеки готовим к дню выезда, а своя кухня сокращает расходы на питание. Для бригад и групп есть номера на 4–6 гостей и бесплатная парковка для транспорта.</p></article>
+      <article><h3>Где остановиться на Варшавском шоссе</h3><p>Отель стоит прямо на Варшавском шоссе: через дорогу «Перекрёсток», рядом кафе с бизнес-ланчами, недалеко Царицыно и Коломенское. Гостиница на сутки, апартаменты для семьи или недорогой номер на неделю — от 3 050 ₽ за ночь, а при бронировании на сайте скидка до 10%.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap faq">
+    <div><p class="eyebrow">Перед поездкой</p><h2>Частые вопросы</h2></div>
+    <div class="qs"><details open><summary>Во сколько заезд и выезд?</summary><p>Заезд с 15:00, выезд до 12:00. Ранний заезд и поздний выезд возможны по согласованию, с почасовой оплатой. Лучше предупредить хотя бы за сутки.</p></details><details><summary>Что такое апарт-отель?</summary><p>Это гостиница, где вместо обычных номеров — апартаменты с кухней и своим санузлом. Сервис как в отеле: ресепшн с 10:00 до 22:00, контакт-центр 24/7, уборка, онлайн-бронирование и документы.</p></details><details><summary>Чем апарт-отель отличается от гостиницы и квартиры посуточно?</summary><p>От гостиницы — кухней и площадью: можно готовить и жить дольше без лишних трат. От квартиры посуточно — официальным бронированием, чеками, контакт-центром 24/7 и одинаковым уровнем номеров.</p></details><details><summary>Почему апарт-отель удобен для командировки?</summary><p>Своя кухня экономит на питании, а документы для бухгалтерии готовим к дню выезда. Для бригад и групп есть номера на 4–6 гостей и бесплатная парковка.</p></details><details><summary>Как добраться от метро «Южная»?</summary><p>Около 15 минут пешком по Варшавскому шоссе. Вход — через секцию 9, перед заездом пришлём схему, как пройти от метро, остановки и парковки.</p></details><details><summary>Есть ли парковка?</summary><p>Да, бесплатная парковка у входа.</p></details><details><summary>Есть ли завтрак?</summary><p>Да. Готовые завтраки шоковой заморозки: разогреваете на своей кухне за несколько минут, вкус и качество блюд сохраняются. Закажите при бронировании или на ресепшене.</p></details><details><summary>Как работает ресепшн?</summary><p>Ресепшн открыт с 10:00 до 22:00, контакт-центр отвечает круглосуточно по телефону и в MAX.</p></details><details data-v125-action="long_stay_interest"><summary>Можно снять апартаменты надолго?</summary><p>Да, от суток до нескольких месяцев. Для проживания от недели напишите нам в MAX — подберём номер и тариф.</p></details><details><summary>Подойдёт ли отель для семьи?</summary><p>Да. Двухуровневые Престиж и Простор вмещают до 4 гостей, а «Большой семейный» — до 6: в нём две студии с отдельными кухнями и санузлами.</p></details><details><summary>Какие документы вы даёте для бухгалтерии?</summary><p>Подтверждение проживания и чеки. Напишите при бронировании, что нужны документы, — подготовим к дню выезда.</p></details><details><summary>Как оплатить и можно ли отменить?</summary><p>Оплата онлайн в модуле бронирования. На основных тарифах отмена бесплатная — условия показаны рядом с ценой.</p></details><details><summary>Можно с животными?</summary><p>Да, по согласованию с администратором. Стоимость — 3 000 ₽ за проживание.</p></details><details><summary>Почему цена на одни и те же даты меняется?</summary><p>Цены зависят от загрузки и спроса на конкретные даты и могут меняться в течение дня. Бронирование фиксирует цену.</p></details></div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div><h2>Выберите даты — цены покажем сразу</h2><p>Скидка до 10% и приоритет пожеланий при бронировании на сайте.</p></div>
+    <a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Показать цены</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div><b>Варшавка 125</b>Апарт-отель в «лежачем небоскрёбе».<br>Москва, Варшавское шоссе, 125, стр. 1, секция 9</div>
+    <div><b>Связь 24/7</b><span class="mono">+7 (999) 576-25-10</span><br><a href="https://max.ru/u/f9LHodD0cOJ9r1f82batp-Yp6mEIoYRwJwVjSEF5AGbhWv2-_-ErxtNsaDQ" target="_blank" rel="noopener">MAX</a> · <span class="mono">admin@apart-invest.club</span></div>
+    <div><b>Гостям</b><a href="https://varshavka125.tb.ru/rules" target="_blank" rel="noopener">Правила проживания</a><br><a href="https://varshavka125.tb.ru/politics" target="_blank" rel="noopener">Политика обработки персональных данных</a></div>
+    <div class="legal"><span>ООО «В125», ИНН 9726093114</span><span>Цены на сайте указаны «от» и зависят от дат</span></div>
+  </div>
+</footer>
+
+<div class="mbar"><div><span class="p">от 3 050 ₽</span><small>за ночь · скидка до 10%</small></div><a class="btn btn-gold js-book" href="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa" target="_blank" rel="noopener">Выбрать даты</a></div>
+
+<div class="ck" id="ck" hidden><span>Сайт использует cookie и Яндекс Метрику для статистики посещений. <a href="https://varshavka125.tb.ru/politics" target="_blank" rel="noopener">Подробнее</a></span><button type="button" id="ck-ok">Понятно</button></div>
+
+<dialog class="lb" id="lb" aria-label="Фото номера">
+  <div class="lb-in"><img id="lb-img" alt=""></div>
+  <button class="x" type="button" data-lb="close" aria-label="Закрыть">×</button>
+  <button class="l" type="button" data-lb="prev" aria-label="Предыдущее">‹</button>
+  <button class="r" type="button" data-lb="next" aria-label="Следующее">›</button>
+  <p class="cap" id="lb-cap"></p>
+</dialog>
+
+<script>document.getElementById("hotel-pick").addEventListener("change",function(){if(this.value)location.href=this.value;});</script>
+<script>
+(function(){
+  var BOOK="https://reservationsteps.ru/rooms/index/8fd19a00-9a3e-4978-8ce7-fcb02758f5aa";
+  var I18N={"Подобрать номер за 1 минуту": ["Find a room in 1 minute", "1 分钟选房"], "Наши апарт-отели в Москве": ["Our apart-hotels in Moscow", "我们在莫斯科的公寓酒店"], "м. Южная · Варшавка 125": ["Yuzhnaya metro · Varshavka 125", "Yuzhnaya 地铁站 · Varshavka 125"], "м. Динамо · Арена 33": ["Dinamo metro · Arena 33", "Dinamo 地铁站 · Arena 33"], "МЦД Красный Балтиец · Red Baltic": ["Krasny Baltiets MCD · Red Baltic", "Krasny Baltiets MCD 站 · Red Baltic"], "м. Партизанская · Новое Измайлово": ["Partizanskaya metro · Novoe Izmaylovo", "Partizanskaya 地铁站 · Novoe Izmaylovo"], "м. Партизанская · Тета Измайлово ★★★★": ["Partizanskaya metro · Teta Izmaylovo ★★★★", "Partizanskaya 地铁站 · Teta Izmaylovo ★★★★"], "от 3 050 ₽": ["from 3,050 ₽", "3050 ₽ 起"], "Приточная вентиляция": ["Fresh-air ventilation", "新风系统"], "Варшавка 125 — наверх": ["Varshavka 125 — back to top", "Varshavka 125 — 返回顶部"], "В125": ["V125", "V125"], "Варшавка 125": ["Varshavka 125", "Varshavka 125"], "Разделы": ["Sections", "栏目"], "Номера": ["Rooms", "房型"], "Для кого": ["Who it's for", "适合人群"], "Отзывы": ["Reviews", "评价"], "Как добраться": ["Location", "交通位置"], "Забронировать": ["Book now", "立即预订"], "Язык": ["Language", "语言"], "Апарт-отель · Москва, Варшавское шоссе, 125": ["Apart-hotel · Moscow, 125 Varshavskoye Highway", "公寓酒店 · 莫斯科 华沙公路125号"], "Апартаменты с кухней в": ["Apartments with a kitchen in the", "带厨房的公寓，"], "«лежачем небоскрёбе»": ["“Lying Skyscraper”", "就在「躺着的摩天楼」"], "1 236 оценок на Яндекс Картах": ["1,236 ratings on Yandex Maps", "Yandex 地图 1236 条评分"], "15 мин": ["15 min", "15 分钟"], "пешком до м. «Южная»": ["walk to Yuzhnaya metro", "步行至 Yuzhnaya 地铁站"], "Спальня на антресоли в двухуровневых апартаментах": ["Mezzanine bedroom in a two-level apartment", "复式公寓的阁楼卧室"], "Престиж · 30 м² · спальня на антресоли": ["Prestige · 30 m² · mezzanine bedroom", "Prestige 尊享房 · 30 m² · 阁楼卧室"], "Проверить цены на даты": ["Check prices for your dates", "查询日期价格"], "Заезд": ["Check-in", "入住"], "Выезд": ["Check-out", "退房"], "Гостей": ["Guests", "人数"], "1 гость": ["1 guest", "1 位"], "2 гостя": ["2 guests", "2 位"], "3 гостя": ["3 guests", "3 位"], "4 гостя": ["4 guests", "4 位"], "5 гостей": ["5 guests", "5 位"], "6 гостей": ["6 guests", "6 位"], "Показать цены": ["Show prices", "查看价格"], "1 ночь": ["1 night", "1 晚"], "Скидка до 10%": ["Up to 10% off", "最高优惠 10%"], "при бронировании на сайте": ["when you book on this website", "官网预订专享"], "Бесплатная отмена на основных тарифах": ["Free cancellation on main rates", "主要房价可免费取消"], "Почему выгоднее бронировать здесь, а не на агрегаторе": ["Why booking here beats booking on a travel site", "为什么官网预订比第三方平台更划算"], "На тарифы при бронировании через сайт. Цена видна сразу после выбора дат.": ["On rates booked through this website. You see the price as soon as you pick dates.", "通过官网预订即可享受。选择日期后立即显示价格。"], "1-й": ["1st", "优先"], "Приоритет пожеланий": ["Your requests first", "优先满足需求"], "Этаж, планировка, одноуровневый или двухуровневый номер — учитываем в первую очередь.": ["Floor, layout, one-level or two-level room — your wishes come first.", "楼层、户型、单层或复式——优先为您安排。"], "к выезду": ["by check-out", "退房前"], "Документы заранее": ["Paperwork ready", "票据提前备好"], "Подтверждение проживания и чеки для бухгалтерии готовим к дню выезда.": ["Proof of stay and receipts for your accounts department are ready on the day you leave.", "住宿证明和报销票据在退房当天备好。"], "Бесплатная отмена": ["Free cancellation", "免费取消"], "На основных тарифах. Условия показаны при выборе тарифа.": ["On main rates. Terms are shown when you choose a rate.", "适用于主要房价，选择房价时显示具体条款。"], "Сценарии поездки": ["Trip types", "出行类型"], "Для кого подойдёт отель": ["Who the hotel is for", "适合哪些客人"], "66 апартаментов разных форматов в одном здании: от студии на двоих до номера на шесть гостей.": ["66 apartments of different formats in one building, from a studio for two to a room for six.", "同一栋楼内共有 66 套不同户型的公寓，从双人单间到 6 人房应有尽有。"], "Номер с двумя раздельными кроватями": ["Room with two single beds", "两张单人床的客房"], "Много номеров · одно здание": ["Many rooms · one building", "房间充足 · 同一栋楼"], "Групповые заезды": ["Groups", "团队入住"], "Команды на соревнования и сборы, корпоративные поездки. Рядом спортивный центр.": ["Sports teams for competitions and training camps, corporate trips. A sports centre is nearby.", "参赛和集训的运动队、企业团队出行。附近有体育中心。"], "Разместим всю группу в одном здании": ["The whole group stays in one building", "整个团队住在同一栋楼"], "Отчётные документы на организацию": ["Invoices and paperwork for your organisation", "为单位开具报销票据"], "Выделенный менеджер по работе с группами": ["A dedicated group manager", "专属团队经理"], "Завтраки для всей группы": ["Breakfast for the whole group", "全团早餐"], "Рассчитать группу": ["Get a group quote", "获取团队报价"], "Студия с рабочим столом у окна": ["Studio with a desk by the window", "窗边带书桌的单间"], "Документы — к дню выезда": ["Paperwork by check-out", "退房时提供票据"], "Командировки": ["Business trips", "商务出差"], "Живёте как дома, а не в гостиничном номере: своя кухня, стол для работы, машина у входа.": ["Live like at home, not in a hotel room: your own kitchen, a desk to work at, the car right outside.", "像在家一样住：独立厨房、办公桌，车就停在门口。"], "Отчётные документы для бухгалтерии": ["Receipts for your accounts department", "报销用票据"], "Завтрак можно включить в тариф": ["Breakfast can be added to the rate", "可选含早餐房价"], "Кухня в каждом номере": ["A kitchen in every room", "每间客房都有厨房"], "Бесплатная парковка у входа": ["Free parking at the entrance", "门口免费停车"], "Выбрать даты": ["Choose dates", "选择日期"], "Двухуровневый номер: гостиная внизу, спальня наверху": ["Two-level room: living room downstairs, bedroom upstairs", "复式客房：楼下客厅，楼上卧室"], "2 уровня · до 6 гостей": ["2 levels · up to 6 guests", "2 层 · 最多 6 人"], "Семьи с детьми": ["Families with children", "亲子家庭"], "Двухуровневые апартаменты делят номер на две зоны: спальня наверху, гостиная с кухней внизу.": ["Two-level apartments split the room into two zones: bedroom upstairs, living room and kitchen downstairs.", "复式公寓分为两个区域：楼上卧室，楼下客厅和厨房。"], "Дети спят, взрослые не мешают": ["Kids sleep while adults stay up", "孩子睡觉，大人不打扰"], "Большой семейный: две студии, две кухни, два санузла": ["Large Family room: two studios, two kitchens, two bathrooms", "大家庭房：两个单间、两个厨房、两个卫生间"], "Своя кухня для детского режима питания": ["Your own kitchen for children's meals", "独立厨房，方便为孩子做饭"], "Супермаркет через дорогу": ["Supermarket across the road", "马路对面就是超市"], "Двухуровневые номера": ["Two-level rooms", "复式房型"], "Лежачий небоскрёб на Варшавском шоссе с высоты": ["The Lying Skyscraper on Varshavskoye Highway from above", "鸟瞰华沙公路上的「躺着的摩天楼」"], "1964–1974 · 736 метров": ["1964–1974 · 736 metres", "1964–1974 · 长 736 米"], "Туристы": ["Tourists", "游客"], "Остановитесь в «лежачем небоскрёбе» — одном из самых длинных зданий Москвы и заметном образце советского модернизма.": ["Stay in the “Lying Skyscraper”, one of the longest buildings in Moscow and a striking example of Soviet modernism.", "入住「躺着的摩天楼」——莫斯科最长的建筑之一，苏联现代主义建筑的代表作。"], "Историческое здание научного института": ["A historic research-institute building", "历史悠久的科研院所大楼"], "Рядом музеи-заповедники Царицыно и Коломенское": ["Tsaritsyno and Kolomenskoye museum-estates nearby", "附近有察里津诺和科洛缅斯科耶博物馆庄园"], "Метро «Южная» — около 15 минут пешком": ["Yuzhnaya metro — about 15 minutes on foot", "步行约 15 分钟到 Yuzhnaya 地铁站"], "История здания": ["History of the building", "建筑历史"], "66 апартаментов · 7 категорий": ["66 apartments · 7 room types", "66 套公寓 · 7 种房型"], "Кухня и собственный санузел в каждом номере. Цены указаны «от» — точная стоимость на ваши даты открывается в модуле бронирования.": ["Every room has a kitchen and its own bathroom. Prices are “from”; the exact price for your dates opens in the booking module.", "每间客房都有厨房和独立卫生间。价格为起价，具体日期的价格请在预订页面查看。"], "Спальня на антресоли в номере Престиж": ["Mezzanine bedroom in the Prestige room", "Prestige 尊享房的阁楼卧室"], "Спальня на антресоли": ["Mezzanine bedroom", "阁楼卧室"], "Гостиная с кухней": ["Living room with kitchen", "带厨房的客厅"], "Гостиная и лестница наверх": ["Living room and stairs up", "客厅和上楼楼梯"], "Вид с антресоли": ["View from the mezzanine", "从阁楼俯瞰"], "Санузел": ["Bathroom", "卫生间"], "Предыдущее фото": ["Previous photo", "上一张"], "Следующее фото": ["Next photo", "下一张"], "30 м²": ["30 m²", "30 m²"], "до 4 гостей": ["up to 4 guests", "最多 4 人"], "2 уровня": ["2 levels", "2 层"], "Престиж": ["Prestige", "Prestige 尊享房"], "Двухуровневые апартаменты: спальня на антресоли, внизу гостиная с кухней.": ["Two-level apartment: bedroom on the mezzanine, living room with kitchen below.", "复式公寓：阁楼为卧室，楼下是带厨房的客厅。"], "Спальня на втором уровне": ["Bedroom on the upper level", "楼上卧室"], "Гостиная с диваном и ТВ": ["Living room with sofa and TV", "带沙发和电视的客厅"], "Отдельная кухня": ["Separate kitchen", "独立厨房"], "Доп. место от 700 ₽": ["Extra bed from 700 ₽", "加床 700 ₽ 起"], "от": ["from", "起价"], "/ ночь": ["/ night", "/ 晚"], "Гостиная с диваном": ["Living room with sofa", "带沙发的客厅"], "Окно и лестница": ["Window and staircase", "窗户与楼梯"], "Кухня под лестницей": ["Kitchen under the stairs", "楼梯下的厨房"], "Спальня наверху": ["Bedroom upstairs", "楼上卧室"], "37 м²": ["37 m²", "37 m²"], "Простор": ["Prostor", "Prostor 宽敞房"], "Самые большие двухуровневые апартаменты: высокое окно, гостиная и спальня наверху.": ["Our largest two-level apartments: a tall window, a living room and a bedroom upstairs.", "最大的复式公寓：高窗、客厅，楼上是卧室。"], "37 м² на двух уровнях": ["37 m² on two levels", "两层共 37 m²"], "Большое окно": ["Large window", "大窗户"], "Диван и обеденная зона": ["Sofa and dining area", "沙发和用餐区"], "Гостиная и лестница в номере Люкс": ["Living room and staircase in the Lux room", "Lux 豪华房的客厅和楼梯"], "Спальня Люкс": ["Lux bedroom", "Lux 豪华房卧室"], "Антресоль": ["Mezzanine", "阁楼"], "Кухня и окно": ["Kitchen and window", "厨房与窗户"], "Кухня": ["Kitchen", "厨房"], "Санузел со стиральной машиной": ["Bathroom with washing machine", "带洗衣机的卫生间"], "до 3 гостей": ["up to 3 guests", "最多 3 人"], "Люкс": ["Lux", "Lux 豪华房"], "Двухуровневый номер с отделкой выше классом, стиральной машиной и кондиционером.": ["Two-level room with upgraded finishes, a washing machine and air conditioning.", "装修更高档的复式房，配有洗衣机和空调。"], "Стиральная машина": ["Washing machine", "洗衣机"], "Кондиционер": ["Air conditioning", "空调"], "Кухня с посудомоечной машиной": ["Kitchen with dishwasher", "带洗碗机的厨房"], "Студия с двумя кроватями": ["Studio with two beds", "两张床的单间"], "Студия с кухней": ["Studio with kitchen", "带厨房的单间"], "Спальная зона": ["Sleeping area", "睡眠区"], "45 м²": ["45 m²", "45 m²"], "до 6 гостей": ["up to 6 guests", "最多 6 人"], "Большой семейный": ["Large Family", "大家庭房"], "Две изолированные студии в одном номере: у каждой своя кухня и санузел.": ["Two separate studios in one room, each with its own kitchen and bathroom.", "一间房内含两个独立单间，各有厨房和卫生间。"], "До 6 гостей": ["Up to 6 guests", "最多 6 人"], "2 кухни и 2 санузла": ["2 kitchens and 2 bathrooms", "2 个厨房和 2 个卫生间"], "Цена за 1–4 гостей": ["Price for 1–4 guests", "价格含 1–4 人"], "Доп. гость от 1 000 ₽": ["Extra guest from 1,000 ₽", "每增加 1 人 1000 ₽ 起"], "Кровать и окно в номере Уют стандарт": ["Bed and window in the Uyut Standard room", "Uyut 标准房的床和窗户"], "Номер Уют стандарт с кухней": ["Uyut Standard room with kitchen", "带厨房的 Uyut 标准房"], "Стол и кухня": ["Table and kitchen", "餐桌与厨房"], "Прихожая и кухня": ["Entrance and kitchen", "玄关与厨房"], "Санузел с душем": ["Bathroom with shower", "带淋浴的卫生间"], "20 м²": ["20 m²", "20 m²"], "до 2 гостей": ["up to 2 guests", "最多 2 人"], "1 уровень": ["1 level", "单层"], "Уют стандарт": ["Uyut Standard", "Uyut 标准房"], "Студия с окном, кухней и рабочим столом — для поездки на несколько дней.": ["A studio with a window, kitchen and desk, made for a trip of a few days.", "带窗户、厨房和书桌的单间，适合几天的行程。"], "Двуспальная кровать": ["Double bed", "双人床"], "Кухня с плитой и холодильником": ["Kitchen with hob and fridge", "带灶台和冰箱的厨房"], "Стол у окна для работы": ["Desk by the window", "窗边办公桌"], "Душ и фен": ["Shower and hairdryer", "淋浴和吹风机"], "Номер Уют комфорт": ["Uyut Comfort room", "Uyut 舒适房"], "Кровать с бирюзовой стеной": ["Bed against a teal wall", "青绿色墙面的床"], "Барная стойка и кухня": ["Breakfast bar and kitchen", "吧台与厨房"], "Уют комфорт": ["Uyut Comfort", "Uyut 舒适房"], "Улучшенная студия: барная стойка вместо стола, свежий ремонт.": ["An upgraded studio: a breakfast bar instead of a table, recently renovated.", "升级单间：以吧台代替餐桌，新近装修。"], "Кухня-гостиная с барной стойкой": ["Kitchen-living area with breakfast bar", "带吧台的厨房客厅"], "Посуда и чайник": ["Dishes and kettle", "餐具和电水壶"], "Кухня и лестница": ["Kitchen and stairs", "厨房与楼梯"], "Спальное место наверху": ["Sleeping place upstairs", "楼上睡眠区"], "18 м²": ["18 m²", "18 m²"], "Мини": ["Mini", "Mini 迷你房"], "Компактная двухуровневая студия. Окно выходит в коридор, работает приточная вентиляция.": ["A compact two-level studio. The window faces the corridor; fresh-air ventilation runs throughout.", "紧凑型复式单间。窗户朝向走廊，配有新风通风系统。"], "Кровать на втором уровне": ["Bed on the upper level", "床在楼上"], "Кухня с барной стойкой": ["Kitchen with breakfast bar", "带吧台的厨房"], "Самая доступная цена": ["Our lowest price", "价格最实惠"], "Отзывы гостей · Яндекс Карты": ["Guest reviews · Yandex Maps", "住客评价 · Yandex 地图"], "1 236 оценок · 809 отзывов": ["1,236 ratings · 809 reviews", "1236 条评分 · 809 条评价"], "Парковка": ["Parking", "停车"], "Расположение": ["Location", "位置"], "Персонал": ["Staff", "员工"], "Доля положительных упоминаний по темам — данные Яндекс Карт. Ниже — отзывы гостей без правок, с сокращениями.": ["Share of positive mentions by topic, from Yandex Maps. Below are guest reviews, shortened and translated from Russian.", "各主题好评占比，数据来自 Yandex 地图。以下住客评价已节选，并由俄语翻译。"], "Хорошие, чистые, уютные номера со свежем ремонтом и наличием всего необходимого. … Останавливаюсь здесь раз в неделю.": ["Good, clean, cosy rooms, freshly renovated, with everything you need. … I stay here once a week.", "房间干净舒适，新近装修，设施齐全。……我每周都住这里。"], "Евгений Светлов": ["Evgeny Svetlov", "Evgeny Svetlov"], "17 мая 2025 · Командировки": ["17 May 2025 · Business trips", "2025年5月17日 · 出差"], "Однозначно рекомендую всем, кто приехал в Москву по делам/ проездом/погулять … Всё чистое, в рабочем состоянии и не старьё (!!)": ["I definitely recommend it to anyone coming to Moscow on business, passing through or sightseeing … Everything is clean, works, and isn't worn out (!!)", "强烈推荐给来莫斯科出差、中转或游玩的人……一切都干净、好用，而且不陈旧（！！）"], "Екатерина Л.": ["Ekaterina L.", "Ekaterina L."], "16 августа 2026 · По делам": ["16 August 2026 · On business", "2026年8月16日 · 公务"], "Меня приятно удивила кухня в каждом номере, при путешествиях большой компанией, особенно с детьми -спортсменами это было актуально и полезно.": ["I was pleasantly surprised by the kitchen in every room. Travelling as a big group, especially with young athletes, that was really useful.", "每间房都有厨房，让我很惊喜。我们是一大群人出行，尤其带着参加比赛的孩子，这非常实用。"], "Боровикова Ольга": ["Olga Borovikova", "Olga Borovikova"], "24 февраля 2026 · Спортивная поездка": ["24 February 2026 · Sports trip", "2026年2月24日 · 体育赛事出行"], "Отличный номер, в два этажа, мини кухня, гостиная. Кондиционер, телевизор и Wi-Fi все работает отлично. В номере очень чисто.": ["A great two-storey room with a mini kitchen and living room. Air conditioning, TV and Wi-Fi all work perfectly. The room is very clean.", "很棒的两层房间，有小厨房和客厅。空调、电视和 Wi-Fi 都运行良好。房间非常干净。"], "Виктория Н.": ["Victoria N.", "Victoria N."], "18 марта 2026 · Двухуровневый номер": ["18 March 2026 · Two-level room", "2026年3月18日 · 复式房"], "Хорошее недорогое место. Останавливались несколько раз. … Администраторы очень хорошо идут на контакт. … Парковка рядом бесплатная.": ["A good, affordable place. We've stayed several times. … The front-desk staff are very easy to deal with. … Free parking nearby.", "实惠的好地方，我们住过好几次。……前台人员非常好沟通。……附近停车免费。"], "Ирина": ["Irina", "Irina"], "28 декабря 2025 · Постоянный гость": ["28 December 2025 · Regular guest", "2025年12月28日 · 回头客"], "Очень чистые и эстетичные номера в стиле лофт. Очень приятно и необычно было находиться в самом здании…": ["Very clean, stylish loft-style rooms. Being in the building itself was a pleasant and unusual experience…", "非常干净、有格调的 loft 风格房间。住在这栋楼里本身就是一种愉快又独特的体验……"], "Ян": ["Yan", "Yan"], "6 апреля 2025 · Компания из трёх человек": ["6 April 2025 · Group of three", "2025年4月6日 · 三人同行"], "Все отзывы на Яндекс Картах →": ["All reviews on Yandex Maps →", "在 Yandex 地图查看全部评价 →"], "Здание и расположение": ["The building and location", "建筑与位置"], "Живёте в «лежачем небоскрёбе»": ["You stay in the “Lying Skyscraper”", "入住「躺着的摩天楼」"], "Дом на Варшавском шоссе, 125 построен в 1964–1974 годах по проекту архитекторов А. М. Меерсона и Н. П. Штеллера при участии инженера В. Г. Давыдова. Комплекс задумывали для научных институтов и производств: максимум полезной площади при минимуме занятой земли.": ["The building at 125 Varshavskoye Highway was built in 1964–1974 to a design by architects A. M. Meerson and N. P. Shteller with engineer V. G. Davydov. It was conceived as a complex for research institutes and production: the most usable floor space on the least land.", "华沙公路125号大楼建于1964–1974年，由建筑师 A. M. 梅尔松和 N. P. 什特勒设计，工程师 V. G. 达维多夫参与。它是为科研院所和生产单位而建的综合体：用最少的土地获得最大的使用面积。"], "Строили в три очереди. Для своего времени решения были смелыми: единый коридор коммуникаций, грузовые лифты, мощная вентиляция и энергоснабжение. Здесь работали научные институты, в том числе НИИ электронно-вычислительной техники.": ["It was built in three phases. For its time the engineering was bold: a single utilities corridor, freight lifts, powerful ventilation and power supply. Research institutes worked here, including the Research Institute of Electronic Computing Technology.", "大楼分三期建成。在当时，其工程设计相当大胆：统一的管线走廊、货运电梯、强大的通风和供电系统。这里曾入驻多家科研院所，其中包括电子计算技术研究所。"], "Здание и сегодня используется по назначению, а в одной из его секций — наши апартаменты.": ["The building is still in use today, and one of its sections is home to our apartments.", "如今大楼仍在使用，我们的公寓就位于其中一个楼段。"], "Длина": ["Length", "长度"], "736 м": ["736 m", "736 米"], "Этажей": ["Floors", "楼层"], "Площадь": ["Floor area", "面积"], "400 000+ м²": ["400,000+ m²", "40 万+ m²"], "Годы стройки": ["Built", "建造年份"], "Открыть плакат с историей здания": ["Open the poster about the building's history", "打开建筑历史海报"], "Плакат «История лежачего небоскрёба»": ["Poster: “History of the Lying Skyscraper” (in Russian)", "海报：《躺着的摩天楼的历史》（俄文）"], "0 м": ["0 m", "0 米"], "7 этажей": ["7 floors", "7 层"], "Метро «Южная»": ["Yuzhnaya metro", "Yuzhnaya 地铁站"], "≈ 15 мин пешком": ["≈ 15 min walk", "步行约 15 分钟"], "Супермаркет «Перекрёсток»": ["Perekrestok supermarket", "Perekrestok 超市"], "через дорогу": ["across the road", "马路对面"], "Кафе с бизнес-ланчами": ["Café with set lunches", "提供商务午餐的咖啡馆"], "в соседнем подъезде": ["next entrance", "隔壁入口"], "Царицыно и Коломенское": ["Tsaritsyno and Kolomenskoye", "察里津诺和科洛缅斯科耶"], "рядом": ["nearby", "附近"], "у входа, бесплатно": ["at the entrance, free", "门口，免费"], "Ресепшн апарт-отеля Варшавка 125": ["Varshavka 125 reception", "Varshavka 125 前台"], "Москва, Варшавское шоссе, 125, стр. 1, секция 9": ["Moscow, 125 Varshavskoye Highway, bldg. 1, section 9", "莫斯科 华沙公路125号1栋 第9段"], "Вход — через секцию 9. Перед заездом пришлём, как пройти от парковки и остановки.": ["Enter through section 9. Before arrival we'll send directions from the car park and bus stop.", "从第9段入口进入。入住前我们会发送从停车场和公交站过来的路线。"], "Открыть в Яндекс Картах": ["Open in Yandex Maps", "在 Yandex 地图中打开"], "Написать в MAX": ["Message us on MAX", "通过 MAX 联系我们"], "Перед поездкой": ["Before you travel", "出行前须知"], "Частые вопросы": ["FAQ", "常见问题"], "Во сколько заезд и выезд?": ["What are check-in and check-out times?", "入住和退房时间是几点？"], "Заезд с 15:00, выезд до 12:00. Ранний заезд и поздний выезд возможны по согласованию, с почасовой оплатой. Лучше предупредить хотя бы за сутки.": ["Check-in from 15:00, check-out by 12:00. Early check-in and late check-out are possible by arrangement for an hourly fee. Please let us know at least a day ahead.", "15:00 起入住，12:00 前退房。提前入住和延迟退房可协商，按小时收费。请至少提前一天告知。"], "Какие документы вы даёте для бухгалтерии?": ["What paperwork do you provide for accounting?", "可以提供哪些报销票据？"], "Подтверждение проживания и чеки. Напишите при бронировании, что нужны документы, — подготовим к дню выезда.": ["Proof of stay and receipts. Mention it when you book and we'll have them ready on the day you leave.", "住宿证明和收据。预订时注明需要票据，我们会在退房当天备好。"], "Как оплатить и можно ли отменить?": ["How do I pay, and can I cancel?", "如何付款？可以取消吗？"], "Оплата онлайн в модуле бронирования. На основных тарифах отмена бесплатная — условия показаны рядом с ценой.": ["Pay online in the booking module. Cancellation is free on main rates; terms are shown next to the price.", "在预订页面在线支付。主要房价可免费取消，条款显示在价格旁。"], "Можно с животными?": ["Can I bring a pet?", "可以携带宠物吗？"], "Да, по согласованию с администратором. Стоимость — 3 000 ₽ за проживание.": ["Yes, by arrangement with the front desk. The fee is 3,000 ₽ per stay.", "可以，需与前台协商。费用为每次入住 3000 ₽。"], "Почему цена на одни и те же даты меняется?": ["Why does the price for the same dates change?", "为什么同一日期的价格会变化？"], "Цены зависят от загрузки и спроса на конкретные даты и могут меняться в течение дня. Бронирование фиксирует цену.": ["Prices depend on occupancy and demand for specific dates and can change during the day. Booking locks in your price.", "价格取决于具体日期的入住率和需求，一天内可能变动。预订后价格即锁定。"], "Выберите даты — цены покажем сразу": ["Pick your dates and see prices instantly", "选择日期，立即查看价格"], "Скидка до 10% и приоритет пожеланий при бронировании на сайте.": ["Up to 10% off and priority for your requests when you book on this website.", "官网预订最高优惠 10%，并优先满足您的需求。"], "Апарт-отель в «лежачем небоскрёбе».": ["Apart-hotel in the “Lying Skyscraper”.", "位于「躺着的摩天楼」的公寓酒店。"], "Связь 24/7": ["Contact 24/7", "全天候联系"], "Гостям": ["For guests", "住客须知"], "Правила проживания": ["House rules (in Russian)", "入住规则（俄文）"], "Политика обработки персональных данных": ["Privacy policy (in Russian)", "隐私政策（俄文）"], "ООО «В125», ИНН 9726093114": ["V125 LLC, TIN 9726093114", "V125 有限责任公司，税号 9726093114"], "Цены на сайте указаны «от» и зависят от дат": ["Prices on this site are “from” and depend on dates", "网站价格为起价，随日期变化"], "от 2 750 ₽": ["from 2,750 ₽", "2750 ₽ 起"], "за ночь · скидка до 10%": ["per night · up to 10% off", "每晚 · 最高优惠 10%"], "Фото номера": ["Room photo", "客房照片"], "Закрыть": ["Close", "关闭"], "Предыдущее": ["Previous", "上一张"], "Следующее": ["Next", "下一张"], "Открыть фото: ": ["Open photo: ", "查看照片："], "Сайт использует cookie и Яндекс Метрику для статистики посещений.": ["This site uses cookies and Yandex Metrica to collect visit statistics.", "本网站使用 Cookie 和 Yandex Metrica 统计访问数据。"], "Подробнее": ["Learn more (in Russian)", "了解更多（俄文）"], "Понятно": ["OK", "知道了"], "Апартаменты на Варшавском шоссе: спальня на антресоли в двухуровневом номере": ["Apartments on Varshavskoye Highway: mezzanine bedroom in a two-level unit", "瓦尔沙夫斯科耶公路上的公寓：复式房间的阁楼卧室"], "Об отеле": ["About the hotel", "关于酒店"], "Апарт-отель у метро «Южная» на Варшавском шоссе": ["Apart-hotel near Yuzhnaya metro on Varshavskoye Highway", "瓦尔沙夫斯科耶公路上、Yuzhnaya 地铁站附近的公寓酒店"], "«Варшавка 125» — апарт-отель на юге Москвы, в Чертанове (ЮАО). Здесь можно снять апартаменты посуточно или надолго: 66 студий и двухуровневых номеров с кухней и своим санузлом, бесплатная парковка у входа, до метро «Южная» — 15 минут пешком.": ["Varshavka 125 is an apart-hotel in the south of Moscow, in Chertanovo. Rent apartments by the night or for a long stay: 66 studios and two-level units with a kitchen and private bathroom, free parking at the entrance, 15 minutes’ walk to Yuzhnaya metro.", "Varshavka 125 是位于莫斯科南部切尔塔诺沃区的公寓酒店。可按天或长期租住：66 间带厨房和独立卫生间的单间及复式公寓，门口免费停车，步行 15 分钟到 Yuzhnaya 地铁站。"], "Апарт-отель или гостиница?": ["Apart-hotel or hotel?", "公寓酒店还是普通酒店？"], "Отель для командировки": ["A hotel for business trips", "适合出差的酒店"], "Командированным важны рабочий стол, Wi-Fi и документы для бухгалтерии. Подтверждение проживания и чеки готовим к дню выезда, а своя кухня сокращает расходы на питание. Для бригад и групп есть номера на 4–6 гостей и бесплатная парковка для транспорта.": ["Business travellers need a desk, Wi-Fi and paperwork for accounting. We prepare the stay confirmation and receipts by check-out, and your own kitchen cuts food costs. Crews and groups get units for 4–6 guests and free parking for vehicles.", "出差人士需要书桌、Wi-Fi 和报销票据。我们在退房当天备好住宿证明和收据，自带厨房还能节省餐费。团队可选 4–6 人房型，车辆免费停放。"], "Где остановиться на Варшавском шоссе": ["Where to stay on Varshavskoye Highway", "在瓦尔沙夫斯科耶公路住哪里"], "Отель стоит прямо на Варшавском шоссе: через дорогу «Перекрёсток», рядом кафе с бизнес-ланчами, недалеко Царицыно и Коломенское. Гостиница на сутки, апартаменты для семьи или недорогой номер на неделю — от 3 050 ₽ за ночь, а при бронировании на сайте скидка до 10%.": ["The hotel stands right on Varshavskoye Highway: a Perekrestok supermarket across the road, cafés with business lunches nearby, Tsaritsyno and Kolomenskoye not far away. A room for one night, a family apartment or an affordable week-long stay — from 3,050 ₽ per night, with up to 10% off when you book on the website.", "酒店就在瓦尔沙夫斯科耶公路旁：马路对面是 Perekrestok 超市，附近有商务午餐咖啡馆，离察里津诺和科洛缅斯科耶不远。无论住一晚、家庭入住还是实惠的一周长住——每晚 3050 ₽ 起，官网预订最高优惠 10%。"], "Что такое апарт-отель?": ["What is an apart-hotel?", "什么是公寓酒店？"], "Чем апарт-отель отличается от гостиницы и квартиры посуточно?": ["How is an apart-hotel different from a hotel or a daily rental flat?", "公寓酒店与普通酒店、日租公寓有什么不同？"], "Почему апарт-отель удобен для командировки?": ["Why is an apart-hotel good for business trips?", "为什么公寓酒店适合出差？"], "Своя кухня экономит на питании, а документы для бухгалтерии готовим к дню выезда. Для бригад и групп есть номера на 4–6 гостей и бесплатная парковка.": ["Your own kitchen saves on meals, and accounting documents are ready by check-out. Crews and groups get units for 4–6 guests and free parking.", "自带厨房节省餐费，报销票据在退房当天备好。团队可选 4–6 人房型并免费停车。"], "Как добраться от метро «Южная»?": ["How do I get there from Yuzhnaya metro?", "如何从 Yuzhnaya 地铁站前往？"], "Около 15 минут пешком по Варшавскому шоссе. Вход — через секцию 9, перед заездом пришлём схему, как пройти от метро, остановки и парковки.": ["About 15 minutes on foot along Varshavskoye Highway. The entrance is via section 9; before arrival we will send directions from the metro, bus stop and car park.", "沿瓦尔沙夫斯科耶公路步行约 15 分钟。入口在 9 号单元，入住前我们会发送从地铁、公交站和停车场过来的路线图。"], "Есть ли парковка?": ["Is there parking?", "有停车场吗？"], "Да, бесплатная парковка у входа.": ["Yes, free parking at the entrance.", "有，门口免费停车。"], "Можно снять апартаменты надолго?": ["Can I rent an apartment for a long stay?", "可以长期租住吗？"], "Да, от суток до нескольких месяцев. Для проживания от недели напишите нам в MAX — подберём номер и тариф.": ["Yes, from one night to several months. For stays of a week or longer, message us on MAX and we will pick a unit and rate.", "可以，从一晚到几个月都行。入住一周以上请通过 MAX 联系我们，为您挑选房型和价格。"], "Подойдёт ли отель для семьи?": ["Is the hotel suitable for families?", "酒店适合家庭入住吗？"], "Да. Двухуровневые Престиж и Простор вмещают до 4 гостей, а «Большой семейный» — до 6: в нём две студии с отдельными кухнями и санузлами.": ["Yes. The two-level Prestige and Prostor units sleep up to 4, and the Large Family unit up to 6 — two studios with separate kitchens and bathrooms.", "适合。复式的 Prestige 和 Prostor 最多可住 4 人，大家庭房最多 6 人——包含两间各带厨房和卫生间的单间公寓。"], "Апарт-отель на Варшавке: студии и двухуровневые апартаменты с кухней в": ["Apart-hotel on Varshavka: studios and two-level apartments with a kitchen in the", "瓦尔沙夫卡公寓酒店：带厨房的单间与复式公寓，"], "Для групп, командировок, семей и путешественников. В каждом номере кухня и свой санузел, парковка у входа бесплатная, к завтраку — готовые блюда шоковой заморозки.": ["For groups, business trips, families and travellers. Every room has a kitchen and a private bathroom, free parking at the entrance, and ready-made blast-frozen breakfasts.", "适合团体、出差、家庭和游客。每间客房都有厨房和独立卫生间，门口免费停车，并提供速冻即食早餐。"], "контакт-центр на связи": ["contact centre on call", "客服中心随时联系"], "Апарт-отель — это гостиница, где вместо обычного номера вы живёте в апартаментах с кухней. Сервис как в отеле: ресепшн с 10:00 до 22:00, контакт-центр 24/7, уборка, документы. А быт как дома: можно приготовить ужин, а утром разогреть готовый завтрак и не тратиться на кафе. Поэтому апарт-отель часто выгоднее мини-отеля или квартиры от частника.": ["An apart-hotel is a hotel where you stay in an apartment with a kitchen instead of a standard room. Hotel service — front desk 10:00–22:00, 24/7 contact centre, cleaning, paperwork — with the comfort of home: cook your own dinner, heat up a ready-made breakfast in the morning and save on cafés. That is why it is often better value than a mini-hotel or a private flat.", "公寓酒店就是用带厨房的公寓代替普通客房的酒店。享受酒店服务——前台 10:00–22:00、24 小时客服中心、清洁、票据，又像在家一样：晚上自己做饭，早上加热即食早餐，省下餐馆开销。因此通常比迷你酒店或私人出租公寓更划算。"], "Это гостиница, где вместо обычных номеров — апартаменты с кухней и своим санузлом. Сервис как в отеле: ресепшн с 10:00 до 22:00, контакт-центр 24/7, уборка, онлайн-бронирование и документы.": ["It is a hotel with apartments instead of standard rooms, each with a kitchen and private bathroom. Hotel-style service: front desk 10:00–22:00, 24/7 contact centre, cleaning, online booking and paperwork.", "这是一种用带厨房和独立卫生间的公寓代替普通客房的酒店，提供酒店式服务：前台 10:00–22:00、24 小时客服中心、清洁、在线预订和票据。"], "От гостиницы — кухней и площадью: можно готовить и жить дольше без лишних трат. От квартиры посуточно — официальным бронированием, чеками, контакт-центром 24/7 и одинаковым уровнем номеров.": ["Compared with a hotel — a kitchen and more space, so you can cook and stay longer for less. Compared with a daily rental flat — official booking, receipts, a 24/7 contact centre and consistent room standards.", "与酒店相比——有厨房、空间更大，可以做饭、长住更省钱；与日租公寓相比——正规预订、提供收据、24 小时客服中心、房间标准统一。"], "Есть ли завтрак?": ["Is breakfast available?", "有早餐吗？"], "Да. Готовые завтраки шоковой заморозки: разогреваете на своей кухне за несколько минут, вкус и качество блюд сохраняются. Закажите при бронировании или на ресепшене.": ["Yes. Ready-made blast-frozen breakfasts: heat them up in your own kitchen in a few minutes — taste and quality are preserved. Order when booking or at the front desk.", "有。提供速冻即食早餐：在房内厨房加热几分钟即可，口味和品质完好保留。可在预订时或在前台订购。"], "Как работает ресепшн?": ["What are the front desk hours?", "前台营业时间？"], "Ресепшн открыт с 10:00 до 22:00, контакт-центр отвечает круглосуточно по телефону и в MAX.": ["The front desk is open 10:00–22:00; the contact centre answers 24/7 by phone and in MAX.", "前台开放时间 10:00–22:00，客服中心 24 小时通过电话和 MAX 应答。"]}, LANG='ru', TITLE={ru:'Апарт-отель «Варшавка 125» у метро «Южная» — гостиница на Варшавском шоссе',en:'Varshavka 125 — apartments in Moscow',zh:'Varshavka 125 — 莫斯科公寓酒店'};
+  var ci=document.getElementById('ci'), co=document.getElementById('co'), gs=document.getElementById('gs');
+  function ymd(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+  function parse(v){var p=v.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function dmy(v){var p=v.split('-');return p[2]+'-'+p[1]+'-'+p[0];}
+  function plural(n,a,b,c){var m=n%10,h=n%100;if(m===1&&h!==11)return a;if(m>=2&&m<=4&&(h<10||h>=20))return b;return c;}
+  var t=new Date(); t.setHours(0,0,0,0); var t1=new Date(t); t1.setDate(t.getDate()+1);
+  ci.min=ymd(t); ci.value=ymd(t); co.value=ymd(t1);
+  function url(){
+    var q=[];
+    if(ci.value&&co.value){q.push('dfrom='+dmy(ci.value),'dto='+dmy(co.value));}
+    q.push('adults='+gs.value,'lang='+LANG);
+    return BOOK+'?'+q.join('&');
+  }
+  function sync(){
+    if(!ci.value||ci.value<ci.min){ci.value=ci.min;}
+    var d=parse(ci.value); d.setDate(d.getDate()+1); co.min=ymd(d);
+    if(!co.value||co.value<=ci.value){co.value=ymd(d);}
+    var n=Math.round((parse(co.value)-parse(ci.value))/864e5);
+    document.getElementById('nights').textContent= LANG==='en' ? n+(n===1?' night':' nights') : LANG==='zh' ? n+' 晚' : n+' '+plural(n,'ночь','ночи','ночей');
+    var u=url(); document.querySelectorAll('.js-book').forEach(function(a){a.href=u;});
+  }
+  [ci,co,gs].forEach(function(el){el.addEventListener('change',sync);el.addEventListener('input',sync);});
+  document.getElementById('book').addEventListener('submit',function(e){e.preventDefault();});
+  sync();
+
+  // Яндекс Метрика: цели (JavaScript-события). Счётчик подключается в <head> только на боевом сайте.
+  var MID=104105573;
+  function goal(n,p){try{if(window.ym)window.ym(MID,'reachGoal',n,p||{});}catch(e){}}
+  function place(el){
+    if(el.id==='go')return 'form';
+    if(el.closest('.mbar'))return 'sticky';
+    if(el.closest('.top'))return 'header';
+    if(el.closest('.final'))return 'final';
+    var s=el.closest('[id]'); return s?s.id:'other';
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a,button'); if(!a)return;
+    var h=a.getAttribute('href')||'';
+    if(a.classList.contains('js-book'))goal('book_click',{place:place(a),lang:LANG,guests:gs.value});
+    else if(h.indexOf('tel:')===0)goal('phone_click',{place:place(a)});
+    else if(h.indexOf('max.ru')>-1)goal(a.closest('#groups')?'group_lead':'max_click',{place:place(a)});
+    else if(h.indexOf('yandex.ru/maps')>-1)goal(h.indexOf('reviews')>-1?'reviews_open':'map_open');
+    else if(a.classList.contains('slide')||a.classList.contains('zoom'))goal('photo_open',{place:place(a)});
+    else if(a.dataset&&a.dataset.l)goal('lang_switch',{lang:a.dataset.l});
+  },true);
+  var ck=document.getElementById('ck');
+  try{if(!localStorage.getItem('v125-ck'))ck.hidden=false;}catch(e){ck.hidden=false;}
+  document.getElementById('ck-ok').addEventListener('click',function(){ck.hidden=true;ck.remove();try{localStorage.setItem('v125-ck','1');}catch(e){}});
+
+  // language switch: RU text is the source; EN/ZH come from the dictionary
+  function norm(s){return s.replace(/\s+/g,' ').trim();}
+  var nodes=[], attrs=[], P='Открыть фото: ';
+  var walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+    var p=n.parentNode; if(!p||/^(SCRIPT|STYLE)$/.test(p.nodeName)||p.id==='nights'||p.closest('svg'))return NodeFilter.FILTER_REJECT;
+    return I18N[norm(n.nodeValue)]?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+  while(walk.nextNode()){var n=walk.currentNode,v=n.nodeValue;nodes.push({n:n,ru:v,k:norm(v),a:v.match(/^\s*/)[0],b:v.match(/\s*$/)[0]});}
+  document.querySelectorAll('[alt],[aria-label]').forEach(function(el){['alt','aria-label'].forEach(function(at){
+    var v=el.getAttribute(at); if(v)attrs.push({el:el,at:at,ru:v});});});
+  function tr(s,i){if(s.indexOf(P)===0){var r=I18N[s.slice(P.length)];return r?I18N[P][i]+r[i]:s;}var x=I18N[s];return x?x[i]:s;}
+  function setLang(l){
+    LANG=l; var i=l==='en'?0:l==='zh'?1:-1;
+    nodes.forEach(function(o){o.n.nodeValue=i<0?o.ru:(i===1?'':o.a)+I18N[o.k][i]+(i===1?'':o.b);});
+    attrs.forEach(function(o){o.el.setAttribute(o.at,i<0?o.ru:tr(o.ru,i));});
+    document.documentElement.lang=l; document.title=TITLE[l];
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===l));});
+    try{localStorage.setItem('v125-lang',l);}catch(e){}
+    sync();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.l);});});
+  var start='ru', h=(location.hash||'').slice(1);
+  try{start=localStorage.getItem('v125-lang')||start;}catch(e){}
+  if(h==='en'||h==='zh'||h==='ru')start=h;
+  if(start==='ru'&&/^zh/i.test(navigator.language||''))start='zh';
+  if(start!=='ru')setLang(start);
+
+  // galleries
+  document.querySelectorAll('.gal').forEach(function(g){
+    var tr=g.querySelector('.track'), cnt=g.querySelector('.count'), n=+g.dataset.count;
+    function idx(){return Math.round(tr.scrollLeft/tr.clientWidth);}
+    tr.addEventListener('scroll',function(){cnt.textContent=(idx()+1)+' / '+n;},{passive:true});
+    g.querySelector('.prev').addEventListener('click',function(){tr.scrollTo({left:Math.max(0,idx()-1)*tr.clientWidth,behavior:'smooth'});});
+    g.querySelector('.next').addEventListener('click',function(){var i=idx()+1;if(i>=n)i=0;tr.scrollTo({left:i*tr.clientWidth,behavior:'smooth'});});
+  });
+
+  // lightbox
+  var lb=document.getElementById('lb'), li=document.getElementById('lb-img'), lc=document.getElementById('lb-cap'), set=[], pos=0;
+  function show(){var s=set[pos];li.src=s.dataset.full;li.alt=s.querySelector('img').alt;lc.textContent=li.alt+' · '+(pos+1)+' / '+set.length;}
+  document.querySelectorAll('.slide,.zoom').forEach(function(s){
+    s.addEventListener('click',function(){
+      set=[].slice.call(s.parentNode.querySelectorAll('.slide,.zoom')); pos=set.indexOf(s); show();
+      if(lb.showModal){lb.showModal();}else{lb.setAttribute('open','');}
+    });
+  });
+  function step(k){pos=(pos+k+set.length)%set.length;show();}
+  lb.addEventListener('click',function(e){
+    var a=e.target.closest('[data-lb]');
+    if(a){var v=a.dataset.lb; if(v==='close')lb.close(); if(v==='prev')step(-1); if(v==='next')step(1); return;}
+    if(e.target===lb||e.target.classList.contains('lb-in'))lb.close();
+  });
+  document.addEventListener('keydown',function(e){if(!lb.open)return;if(e.key==='ArrowLeft')step(-1);if(e.key==='ArrowRight')step(1);});
+})();
+</script>
+
+<!-- Варшавка 125 · Smart Booking Widgets. Без data-api - режим предпросмотра (заявки не отправляются). -->
+<script>
+window.V125_WIDGETS_CONFIG = {
+  layout: { mobileBreakpoint: 760, avoidSelectors: ['.mbar', '#ck'] },
+  widgets: {
+    personalization: { targets: { headline: '.hero-copy h1', subline: '.hero-copy .sub' } },
+    video: { src: 'widgets/v125-tour.mp4', srcWebm: 'widgets/v125-tour.webm', ctaPrimaryHref: '#rooms', delaySec: 6 },
+    leadPopup: { image: 'img/reception-s.webp' }
+  }
+};
+</script>
+<script src="widgets/v125-widgets.js" data-site="varshavka125" defer></script>
+</body>
+</html>

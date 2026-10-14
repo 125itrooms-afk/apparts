@@ -1,4 +1,4 @@
-import { CalendarDays, MessageCircle, Phone, PhoneIncoming, Send, Sparkles, X } from 'lucide-react';
+import { BedDouble, CalendarDays, MessageCircle, Phone, PhoneIncoming, Send, Sparkles, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { track } from '../core/analytics';
 import { bookingUrl } from '../core/integrations';
@@ -11,6 +11,7 @@ const ICONS: Record<MultiItemId, (p: { className?: string }) => JSX.Element> = {
   call: (p) => <Phone {...p} />,
   callback: (p) => <PhoneIncoming {...p} />,
   chat: (p) => <MessageCircle {...p} />,
+  quiz: (p) => <BedDouble {...p} />,
   telegram: (p) => <Send {...p} />,
   max: (p) => <MaxIcon {...p} />,
   booking: (p) => <CalendarDays {...p} />,
@@ -32,9 +33,19 @@ export function MultiButton({ preview, forceOpen }: { preview?: boolean; forceOp
   }, [preview]);
   useEffect(() => setOpen(!!forceOpen), [forceOpen]);
 
-  const items = cfg.items.filter((i) => i.enabled && (i.id !== 'chat' || chatOn) && (i.id !== 'callback' || cbOn));
+  const quizOn = useApp((s) => s.config.widgets.quiz.enabled);
+  const accent = useApp((s) => s.config.branding.accent);
+  // пункт без ссылки не показываем (например, Telegram, если канала нет)
+  const items = cfg.items.filter(
+    (i) =>
+      i.enabled &&
+      (i.id !== 'chat' || chatOn) &&
+      (i.id !== 'callback' || cbOn) &&
+      (i.id !== 'quiz' || quizOn) &&
+      (!['telegram', 'max', 'offers'].includes(i.id) || !!href(i.id)),
+  );
 
-  const href = (id: MultiItemId): string | undefined => {
+  function href(id: MultiItemId): string | undefined {
     switch (id) {
       case 'call':
         return 'tel:' + contacts.phone.replace(/[^\d+]/g, '');
@@ -47,7 +58,7 @@ export function MultiButton({ preview, forceOpen }: { preview?: boolean; forceOp
       case 'offers':
         return contacts.offersUrl;
     }
-  };
+  }
 
   const onItem = (id: MultiItemId) => {
     if (preview) return;
@@ -55,18 +66,19 @@ export function MultiButton({ preview, forceOpen }: { preview?: boolean; forceOp
     if (id === 'booking') track('booking_click', 'multibutton');
     if (id === 'callback') openPanel('callback');
     if (id === 'chat') openPanel('chat');
+    if (id === 'quiz') openPanel('quiz');
     setOpen(false);
   };
 
   return (
     <div className={cx('pointer-events-auto relative flex flex-col gap-2', cfg.position === 'left' ? 'items-start' : 'items-end')}>
       {open && (
-        <ul className="mb-1 flex flex-col gap-2" aria-label="Способы связи">
+        <ul className="mb-1 flex w-[272px] max-w-[calc(100vw-40px)] flex-col gap-2" aria-label="Способы связи">
           {items.map((it, i) => {
             const Icon = ICONS[it.id];
             const h = href(it.id);
             const cls = cx(
-              'flex items-center gap-3 rounded-full bg-white py-1.5 pl-1.5 pr-4 text-[13.5px] font-semibold text-ink shadow-card ring-1 ring-paper-line transition hover:-translate-y-0.5 hover:shadow-float',
+              'flex w-full items-center gap-3 rounded-full bg-white py-1.5 pl-1.5 pr-4 text-[13.5px] font-semibold text-ink shadow-card ring-1 ring-paper-line transition hover:-translate-y-0.5 hover:shadow-float',
               cfg.position === 'left' ? '' : 'flex-row-reverse pl-4 pr-1.5',
             );
             const inner = (
@@ -96,7 +108,7 @@ export function MultiButton({ preview, forceOpen }: { preview?: boolean; forceOp
             );
           })}
           {items.some((i) => i.id === 'call') && (
-            <li className="px-2 text-[11px] text-ink-soft">
+            <li className="rounded-full bg-white/95 px-3 py-1 text-center text-[11px] text-ink-soft shadow-card">
               Телефон: <span className="select-all font-semibold text-ink">{contacts.phone}</span>
             </li>
           )}
@@ -110,7 +122,7 @@ export function MultiButton({ preview, forceOpen }: { preview?: boolean; forceOp
         aria-expanded={open}
         aria-label={open ? 'Скрыть способы связи' : 'Связаться с нами'}
         className={cx('relative grid place-items-center rounded-full text-white shadow-float transition-transform hover:scale-105', cfg.pulse && !open && 'animate-ring')}
-        style={{ width: size, height: size, background: cfg.color }}
+        style={{ width: size, height: size, background: cfg.color, outline: `2px solid ${accent}`, outlineOffset: 0 }}
       >
         <span className={cx('transition-transform duration-300', open && 'rotate-90')}>
           {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}

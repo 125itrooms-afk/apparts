@@ -393,13 +393,14 @@ function VideoForm() {
               }}
             />
           </label>
-          {w.src ? <button type="button" onClick={() => set({ src: '' })} className="text-xs font-semibold text-bad">Вернуть демо-ролик</button> : <Demo>демо-ролик</Demo>}
+          {w.src ? <button type="button" onClick={() => set({ src: '' })} className="text-xs font-semibold text-bad">Вернуть демо-ролик</button> : <Demo>слайд-шоу из фото сайта</Demo>}
           {err && <span className="text-xs text-bad">{err}</span>}
         </div>
       </Field>
       <Field label="Подпись"><Input value={w.title} onChange={(e) => set({ title: e.target.value })} /></Field>
       <Row>
         <Field label="CTA 1"><Input value={w.ctaPrimary} onChange={(e) => set({ ctaPrimary: e.target.value })} /></Field>
+        <Field label="Куда ведёт CTA 1" hint="Путь или якорь на сайте, например #rooms"><Input value={w.ctaPrimaryHref} onChange={(e) => set({ ctaPrimaryHref: e.target.value })} /></Field>
         <Field label="CTA 2 (бронирование)"><Input value={w.ctaSecondary} onChange={(e) => set({ ctaSecondary: e.target.value })} /></Field>
         <Field label="Размер">
           <Select value={w.size} onChange={(e) => set({ size: e.target.value as 's' | 'm' | 'l' })} options={[{ value: 's', label: 'Маленький' }, { value: 'm', label: 'Средний' }, { value: 'l', label: 'Большой' }]} />

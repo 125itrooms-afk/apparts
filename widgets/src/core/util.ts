@@ -93,8 +93,9 @@ export function responsePromise(h: WorkHours, minutes: number, at = new Date()):
 /** Слоты для выбора удобного времени звонка (сегодня/завтра в рабочие часы). */
 export function callSlots(h: WorkHours, at = new Date()): { value: string; label: string }[] {
   const out: { value: string; label: string }[] = [];
-  const [fh] = h.from.split(':').map(Number);
-  const [th] = h.to.split(':').map(Number);
+  // гостю предлагаем дневные слоты, даже если линия работает круглосуточно
+  const fh = Math.max(9, Number(h.from.split(':')[0]));
+  const th = Math.min(21, Number(h.to.split(':')[0]));
   for (let dayOff = 0; dayOff < 2; dayOff++) {
     const base = new Date(at);
     base.setDate(base.getDate() + dayOff);

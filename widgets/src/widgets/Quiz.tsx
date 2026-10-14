@@ -5,7 +5,8 @@ import { bnovoSource, bookingUrl, getOffers, type CategoryOffer } from '../core/
 import { submitLead } from '../core/leads';
 import { markVisitorAction, openPanel, useApp } from '../core/store';
 import { cx, isoDate, isValidPhone, money, nightsBetween, ruDate, safeStorage } from '../core/util';
-import { Consent, DemoNote, Honeypot, PanelShell, PhoneInput, useIsMobile } from './shared';
+import { Consent, DemoNote, Honeypot, PanelShell, PhoneInput, SubmittedNote, useIsMobile } from './shared';
+import { categoriesFor } from '../core/defaults';
 
 const KEY = 'v125-quiz-progress';
 
@@ -127,6 +128,7 @@ export function QuizPanel({ preview }: { preview?: boolean }) {
             <CheckCircle2 className="h-12 w-12 text-ok" />
             <p className="text-base font-bold">Заявка №{done} на подбор принята</p>
             <p className="max-w-sm text-sm text-ink-soft">Специалист проверит варианты на ваши даты и свяжется с вами. Ответы квиза уже у менеджера - повторять не придётся.</p>
+            <SubmittedNote />
           </div>
         ) : (
           <div key={step} className="animate-rise">
@@ -246,9 +248,32 @@ export function QuizPanel({ preview }: { preview?: boolean }) {
                   </div>
                 )}
                 {offers === null && (
-                  <p className="rounded-xl bg-paper-sunk p-3 text-sm text-ink-soft">
-                    Подберём варианты индивидуально: проверим свободные апартаменты и условия на ваши даты и отправим предложение. Стоимость назовёт специалист по данным системы бронирования.
-                  </p>
+                  <div className="flex flex-col gap-2">
+                    <p className="text-sm font-semibold">Подходят по вместимости:</p>
+                    {categoriesFor(a.adults + a.kids)
+                      .slice(0, 3)
+                      .map((c) => (
+                        <div key={c.key} className="flex items-center justify-between gap-3 rounded-xl border border-paper-line p-3">
+                          <div className="min-w-0">
+                            <p className="font-bold">{c.name}</p>
+                            <p className="text-xs text-ink-mute">
+                              {c.area} м² · до {c.maxGuests} гостей · {c.levels === 2 ? '2 уровня' : '1 уровень'}
+                            </p>
+                          </div>
+                          <p className="shrink-0 text-right text-sm">
+                            от <b className="tabular-nums">{money(c.fromPrice)}</b>
+                            <span className="block text-[11px] text-ink-mute">за ночь</span>
+                          </p>
+                        </div>
+                      ))}
+                    <p className="text-[11.5px] text-ink-mute">
+                      Цены «от» с сайта. Наличие и точную стоимость на ваши даты{' '}
+                      <a href={bookingUrl(a.checkIn, a.checkOut, a.adults + a.kids)} target="_blank" rel="noreferrer" onClick={() => track('booking_click', 'quiz')} className="font-semibold text-brand underline underline-offset-2">
+                        покажет модуль бронирования ↗
+                      </a>{' '}
+                      или подберёт специалист.
+                    </p>
+                  </div>
                 )}
                 <form onSubmit={submit} className="relative mt-1 flex flex-col gap-2.5 border-t border-paper-line pt-4">
                   <Honeypot value={hp} onChange={setHp} />

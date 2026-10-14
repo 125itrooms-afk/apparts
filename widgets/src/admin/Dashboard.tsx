@@ -136,7 +136,7 @@ export function Dashboard({ go }: { go: (s: Section) => void }) {
             ) : (
               <p className="text-xs text-ok">Обещание выполняется для 80% заявок.</p>
             )}
-            <p className="text-[11px] text-ink-mute">Ночные заявки (после закрытия) в расчёт входят - виджет в это время обещает звонок утром. <Demo /></p>
+            <p className="text-[11px] text-ink-mute">Учтены все заявки за период, включая ночные: линия работает 24/7, обещание одно - 10 минут. <Demo /></p>
           </div>
         </Card>
 

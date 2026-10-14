@@ -74,6 +74,14 @@ export interface BehaviorCtx {
   secondsOnPage: number;
   exitIntent: boolean;
   path: string;
+  /** Сколько секунд суммарно блок страницы был на экране: селектор → секунды */
+  inview: Record<string, number>;
+}
+
+/** «#rooms:25» → ['#rooms', 25] */
+export function parseInview(v: string): [string, number] {
+  const i = v.lastIndexOf(':');
+  return i > 0 ? [v.slice(0, i).trim(), Number(v.slice(i + 1)) || 0] : [v.trim(), 0];
 }
 
 export function triggerMet(t: Trigger, ctx: BehaviorCtx, v: Visitor): boolean {
@@ -86,6 +94,10 @@ export function triggerMet(t: Trigger, ctx: BehaviorCtx, v: Visitor): boolean {
       return ctx.scrollPct >= Number(t.value || 0);
     case 'section':
       return ctx.secondsOnPage >= Number(t.value || 0);
+    case 'inview': {
+      const [sel, sec] = parseInview(t.value);
+      return (ctx.inview[sel] ?? 0) >= sec;
+    }
     case 'url':
       return ctx.path.startsWith(t.value);
     case 'utm':
@@ -100,6 +112,7 @@ export const TRIGGER_LABEL: Record<Trigger['type'], string> = {
   time: 'Время на сайте, сек ≥',
   scroll: 'Прокрутка страницы, % ≥',
   section: 'Время на текущей странице, сек ≥',
+  inview: 'Блок страницы на экране (селектор:сек), например #rooms:25',
   url: 'URL начинается с',
   utm: 'UTM-метка содержит',
   action: 'Действие посетителя',

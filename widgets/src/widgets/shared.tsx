@@ -110,10 +110,24 @@ export function Honeypot({ value, onChange }: { value: string; onChange: (v: str
   );
 }
 
-export function DemoNote({ children }: { children: ReactNode }) {
+/** Честная подпись после отправки заявки - зависит от режима работы */
+export function SubmittedNote() {
+  const env = useApp((s) => s.env);
+  const telephony = useApp((s) => s.config.integrations.find((i) => i.id === 'telephony')?.connected);
+  if (env === 'live') return null;
+  if (env === 'preview')
+    return (
+      <DemoNote label="Предпросмотр.">
+        Сервер ещё не подключён, заявка никуда не отправлена. В боевой версии она сразу уйдёт в Bitrix24 менеджеру на линии.
+      </DemoNote>
+    );
+  return <DemoNote>{telephony ? 'Заявка сохранена в панели управления.' : 'Телефония не подключена: звонок не совершается. Заявка сохранена и видна в панели управления.'}</DemoNote>;
+}
+
+export function DemoNote({ children, label = 'DEMO.' }: { children: ReactNode; label?: string }) {
   return (
     <p className="rounded-lg border border-dashed border-warn/50 bg-warn/5 px-3 py-2 text-[11px] leading-snug text-warn">
-      <b>DEMO.</b> {children}
+      <b>{label}</b> {children}
     </p>
   );
 }

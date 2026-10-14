@@ -50,13 +50,7 @@ export function bookingUrl(checkIn?: string, checkOut?: string, adults?: number)
   return `${base}?${p.toString()}`;
 }
 
-// DEMO-предположения о вместимости: заменить данными Bnovo (rooms API → adults/children).
-const DEMO_CAPACITY: Record<string, number> = {
-  mini: 2, std: 2, comfort: 3, prestige: 3, prostor: 4, family: 5, lux: 4,
-};
-const DEMO_BASE_PRICE: Record<string, number> = {
-  mini: 4200, std: 4900, comfort: 5600, prestige: 6400, prostor: 7900, family: 8900, lux: 10900,
-};
+// DEMO-генератор наличия: цена = цена «от» с сайта × случайная наценка. Только для демонстрации.
 
 export async function getOffers(checkIn: string, checkOut: string, guests: number): Promise<CategoryOffer[] | null> {
   const kind = bnovoSource();
@@ -78,8 +72,8 @@ export async function getOffers(checkIn: string, checkOut: string, guests: numbe
       name: c.name,
       total: c.total,
       available,
-      price: available ? Math.round((DEMO_BASE_PRICE[c.key] * nights * (0.9 + rand() * 0.25)) / 100) * 100 : null,
-      maxGuests: DEMO_CAPACITY[c.key],
+      price: available ? Math.round((c.fromPrice * nights * (1 + rand() * 0.35)) / 100) * 100 : null,
+      maxGuests: c.maxGuests,
       demo: true,
     };
   }).filter((o) => o.maxGuests >= guests);

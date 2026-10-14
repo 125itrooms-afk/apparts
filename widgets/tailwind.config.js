@@ -11,8 +11,8 @@ export default {
         ok: '#2f7d4f', warn: '#b7791f', bad: '#b4433c',
       },
       fontFamily: {
-        display: ['Prata', 'Georgia', 'serif'],
-        sans: ['Manrope', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        display: ['var(--v125-display)', 'Georgia', 'serif'],
+        sans: ['var(--v125-font)', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       boxShadow: {
         float: '0 10px 30px -10px rgba(35,38,43,.35)',

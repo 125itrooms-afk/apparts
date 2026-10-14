@@ -15,10 +15,17 @@ const BRANDS = [
 ];
 
 const SNIPPET = `<!-- Варшавка 125 · Smart Booking Widgets -->
-<script src="https://widgets.varshavka125.ru/v125-widgets.js"
-        data-site="varshavka125"
-        data-api="https://widgets.varshavka125.ru/api"
-        async></script>`;
+<script>
+  window.V125_WIDGETS_CONFIG = {
+    layout: { avoidSelectors: ['.mbar', '#ck'] },
+    widgets: {
+      personalization: { targets: { headline: '.hero-copy h1', subline: '.hero-copy .sub' } },
+      video: { src: 'widgets/v125-tour.mp4', ctaPrimaryHref: '#rooms' },
+      leadPopup: { image: 'img/reception-s.webp' }
+    }
+  };
+</script>
+<script src="widgets/v125-widgets.js" data-site="varshavka125" data-api="https://w125.ru/api" defer></script>`;
 
 export function SettingsPage() {
   const cfg = useApp((s) => s.config);
@@ -131,10 +138,28 @@ export function SettingsPage() {
             >
               <Copy className="h-3.5 w-3.5" /> {copied ? 'Скопировано' : 'Скопировать'}
             </Button>
-            <span className="text-[11px] text-ink-mute">Адрес widgets.varshavka125.ru - пример. Скрипт собирается командой npm run build:embed.</span>
+            <span className="text-[11px] text-ink-mute">Без data-api виджеты работают в режиме предпросмотра: заявки не отправляются. Скрипт собирается командой npm run build:embed.</span>
           </div>
         </div>
       </Card>
+      <fieldset disabled={!can}>
+        <Card title="Совместимость с сайтом">
+          <div className="grid gap-3 sm:grid-cols-3">
+            <Field label="Мобильная версия до ширины, px">
+              <Input type="number" value={cfg.layout.mobileBreakpoint} onChange={(e) => up('layout', { ...cfg.layout, mobileBreakpoint: Number(e.target.value) || 760 })} />
+            </Field>
+            <Field label="Отступ кнопок снизу, px">
+              <Input type="number" value={cfg.layout.bottomOffset} onChange={(e) => up('layout', { ...cfg.layout, bottomOffset: Number(e.target.value) || 0 })} />
+            </Field>
+            <Field label="Не перекрывать элементы сайта" hint="Селекторы через запятую. Виджеты поднимаются над ними.">
+              <Input value={cfg.layout.avoidSelectors.join(', ')} onChange={(e) => up('layout', { ...cfg.layout, avoidSelectors: e.target.value.split(',').map((x) => x.trim()).filter(Boolean) })} />
+            </Field>
+            <Field label="Шрифт текста"><Input value={cfg.branding.font} onChange={(e) => up('branding', { ...cfg.branding, font: e.target.value })} /></Field>
+            <Field label="Шрифт заголовков"><Input value={cfg.branding.fontDisplay} onChange={(e) => up('branding', { ...cfg.branding, fontDisplay: e.target.value })} /></Field>
+          </div>
+          <p className="mt-2 text-[11px] text-ink-mute">Для w125.ru: нижняя панель «Выбрать даты» (.mbar) и cookie-плашка (#ck). Шрифты Onest и Unbounded уже подключены на сайте.</p>
+        </Card>
+      </fieldset>
       <Card title="Демонстрационные данные">
         {confirmReset ? (
           <div className="flex flex-wrap items-center gap-2 text-sm">

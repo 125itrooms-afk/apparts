@@ -1,0 +1,381 @@
+import type { Config, Staff } from './types';
+
+const all = { include: '*', exclude: '' };
+
+/** UID модуля бронирования Bnovo (из availability.gs этого репозитория) */
+export const BNOVO_MODULE_UID = '8fd19a00-9a3e-4978-8ce7-fcb02758f5aa';
+
+/** Категории номерного фонда (названия и количество из availability.gs). */
+export const CATEGORIES = [
+  { key: 'mini', name: 'Мини', total: 5 },
+  { key: 'std', name: 'Уют Стандарт', total: 12 },
+  { key: 'comfort', name: 'Уют Комфорт', total: 15 },
+  { key: 'prestige', name: 'Престиж', total: 20 },
+  { key: 'prostor', name: 'Простор', total: 6 },
+  { key: 'family', name: 'Семейный', total: 2 },
+  { key: 'lux', name: 'Люкс', total: 3 },
+] as const;
+
+export const defaultConfig: Config = {
+  widgets: {
+    callback: {
+      enabled: true,
+      pages: all,
+      mobile: 'show',
+      title: 'Поможем подобрать апартаменты!',
+      subtitle: 'Оставьте номер - специалист по бронированию свяжется с вами.',
+      button: 'Жду звонка',
+      allowSchedule: true,
+      promiseMinutes: 10,
+      showLauncher: true,
+    },
+    chat: {
+      enabled: true,
+      pages: all,
+      mobile: 'show',
+      greeting:
+        'Здравствуйте! 👋 Я помогу подобрать апартаменты на Варшавке 125. Подскажите, на какие даты планируете проживание?',
+      aiEnabled: true,
+      quickActions: [
+        'Подобрать апартаменты',
+        'Узнать стоимость',
+        'Как добраться?',
+        'Ранний заезд / поздний выезд',
+        'Командировка',
+        'Проживание с детьми',
+        'Связаться с администратором',
+      ],
+      operatorName: 'Администратор Варшавки 125',
+      showLauncher: true,
+    },
+    multibutton: {
+      enabled: true,
+      pages: all,
+      mobile: 'show',
+      position: 'right',
+      color: '#2f3a36',
+      animation: 'fan',
+      pulse: true,
+      items: [
+        { id: 'call', label: 'Позвонить', enabled: true },
+        { id: 'callback', label: 'Заказать обратный звонок', enabled: true },
+        { id: 'chat', label: 'Написать в чат', enabled: true },
+        { id: 'telegram', label: 'Написать в Telegram', enabled: true },
+        { id: 'max', label: 'Написать в MAX', enabled: true },
+        { id: 'booking', label: 'Забронировать апартаменты', enabled: true },
+        { id: 'offers', label: 'Специальные предложения', enabled: true },
+      ],
+    },
+    socialProof: {
+      enabled: true,
+      pages: { include: '/, /apartments, /prices', exclude: '' },
+      mobile: 'compact',
+      firstDelaySec: 12,
+      intervalSec: 40,
+      maxPerSession: 3,
+      displaySec: 7,
+      hideForReturning: false,
+      position: 'left',
+    },
+    leadPopup: {
+      enabled: true,
+      pages: { include: '*', exclude: '/contacts' },
+      mobile: 'show',
+      image: '',
+      minSecondsOnSite: 8,
+      maxPerSession: 1,
+      scenarios: [
+        {
+          id: 'sc-exit',
+          name: 'Уход с сайта',
+          enabled: true,
+          priority: 10,
+          triggers: [{ type: 'exit', value: '' }],
+          title: 'Не нашли подходящие апартаменты?',
+          text: 'Оставьте контакты - поможем подобрать вариант.',
+          button: 'Помогите подобрать',
+          capHours: 24,
+          abTestId: 'ab-exit',
+        },
+        {
+          id: 'sc-prices',
+          name: 'Долго изучает цены',
+          enabled: true,
+          priority: 20,
+          triggers: [
+            { type: 'url', value: '/prices' },
+            { type: 'section', value: '25' },
+          ],
+          title: 'Нужна помощь с выбором?',
+          text: 'Наш специалист подскажет подходящий вариант проживания.',
+          button: 'Получить консультацию',
+          capHours: 12,
+        },
+        {
+          id: 'sc-long',
+          name: 'Длительное проживание',
+          enabled: true,
+          priority: 30,
+          triggers: [{ type: 'action', value: 'long_stay_interest' }],
+          title: 'Планируете остановиться надолго?',
+          text: 'Уточните условия длительного размещения.',
+          button: 'Узнать условия',
+          capHours: 24,
+        },
+        {
+          id: 'sc-corp',
+          name: 'Корпоративная реклама',
+          enabled: true,
+          priority: 40,
+          triggers: [
+            { type: 'utm', value: 'corp' },
+            { type: 'time', value: '15' },
+          ],
+          title: 'Нужны апартаменты для сотрудников?',
+          text: 'Подготовим предложение для вашей компании.',
+          button: 'Запросить предложение',
+          capHours: 48,
+        },
+      ],
+    },
+    quiz: {
+      enabled: true,
+      pages: all,
+      mobile: 'show',
+      title: 'Подбор апартаментов за 1 минуту',
+      launcherText: 'Подобрать апартаменты',
+      showInlineOnHome: true,
+    },
+    personalization: {
+      enabled: true,
+      pages: all,
+      mobile: 'show',
+      defaultHeadline: 'Апартаменты на Варшавском шоссе',
+      defaultSubline: 'Кухня, рабочее место и всё для проживания от одной ночи до нескольких месяцев.',
+      defaultCta: 'Подобрать апартаменты',
+      segments: [
+        {
+          id: 'seg-return',
+          name: 'Повторный посетитель',
+          priority: 10,
+          enabled: true,
+          conditions: [{ type: 'returning', value: '' }],
+          headline: 'Рады видеть вас снова!',
+          subline: 'Продолжим подбор? Ваши ответы сохранены.',
+          cta: 'Продолжить подбор',
+        },
+        {
+          id: 'seg-corp',
+          name: 'Корпоративный сегмент',
+          priority: 20,
+          enabled: true,
+          conditions: [{ type: 'utm_campaign', value: 'corp' }],
+          headline: 'Размещение сотрудников и командированных',
+          subline: 'Закрывающие документы, безналичная оплата, долгосрочные условия.',
+          cta: 'Запросить предложение',
+          abTestId: 'ab-corp',
+        },
+        {
+          id: 'seg-family',
+          name: 'Семейная аудитория',
+          priority: 30,
+          enabled: true,
+          conditions: [{ type: 'utm_campaign', value: 'family' }],
+          headline: 'Подберём комфортное размещение для семьи',
+          subline: 'Апартаменты с кухней и местом для детей.',
+          cta: 'Подобрать для семьи',
+        },
+        {
+          id: 'seg-search',
+          name: 'Поисковый трафик',
+          priority: 40,
+          enabled: true,
+          conditions: [{ type: 'referrer', value: 'yandex' }],
+          headline: 'Подберём апартаменты на ваши даты',
+          subline: 'Укажите даты - покажем доступные категории.',
+          cta: 'Выбрать даты',
+        },
+      ],
+    },
+    video: {
+      enabled: true,
+      pages: { include: '/, /apartments', exclude: '' },
+      mobile: 'compact',
+      size: 'm',
+      position: 'left',
+      title: 'Видеоэкскурсия по апартаментам',
+      ctaPrimary: 'Посмотреть апартаменты',
+      ctaSecondary: 'Забронировать',
+      src: '',
+      delaySec: 3,
+    },
+  },
+  abTests: [
+    {
+      id: 'ab-exit',
+      name: 'Exit-окно: помощь vs. подбор',
+      target: 'leadPopup',
+      targetRef: 'sc-exit',
+      status: 'running',
+      goal: 'submit',
+      variants: [
+        {
+          id: 'A',
+          name: 'A (контроль)',
+          weight: 50,
+          title: 'Не нашли подходящие апартаменты?',
+          text: 'Оставьте контакты - поможем подобрать вариант.',
+          button: 'Помогите подобрать',
+        },
+        {
+          id: 'B',
+          name: 'B',
+          weight: 50,
+          title: 'Подберём апартаменты за вас',
+          text: 'Оставьте телефон - пришлём 2-3 подходящих варианта на ваши даты.',
+          button: 'Получить варианты',
+        },
+      ],
+    },
+    {
+      id: 'ab-corp',
+      name: 'Заголовок для корпоративных клиентов',
+      target: 'personalization',
+      targetRef: 'seg-corp',
+      status: 'draft',
+      goal: 'submit',
+      variants: [
+        {
+          id: 'A',
+          name: 'A (контроль)',
+          weight: 50,
+          title: 'Размещение сотрудников и командированных',
+          text: 'Закрывающие документы, безналичная оплата, долгосрочные условия.',
+          button: 'Запросить предложение',
+        },
+        {
+          id: 'B',
+          name: 'B',
+          weight: 50,
+          title: 'Апартаменты для команды - один договор',
+          text: 'Поселим сотрудников на любой срок и подготовим документы для бухгалтерии.',
+          button: 'Получить КП',
+        },
+      ],
+    },
+  ],
+  kb: [
+    {
+      id: 'kb-address',
+      topic: 'Адрес и как добраться',
+      keywords: 'адрес,добраться,доехать,метро,где,находитесь,как добраться,проехать',
+      answer:
+        'Мы находимся по адресу: Москва, Варшавское шоссе, 125. Схему проезда и ближайший общественный транспорт уточнит администратор.',
+      confirmed: false,
+    },
+    {
+      id: 'kb-checkin',
+      topic: 'Ранний заезд и поздний выезд',
+      keywords: 'ранний,поздний,заезд,выезд,checkin,чекин,раньше,позже',
+      answer:
+        'Ранний заезд и поздний выезд возможны при наличии свободных апартаментов. Условия и стоимость подтверждает администратор на ваши даты.',
+      confirmed: false,
+    },
+    {
+      id: 'kb-business',
+      topic: 'Командировки и документы',
+      keywords: 'командировка,документы,закрывающие,счёт,счет,юрлицо,безнал,компания,отчетные,отчётные',
+      answer:
+        'Для командированных готовим отчётные документы. Список документов и условия оплаты от юрлица уточнит специалист по бронированию.',
+      confirmed: false,
+    },
+    {
+      id: 'kb-kids',
+      topic: 'Проживание с детьми',
+      keywords: 'дети,ребенок,ребёнок,детская,кроватка,семья,с детьми',
+      answer:
+        'Принимаем гостей с детьми. Наличие детской кроватки и подходящие категории подберём под состав вашей семьи.',
+      confirmed: false,
+    },
+    {
+      id: 'kb-long',
+      topic: 'Длительное проживание',
+      keywords: 'долго,длительное,месяц,месяцев,долгосрочно,надолго',
+      answer:
+        'Для длительного проживания действуют отдельные условия. Специалист рассчитает стоимость на ваш срок.',
+      confirmed: false,
+    },
+    {
+      id: 'kb-parking',
+      topic: 'Парковка',
+      keywords: 'парковка,машина,авто,припарковаться',
+      answer: '',
+      confirmed: false,
+    },
+  ],
+  contacts: {
+    phone: '+7 (000) 000-00-00',
+    telegram: 'https://t.me/',
+    max: 'https://max.ru/',
+    bookingUrl: `https://reservationsteps.ru/rooms/index/${BNOVO_MODULE_UID}`,
+    offersUrl: '/offers',
+    privacyUrl: '/privacy',
+    address: 'Москва, Варшавское шоссе, 125',
+  },
+  hours: { from: '09:00', to: '21:00', days: [1, 2, 3, 4, 5, 6, 7] },
+  branding: { brand: '#2f3a36', brandInk: '#ffffff', radius: 'soft' },
+  integrations: [
+    { id: 'bnovo', connected: false, params: { hotelId: '123048', moduleUid: BNOVO_MODULE_UID } },
+    { id: 'bitrix24', connected: false, params: { portal: '', pipeline: 'Бронирования' } },
+    { id: 'metrika', connected: false, params: { counterId: '' } },
+    { id: 'telephony', connected: false, params: { provider: '' } },
+  ],
+  reminders: { firstAfterMin: 10, repeatEveryMin: 10 },
+};
+
+export const DEMO_STAFF: Staff[] = [
+  { id: 'm1', name: 'Ольга (DEMO)', role: 'manager', active: true },
+  { id: 'm2', name: 'Игорь (DEMO)', role: 'manager', active: true },
+  { id: 'm3', name: 'Дарья (DEMO)', role: 'manager', active: true },
+  { id: 'mk', name: 'Анастасия (DEMO)', role: 'marketer', active: true },
+  { id: 'ow', name: 'Руководитель (DEMO)', role: 'owner', active: true },
+  { id: 'ad', name: 'Сисадмин (DEMO)', role: 'admin', active: true },
+];
+
+export const STATUS_LABEL: Record<string, string> = {
+  new: 'Новая',
+  in_progress: 'В работе',
+  reached: 'Дозвонились',
+  not_reached: 'Не дозвонились',
+  booked: 'Забронировано',
+  rejected: 'Отказ',
+};
+
+export const SOURCE_LABEL: Record<string, string> = {
+  callback: 'Обратный звонок',
+  chat: 'Чат',
+  quiz: 'Квиз',
+  leadPopup: 'Генератор заявок',
+  video: 'Видеоприветствие',
+  multibutton: 'Мультикнопка',
+};
+
+export const WIDGET_LABEL: Record<string, string> = {
+  callback: 'Обратный звонок',
+  chat: 'Онлайн-чат',
+  multibutton: 'Мультикнопка',
+  socialProof: 'Уведомления о бронированиях',
+  leadPopup: 'Генератор заявок',
+  quiz: 'Квиз подбора',
+  personalization: 'Персонализация',
+  video: 'Видеоприветствие',
+};
+
+export const REFUSAL_REASONS = [
+  'Нет мест на даты',
+  'Дорого',
+  'Выбрал другой объект',
+  'Не берёт трубку',
+  'Неактуально',
+  'Не подходит категория',
+];

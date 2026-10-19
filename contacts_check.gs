@@ -3,7 +3,7 @@
  * Отдельный файл в том же проекте Apps Script, где лежит BNOVO_KEY.
  * Ничего в Bnovo не меняет: только читает брони.
  *
- * Свойства проекта (уже есть): BNOVO_KEY, MAX_TOKEN.
+ * Свойства проекта: BNOVO_KEY (уже есть), CONNECTOR_KEY (тот же ключ, что в GitHub коннектора).
  * Запуск:
  *   ck_preview()       - посмотреть текст в журнале, ничего не отправляя;
  *   ck_run()           - проверить и отправить в чат;
@@ -91,7 +91,7 @@ function ck_build_() {
        lines.push('• ' + ck_esc_(name) + ', ' + room + ' (' + ck_esc_(src) + ', ' + ck_esc_(st) + ')');
        lines.push('  ' + x.issues.join(', ') + ' · бронь ' + ck_esc_(x.b.number || x.b.id));
      });
-  return lines.join('\n').slice(0, 3900);
+  return lines.join('\n'); // длинный текст коннектор сам делит на части
 }
 
 /**
@@ -154,19 +154,17 @@ function ck_bnovoToken_() {
 /* ---------- MAX ---------- */
 
 function ck_send_(text) {
-  const token = PropertiesService.getScriptProperties().getProperty('MAX_TOKEN');
-  if (!token || token === 'ЗАПОЛНИТЬ') throw new Error('Нет MAX_TOKEN в свойствах проекта');
-  const url = 'https://platform-api.max.ru/messages?chat_id=' + encodeURIComponent(CK.CHAT_ID);
-  const post = body => UrlFetchApp.fetch(url, {
+  // Отправка через коннектор bot.w125.ru (тот же бот, что у Claude):
+  // Apps Script не доверяет сертификату MAX, а коннектор умеет теги и сам делит длинный текст.
+  const key = PropertiesService.getScriptProperties().getProperty('CONNECTOR_KEY');
+  if (!key) throw new Error('Нет CONNECTOR_KEY в свойствах проекта');
+  const r = UrlFetchApp.fetch('https://bot.w125.ru/notify.php', {
     method: 'post', contentType: 'application/json',
-    headers: { Authorization: token }, payload: JSON.stringify(body), muteHttpExceptions: true });
-
-  let r = post({ text: text, format: 'markdown' });
-  if (r.getResponseCode() !== 200) {
-    r = post({ text: text.replace(/\*\*/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/\\([*_\[\]`])/g, '$1') });
-  }
-  Logger.log('MAX: ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 200));
-  if (r.getResponseCode() !== 200) throw new Error('MAX ответил ' + r.getResponseCode());
+    headers: { 'X-Key': key },
+    payload: JSON.stringify({ target: CK.CHAT_ID, text: text, format: 'markdown', source: 'contacts-check' }),
+    muteHttpExceptions: true });
+  Logger.log('MAX: ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 300));
+  if (r.getResponseCode() !== 200) throw new Error('Коннектор ответил ' + r.getResponseCode());
 }
 
 /* ---------- ВСПОМОГАТЕЛЬНОЕ ---------- */

@@ -20,7 +20,7 @@ const CK = {
   WIDE_DAYS: 90,                    // запасной режим: брони, созданные за N дней
   // Кого отметить, когда есть незаполненные контакты. Пример:
   // MENTION: [{ id: 123456789, name: 'Никита' }]
-  MENTION: [{ id: 129712540, name: 'Ресепшн В125' }]
+  MENTION: [{ id: 129712540, name: 'Варшавка Reception' }] // имя точно как в профиле MAX
 };
 
 /* ---------- ЗАПУСК ---------- */
@@ -70,7 +70,7 @@ function ck_build_() {
   });
 
   const dd = today.slice(8, 10) + '.' + today.slice(5, 7);
-  const head = '<b>' + CK.HOTEL + ' · заезды ' + dd + ' · контакты гостей</b>';
+  const head = '**' + CK.HOTEL + ' · заезды ' + dd + ' · контакты гостей**';
 
   if (!arrivals.length) return CK.SEND_IF_ALL_OK ? head + '\nЗаездов сегодня нет.' : '';
   if (!bad.length) {
@@ -79,7 +79,7 @@ function ck_build_() {
   }
 
   const tags = (CK.MENTION || []).filter(m => m && m.id)
-    .map(m => '<a href="max://user/' + m.id + '">' + ck_esc_(m.name || 'администратор') + '</a>');
+    .map(m => '[' + ck_esc_(m.name || 'администратор') + '](max://user/' + m.id + ')');
   const lines = [head, (tags.length ? tags.join(', ') + ', ' : '') +
                  'не заполнено: ' + bad.length + ' из ' + arrivals.length, ''];
   bad.sort((x, y) => String(x.b.room_name || '').localeCompare(String(y.b.room_name || ''), 'ru', { numeric: true }))
@@ -161,9 +161,9 @@ function ck_send_(text) {
     method: 'post', contentType: 'application/json',
     headers: { Authorization: token }, payload: JSON.stringify(body), muteHttpExceptions: true });
 
-  let r = post({ text: text, format: 'html' });
+  let r = post({ text: text, format: 'markdown' });
   if (r.getResponseCode() !== 200) {
-    r = post({ text: text.replace(/<[^>]+>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&') });
+    r = post({ text: text.replace(/\*\*/g, '').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/\\([*_\[\]`])/g, '$1') });
   }
   Logger.log('MAX: ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 200));
   if (r.getResponseCode() !== 200) throw new Error('MAX ответил ' + r.getResponseCode());
@@ -172,7 +172,8 @@ function ck_send_(text) {
 /* ---------- ВСПОМОГАТЕЛЬНОЕ ---------- */
 
 function ck_esc_(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // экранируем символы разметки markdown в именах гостей и т.п.
+  return String(s).replace(/([*_\[\]`])/g, '\\$1');
 }
 
 function ck_short_(s) {

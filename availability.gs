@@ -2,8 +2,7 @@
  * Варшавка 125 — остатки и цены из модуля бронирования → MAX
  * Google Apps Script, версия 3 (цельная). Заменяет весь файл Код.gs.
  *
- * Секреты (MAX_TOKEN, MAX_CHAT_ID) уже лежат в свойствах проекта —
- * setupSecrets() повторно запускать не нужно.
+ * Отправка в MAX - через коннектор (файл max.gs, свойство CONNECTOR_KEY).
  *
  * Если в проекте есть файл market — в таблицу остатков добавляются
  * минимальные цены конкурентов на ту же дату.
@@ -29,11 +28,11 @@ var CATEGORIES = [
 
 // ==================== СЕКРЕТЫ ====================
 
+// Ключ коннектора MAX: вставьте значение, запустите один раз, затем верните 'ЗАПОЛНИТЬ'.
 function setupSecrets() {
   var props = PropertiesService.getScriptProperties();
-  props.setProperty('MAX_TOKEN', 'ЗАПОЛНИТЬ');
-  props.setProperty('MAX_CHAT_ID', 'ЗАПОЛНИТЬ');
-  Logger.log('Сохранено. Верните значения в коде на ЗАПОЛНИТЬ.');
+  props.setProperty('CONNECTOR_KEY', 'ЗАПОЛНИТЬ');
+  Logger.log('Сохранено. Верните значение в коде на ЗАПОЛНИТЬ.');
 }
 
 function getSecret(key) {
@@ -297,52 +296,17 @@ function buildReport(data) {
 
 // ==================== MAX ====================
 
+// Отчёт в чат отчётов (MAX_REPORT_TARGET) через коннектор, см. max.gs
 function sendToMax(text) {
   if (!text) {
     Logger.log('Запускайте test_SendToMax() или dailyReport(), не sendToMax().');
     return;
   }
-  var token  = getSecret('MAX_TOKEN');
-  // Чат маркетологов, если задан (как в pickup-отчёте), иначе основной чат
-  var chatId = getSecret('MAX_REPORT_CHAT_ID') || getSecret('MAX_CHAT_ID');
-  if (!token || !chatId) {
-    Logger.log('MAX не настроен. Сообщение:\n' + text);
-    return;
+  try {
+    maxNotify_(maxTarget_(false), text, 'html');
+  } catch (e) {
+    Logger.log('Ошибка отправки: ' + e.message + '\nСообщение:\n' + text);
   }
-
-  var url = 'https://platform-api.max.ru/messages?chat_id=' + chatId;
-  var body = { text: text.slice(0, 3900), format: 'html' };
-
-  var r = UrlFetchApp.fetch(url, {
-    method: 'post', contentType: 'application/json',
-    headers: { 'Authorization': token },
-    payload: JSON.stringify(body), muteHttpExceptions: true
-  });
-
-  // Если разметка не принята — отправляем простым текстом без тегов
-  if (r.getResponseCode() !== 200) {
-    Logger.log('HTML не принят (' + r.getResponseCode() + '): ' + r.getContentText());
-    delete body.format;
-    body.text = body.text.replace(/<[^>]+>/g, '')
-      .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-    r = UrlFetchApp.fetch(url, {
-      method: 'post', contentType: 'application/json',
-      headers: { 'Authorization': token },
-      payload: JSON.stringify(body), muteHttpExceptions: true
-    });
-  }
-  if (r.getResponseCode() !== 200) {
-    Logger.log('Ошибка отправки (' + r.getResponseCode() + '): ' + r.getContentText());
-  }
-}
-
-function getMaxChats() {
-  var token = getSecret('MAX_TOKEN');
-  if (!token) { Logger.log('Нет токена в свойствах проекта.'); return; }
-  var r = UrlFetchApp.fetch('https://platform-api.max.ru/chats', {
-    headers: { 'Authorization': token }, muteHttpExceptions: true
-  });
-  Logger.log(r.getContentText().slice(0, 2000));
 }
 
 function test_SendToMax() {

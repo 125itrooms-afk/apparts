@@ -7,8 +7,8 @@
  *  3. Если в проекте есть market.gs — вторым сообщением уходит
  *     сравнение с конкурентами.
  *
- * Свойства проекта: BNOVO_KEY, MAX_TOKEN, MAX_CHAT_ID (вам, алерты),
- * MAX_REPORT_CHAT_ID (чат маркетологов).
+ * Свойства проекта: BNOVO_KEY, CONNECTOR_KEY. Куда слать - MAX_REPORT_TARGET
+ * (чат маркетологов) и MAX_ADMIN_TARGET (вам, алерты), см. max.gs.
  */
 
 const CFG = {
@@ -418,36 +418,10 @@ function latestPrices_() {
 
 /* ---------- MAX ---------- */
 
-// admin=true → в личный чат (MAX_CHAT_ID), иначе в чат маркетологов (MAX_REPORT_CHAT_ID)
-// html=true → с HTML-разметкой (<b>, <pre>); если MAX её не примет, уйдёт простым текстом
+// admin=true → вам (MAX_ADMIN_TARGET), иначе в чат маркетологов (MAX_REPORT_TARGET); отправка через коннектор, см. max.gs
+// html=true → с HTML-разметкой; если MAX её не примет, коннектор отправит простым текстом
 function sendMaxReport_(text, admin, html) {
-  const p = PropertiesService.getScriptProperties();
-  const token = p.getProperty('MAX_TOKEN');
-  const chat = admin ? p.getProperty('MAX_CHAT_ID')
-                     : (p.getProperty('MAX_REPORT_CHAT_ID') || p.getProperty('MAX_CHAT_ID'));
-  const url = 'https://platform-api.max.ru/messages?chat_id=' + encodeURIComponent(chat);
-  const post = body => UrlFetchApp.fetch(url, {
-    method: 'post', contentType: 'application/json',
-    headers: {Authorization: token},
-    payload: JSON.stringify(body),
-    muteHttpExceptions: true});
-
-  let r = post(html ? {text: text, format: 'html'} : {text: text});
-  if (html && r.getResponseCode() !== 200) {
-    r = post({text: text.replace(/<[^>]+>/g, '')
-      .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')});
-  }
-
-  Logger.log('MAX: ' + r.getResponseCode() + ' ' + r.getContentText().slice(0, 200));
-  if (r.getResponseCode() !== 200) throw new Error('MAX ответил ' + r.getResponseCode());
-}
-
-// Показать чаты, где состоит бот, — чтобы найти chat_id чата маркетологов
-function listMaxChats() {
-  const token = PropertiesService.getScriptProperties().getProperty('MAX_TOKEN');
-  const r = UrlFetchApp.fetch('https://platform-api.max.ru/chats',
-    {headers: {Authorization: token}, muteHttpExceptions: true});
-  Logger.log(r.getResponseCode() + ' ' + r.getContentText().slice(0, 3000));
+  maxNotify_(maxTarget_(admin), text, html ? 'html' : 'plain');
 }
 
 /* ---------- ПРОВЕРКА ФОНДА ---------- */
